@@ -3,7 +3,7 @@ var upload = require('jquery-file-upload-middleware');
 
 // configure upload middleware
 upload.configure({
-    uploadDir: __dirname + '/public/uploads',
+    uploadDir: __dirname + '../public/uploads',
     uploadUrl: '/uploads',
     imageVersions: {
         thumbnail: {
