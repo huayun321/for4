@@ -34,55 +34,29 @@
 <link rel="stylesheet" href="css/jquery.fileupload.css">
 </head>
 <body>
-<div class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-fixed-top .navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="https://github.com/blueimp/jQuery-File-Upload">jQuery File Upload</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="https://github.com/blueimp/jQuery-File-Upload/tags">Download</a></li>
-                <li><a href="https://github.com/blueimp/jQuery-File-Upload">Source Code</a></li>
-                <li><a href="https://github.com/blueimp/jQuery-File-Upload/wiki">Documentation</a></li>
-                <li><a href="https://blueimp.net">&copy; Sebastian Tschan</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
+
 <div class="container">
     <h1>jQuery File Upload Demo</h1>
     <h2 class="lead">Basic version</h2>
-    <ul class="nav nav-tabs">
-        <li class="active"><a href="basic.html">Basic</a></li>
-        <li><a href="basic-plus.html">Basic Plus</a></li>
-        <li><a href="index.html">Basic Plus UI</a></li>
-        <li><a href="angularjs.html">AngularJS</a></li>
-        <li><a href="jquery-ui.html">jQuery UI</a></li>
-    </ul>
+
     <br>
-    <blockquote>
-        <p>File Upload widget with multiple file selection, drag&amp;drop support and progress bar for jQuery.<br>
-        Supports cross-domain, chunked and resumable file uploads.<br>
-        Works with any server-side platform (PHP, Python, Ruby on Rails, Java, Node.js, Go etc.) that supports standard HTML form file uploads.</p>
-    </blockquote>
-    <br>
+    <form  id="formupload" action="/upload" method="post" enctype="multipart/form-data">
+        标签：<input name="tags" type="text" class="form-control" placeholder="如果是多个标签，请以空格隔开：萝莉 小鲜肉 纯真">
+        <br>
     <!-- The fileinput-button span is used to style the file input field as button -->
     <span class="btn btn-success fileinput-button">
         <i class="glyphicon glyphicon-plus"></i>
         <span>Select files...</span>
         <!-- The file input field used as target for the file upload widget -->
         <!--<input id="fileupload" type="file" name="files[]" multiple>-->
-        <form id="formupload" action="/upload" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="user_id" value="some user id">
-            <input id="fileupload" type="file" name="files[]" data-url="/upload" data-form-data='{"script": "true"}' multiple>
-        </form>
+
+
+            <input id="fileupload" type="file" name="files[]" data-url="/upload"  multiple>
+
     </span>
+
     <br>
+    </form>
     <br>
     <!-- The global progress bar -->
     <div id="progress" class="progress">
@@ -130,7 +104,6 @@ $(function () {
                 '//localhost:3000/upload' : 'server/php/';
 
     $('#formupload').fileupload({
-
         url: url,
         dataType: 'json',
         done: function (e, data) {

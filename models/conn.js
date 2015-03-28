@@ -1,7 +1,7 @@
 //Bring mongoose into the project
 var mongoose = require('mongoose');
 //Build the connection string
-var dbURI = 'mongodb://localhost/MongoosePM';
+var dbURI = 'mongodb://localhost/for4';
 
 //Create the database connection
 mongoose.connect(dbURI);

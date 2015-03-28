@@ -6,10 +6,14 @@ var mongoose = require('mongoose');
 
 var materialSchema = mongoose.Schema({
     tags: [String],
-    img: String,
-    thumbnail: String,
+    url: String,
+    size: Number,
+    thumbnail_url: String,
+    delete_path: String,
+    thumbnail_delete_path: String,
     createdOn: { type: Date, default: Date.now }
 });
 
 //Build the User model
-mongoose.model('Material', materialSchema);
+var Material = mongoose.model('Material', materialSchema);
+module.exports = Material;
