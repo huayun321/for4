@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>模板設計器</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/templates/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/templates/css/simple-sidebar.css" rel="stylesheet">
+
+    <style>
+        #modal-canvas{
+            border: 1px solid #000;
+            margin: 0 auto;
+        }
+        /*.modal-dialog{*/
+            /*width: 835px;*/
+        /*}*/
+        /*.modal-content{*/
+            /*width: 900px;*/
+        /*}*/
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+
+
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <h4 class="panel-title">
+                            文本选项
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            <textarea id="text-content" rows="5" style="width:100%"></textarea><br>
+                            <label for="text-color">文本颜色:</label>
+                            <input type="color" value="#005E7A" id="text-color"><br>
+
+                            <button id="text-add">添加到画板</button><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                        <h4 class="panel-title">
+                            图案选项
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+
+                        <div id="stamp-box" class="panel-body">
+                            <label class="radio-inline">
+                                <input type="radio" name="shape" id="inlineRadio1" value="circle"> 圓形
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="shape" id="inlineRadio2" value="ellipse"> 橢圓
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="shape" id="inlineRadio4" value="rect"> 方形
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="shape" id="inlineRadio5" value="heart"> 心形
+                            </label>
+                            <br>
+                            <br>
+
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label for="input1" id="input1-l" class="col-sm-2 control-label">長</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" size="5" class="form-control input-sm" id="input1">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input2" id="input1-2" class="col-sm-2 control-label">寬</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" size="5" class="form-control input-sm" id="input2">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputx" class="col-sm-2 control-label">x</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" size="5" class="form-control input-sm" id="inputx">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputy" class="col-sm-2 control-label">y</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" size="5" class="form-control input-sm" id="inputy">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button id="add-shape-to" type="submit" class="btn btn-default">添加到畫板</button>
+                                    </div>
+                                </div>
+                            </form>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div id="contorl-bar" class="btn-group" role="toolbar" aria-label="...">
+
+                                <button id="tool-sidebar" type="button" class="btn btn-success" >
+                                    <span class="glyphicon glyphicon-transfer" aria-hidden="false"></span>
+                                    边栏
+                                </button>
+
+
+                                <button id="tool-save" type="button" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="false"></span>
+                                    保存
+                                </button>
+
+                                <button id="tool-clear" type="button" class="btn btn-danger" >
+                                    <span class="glyphicon glyphicon-trash" aria-hidden="false"></span>
+                                    清空
+                                </button>
+
+                        </div>
+                        <div id="toolbar" class="btn-group" role="toolbar" aria-label="...">
+
+                                <button id="tool-text" type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" data-parent="#accordion">
+                                    <span class="glyphicon glyphicon-font" aria-hidden="false"></span>
+                                    文本
+                                </button>
+
+                                <button id="tool-stamp" type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree" data-parent="#accordion">
+                                    <span class="glyphicon glyphicon-tree-conifer" aria-hidden="false"></span>
+                                    图案
+                                </button>
+
+                        </div>
+
+                        <p>918diy board<code>fightting!</code>.</p>
+                        <label for="bg-color">背景顏色颜色:</label>
+                        <input type="color" id="bg-color"><br>
+
+                        <canvas id="canvas" width="1050" height="1500" style="border:1px solid #000;">canvas</canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <div id="canvas-box" class="modal-body">
+                        模板名称：<input id="templateName" type="text" name="name"><br>
+                        模板描述：<textarea id="templateDesc" ></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button id="crop" type="button" class="btn btn-primary">添加模板</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="/templates/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/templates/js/bootstrap.min.js"></script>
+
+    <!-- fabric JavaScript -->
+    <script src="/templates/js/fabric.min.js"></script>
+
+    <!-- 918 -->
+    <script src="/templates/js/board_template.js"></script>
+
+</body>
+
+</html>

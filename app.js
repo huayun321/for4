@@ -9,8 +9,8 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 //admin routes
 var admin_index = require('./routes/admin/index');
-//admin routes
 var admin_materials = require('./routes/admin/materials');
+var admin_templates = require('./routes/admin/templates');
 //for jqu
 var upload = require('./util/jqu');
 
@@ -39,6 +39,7 @@ app.use('/users', users);
 //admin routes
 app.use('/admin', admin_index);
 app.use('/admin/materials', admin_materials);
+app.use('/admin/templates', admin_templates);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
