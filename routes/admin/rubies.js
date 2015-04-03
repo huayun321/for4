@@ -1,49 +1,49 @@
 var express = require('express');
 var router = express.Router();
-var Material = require('../../models/Material');
+var Ruby = require('../../models/Ruby');
 var fs = require('fs');
 
-/* GET materials list page. */
+/* GET home page. */
 router.get('/list', function(req, res, next) {
-    Material.find(function(err, result) {
+    Ruby.find(function(err, result) {
         if(err) {
             console.log(err);
             res.render('error', {message:'something go wrong', error:err});
         } else {
-            res.render('admin/materials/list', { title: '918-素材列表', materials:result });
+            res.render('admin/rubies/list', { title: '918-已加精列表列表', rubies:result });
         }
     })
-
 });
-/* GET materials add page. */
+
+/* GET rubies add page. */
 router.get('/add', function(req, res, next) {
-    res.render('admin/materials/add', { title: '918-素材添加' });
+    res.render('admin/rubies/add', { title: '918-宝石添加' });
 });
 
 /* GET materials list page. */
 router.get('/delete/:id', function(req, res, next) {
-    Material.findById(req.params.id, function(err, mt) {
+    Ruby.findById(req.params.id, function(err, result) {
         if(err) {
             console.log(err);
             res.render('error', {message:'something go wrong', error:err});
         } else {
-            if(mt) {
-                mt.remove(function(err) {
+            if(result) {
+                result.remove(function(err) {
                     if(err) {
                         console.log(err);
                         res.render('error', {message:'something go wrong', error:err});
                     } else {
-                        fs.unlink(mt.delete_path, function(err) {
+                        fs.unlink(result.delete_path, function(err) {
                             if(err) {
                                 console.log(err);
                                 res.render('error', {message:'something go wrong', error:err});
                             } else {
-                                fs.unlink(mt.thumbnail_delete_path, function(err) {
+                                fs.unlink(result.thumbnail_delete_path, function(err) {
                                     if(err) {
                                         console.log(err);
                                         res.render('error', {message:'something go wrong', error:err});
                                     } else {
-                                        res.redirect('/admin/materials/list');
+                                        res.redirect('/admin/rubies/list');
                                     }
                                 });
                             }
@@ -51,7 +51,7 @@ router.get('/delete/:id', function(req, res, next) {
                     }
                 });
             } else {
-                res.redirect('/admin/materials/list');
+                res.redirect('/admin/rubies/list');
             }
 
 

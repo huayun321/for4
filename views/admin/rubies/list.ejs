@@ -1,0 +1,79 @@
+<% include ../header %>
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Tables</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Kitchen Sink
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>小图</th>
+                                    <th>大小</th>
+                                    <th>标签</th>
+                                    <th>尺寸</th>
+                                    <th>日期</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <% rubies.forEach( function(ruby) { %>
+                                <tr>
+                                    <td><a href="<%=ruby.url%>"><img src="<%=ruby.thumbnail_url%>"></a></td>
+                                    <td><%=ruby.size%></td>
+                                    <td><%=ruby.tags.join(', ')%></td>
+                                    <td><%=ruby.tname%></td>
+                                    <td><%=ruby.createdOn%></td>
+                                    <td><a href="/admin/rubies/delete/<%=ruby.id%>">删除</a></td>
+                                </tr>
+                            <% }) %>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                    <nav>
+                        <ul class="pagination pull-right">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- /.pagenation -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-6 -->
+
+    </div>
+
+</div>
+<!-- /#page-wrapper -->
+<% include ../footer %>
+

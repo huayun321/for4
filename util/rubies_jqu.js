@@ -1,12 +1,12 @@
 //for jqu
 var upload = require('jquery-file-upload-middleware');
-var Material = require('../models/Material');
+var Ruby = require('../models/Ruby');
 var path = require('path');
 
 // configure upload middleware
 upload.configure({
-    uploadDir: __dirname + '/uploads',
-    uploadUrl: '/uploads',
+    uploadDir: __dirname + '/rubies',
+    uploadUrl: '/rubies',
     imageVersions: {
         thumbnail: {
             width: 80,
@@ -19,7 +19,7 @@ upload.configure({
 
 upload.on('end', function (fileInfo, req, res) {
     //check tags
-    if(String(req.fields.tags).trim() == '') {
+    if(req.fields.tags.trim() == '') {
         req.fields.tags = null;
     } else {
         req.fields.tags = req.fields.tags.trim().split(/\s+/);
@@ -38,16 +38,17 @@ upload.on('end', function (fileInfo, req, res) {
 
     }
     console.log(fileInfo);
-    var mt = new Material();
-    mt.tags = req.fields.tags;
-    mt.url = fileInfo.url;
-    mt.size = fileInfo.size;
-    mt.thumbnail_url = fileInfo.thumbnailUrl;
+    var rb = new Ruby();
+    rb.tags = req.fields.tags;
+    rb.tname = req.fields.tname;
+    rb.url = fileInfo.url;
+    rb.size = fileInfo.size;
+    rb.thumbnail_url = fileInfo.thumbnailUrl;
     //console.log(upload.options.uploadDir());
-    mt.delete_path = path.join(upload.options.uploadDir(), fileInfo.name);
-    mt.thumbnail_delete_path = path.join(path.join(upload.options.uploadDir(), 'thumbnail'), fileInfo.name);
+    rb.delete_path = path.join(upload.options.uploadDir(), fileInfo.name);
+    rb.thumbnail_delete_path = path.join(path.join(upload.options.uploadDir(), 'thumbnail'), fileInfo.name);
     //console.log(upload);
-    mt.save(function(err) {
+    rb.save(function(err) {
         if(err) {
             console.error(err);
         }
