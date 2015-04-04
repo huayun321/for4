@@ -1,4 +1,10 @@
 var express = require('express');
+//for passport
+var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
+var passport = require('passport');
+var User = require('./models/User');
+//..end of passport
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -155,8 +161,26 @@ upload.on('error', function (e, req, res) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+    store: new RedisStore({
+        host: "127.0.0.1",
+        port: 6379,
+        db: "test_session"
+    }),
+    secret: 'keyboard cat'
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+        done(err, user);
+    });
+});
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'util')));
 app.use('/', routes);
 app.use('/users', users);
 //admin routes
