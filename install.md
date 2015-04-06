@@ -9,3 +9,5 @@ passport
     connect-redis
     npm install connect-redis --save
 
+    connect-flash
+    npm install connect-flash --save

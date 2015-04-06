@@ -6,9 +6,12 @@ var mongoose = require('mongoose');
 
 
 var schema = mongoose.Schema({
+    //for auth
     email: {type: String, require: true, trim: true, unique: true},
     password: {type: String, require: true},
-    admin: {type: Boolean, default: false}
+    admin: {type: Boolean, default: false},
+    //profile
+    username: {type: String, require: true, trim: true}
 });
 
 var User = mongoose.model('User', schema);

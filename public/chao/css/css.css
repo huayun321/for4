@@ -1,0 +1,130 @@
+@charset "utf-8";
+/* CSS Document */
+body{ font-size:12px; padding-top:85px;background:url(../img/bg.gif) repeat }
+.shouye{background:url(../img/bg.gif) repeat ; }
+ui,li{ list-style:none}
+
+.fontcolor{ color:#333333}
+
+.top{ height:73px; background:url(../img/topbg.gif) repeat-x #ffffff; border:0px}
+.lilogo{ width:80px;text-align:center; color:#dedfe0; font-family:微软雅黑 Light; margin-top:10px;}
+.litop{ width:100px;text-align:center; color:#dedfe0; font-family:微软雅黑 Light; margin-top:10px;}
+.liyhm{ text-align:center; font-family:微软雅黑 Light; margin-top:10px; font-size:12px}
+.home{ color:#FF6600}
+.lisearch{text-align:center; color:#dedfe0; font-family:微软雅黑 Light; margin-top:10px;}
+.topdl{background:#fc1c44; color:#FFFFFF; margin-top:6px;}
+.topzc{background:#ffbb33; color:#FFFFFF; margin-top:6px;}
+.height15{ height:15px; margin:auto; clear:both }
+.height30{ height:30px; margin:auto; clear:both }
+.height5{ height:5px; margin:auto; clear:both }
+
+.banner{height:445px}
+
+
+.notice{ height:110px;  border-bottom:#dedfe0 1px dashed; margin-top:15px;  margin:15px}
+.notice_margin{  height:110px;  border-bottom:#dedfe0 1px dashed; margin-top:15px;}
+.newimgli{ width:97px; height:96px; border:1px #dedfe0 solid; font-family: Adobe 宋体 Std L;padding:1px }
+
+
+
+.baoshidai{ width:210px; height:290px; float:left; border:solid 1px #dedfe0;background:url(../img/table-end_bg.jpg) bottom no-repeat #FFFFFF; margin-top:15px; margin-bottom:10px; margin-right:20px; margin-left:6px}
+.baoshidai_tu{ width:208px; height:240px; background:url(../img/table_mid_bg.jpg) no-repeat bottom ; }
+.baoshidai_tu_li{ width:208px; height:240px; text-align:center; float:left; }
+.baoshidai_shoucang{ height:50px; clear:both }
+.baoshidai_shoucang_li{ height:50px; float:left; text-align:center; width:66px; font-size:12px }
+
+
+
+.biaoqian{ height:auto ; margin-top:15px; margin-right:-15px; padding:-15px}
+.baoshichicun{  background:#FFFFFF url(../img/table_mid_bg1.jpg) repeat-x top; height:auto ; min-height:290px; border:1px solid #dedfe0; padding-top:15px; padding-left:5px; margin-right:-20px}
+.baoshichicun1{  background:#FFFFFF url(../img/table_mid_bg1.jpg) repeat-x top; height:auto ; min-height:285px; border:1px solid #dedfe0;}
+.baoshibiaoqian_li{ float:left; text-align:center;  padding-right:5px;padding-left:5px;line-height:2;font-size:12px}
+.baoshibiaoqian_li:hover{ background-color:#0099FF;  color:#FFFFFF; }
+.baoshibiaoqian_li1{ float:left;text-align:center;padding-right:5px;padding-left:5px;line-height:2;font-size:12px}
+.baoshibiaoqian_li1:hover{ background-color:#0099FF;color:#FFFFFF; }
+
+
+
+.foot{border-top:#d4d5d5 1px solid; height:100px; margin-top:30px; clear:both}
+.foot_p{ line-height:2; font-size:12px; padding-top:15px; width:50%;float:left}
+
+
+.index_yhm{background:#f7faff; height:30px; width:208px; border:1px dashed #d1d8d8; text-align:center; line-height:30px; margin-top:10px}
+
+/*社区页面样式*/
+.sq_border{ border:#e3e3e6 1px solid; height:280px; padding-top:13px; background:#FFFFFF}
+
+.sq_p{ text-align:center}
+.sq_yzrt{ border-top:#cc0000 solid 3px; width:90px; padding-top:8px; }
+.sq_yzrt_ul{ border-top:dashed 1px #e3e3e6; clear:both; padding-top:10px; text-align:left; padding-left:5px }
+.sq_yzrt_ul_li{ height:85px; text-align:left; }
+.sq_yzrt_ul_li_span{ height:76px; width:100px; border:1px #CCCCCC solid}
+.sq_yzrt_ul_li_span1{ margin:0; padding:0; height:76px; line-height:1.8 }
+
+.sq_yzrt_ul_li1{ font-size:12px;line-height:1.8; color:#666666}
+
+
+
+.font12{ font-size:12px;line-height:1.7; color:#666666 }
+.font10{ font-size:10px; color:#CCCCCC; }
+.font14{ font-size:14px;line-height:2}
+
+
+.sq_border_sc{ border:#e3e3e6 1px solid; padding-top:13px; border-top:#FF3300 2px solid; clear:both}
+.sq_border_sc_row{border-bottom:solid 1px #999999; line-height:1;margin:5px; padding-bottom:8px}
+
+
+
+
+
+/*社区列表*/
+
+.sqlb_p{height:25px; width:70px; border:1px #cccccc solid; text-align:center; line-height:25px; font-size:12px; float:left; margin-right:6px}
+.sqlb_bg{ background:url(../img/sqlb_bg.jpg) repeat-x top #ffffff; min-height:300px; border:1px solid #CCCCCC}
+
+
+/*内容详细页面*/
+.chenghao{background:#f7faff; height:30px; width:125px; border:1px dashed #d1d8d8; text-align:center; line-height:30px; margin-top:10px}
+.thjb{width:41px; text-align:center; border-right:1px solid #cccccc}
+.tdjb{width:41px; text-align:center;}
+.ckhf{height:40px; line-height:40px; border-bottom:2px #cbcbcb solid}
+.tzbt{height:40px; line-height:40px; border-bottom:2px #eeeeee solid}
+.nrk{background:#ffffff; border:1px solid #CCCCCC;; padding-left:20px;padding-right:20px}
+.yhmx{border-bottom:1px dotted #cccccc; height:40px; line-height:40px}
+.cebianlan{background:#eeeeee; border:1px solid #CCCCCC; font-size:12px; padding-left:15px;padding-right:15px}
+.hf{ padding-top:20px}
+.nyyhtx{border:3px #ffffff solid; width:125px}
+
+/* contact 页面*/
+.con_div{margin-top:40px; margin-bottom:50px; text-align:center}
+.row_div{ background:#ffffff; border:#dddddd 1px  dashed; padding-top:40px}
+
+/*user base gem collection页面*/
+.user_yhm{background:#efefef;  line-height:20px; padding:10px}
+.user_yhm_img{width:50px; height:50px; border:2px solid #ffffff;}
+.user_yhm_text{color:#FF3300; font-size:12px;}
+.user_nr{background:#FFFFFF; min-height:300px; padding:10px; clear:both; font-size:12px}
+
+/*用户资料修改页面*/
+.modify_sidebar{background:#ffffff; border:1px solid #dddddd;}
+.modify_sidebar_p{ height:40px; line-height:40px; border-bottom:2px  solid #ffb92c}
+.modify_sidebar_p1{ height:30px; line-height:30px; border-bottom:1px  dashed #dddddd}
+
+/* bbs */
+.bbs_con{background:#FFFFFF; padding-top:10px}
+.bbs_con_p{float:left; font-size:16px; font-weight:bold}
+
+/* bag  */
+.bag_div{width:1250px; margin:auto}
+.bag_left{width:195px; height:1500px;float:left;border:#dddddd 1px solid; padding-left:20px; padding-top:20px; background: #ffffff}
+.bag_left_p{height:60px; border-bottom:1px dashed #dddddd;  border-top:2px solid #FF3366;  padding:15px;}
+.bag_left_img{width:150px; height:100px; border:1px; padding:2px; margin-top:15px}
+.bag_right{width:1050px; height:1500px;background:#ffffff; float:left}
+
+/* search */
+
+.search_bd{border-top:1px dotted #CCCCCC; text-align:center}
+
+/*  rules  */
+
+.rul_con{margin-bottom:50px; text-align:LEFT}

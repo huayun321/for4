@@ -1,6 +1,8 @@
 var express = require('express');
 //for passport
 var session = require('express-session');
+var flash = require('connect-flash');
+
 var RedisStore = require('connect-redis')(session);
 var passport = require('passport');
 var User = require('./models/User');
@@ -165,10 +167,17 @@ app.use(session({
     store: new RedisStore({
         host: "127.0.0.1",
         port: 6379,
-        db: "test_session"
+        db: 2
     }),
+    resave:false,
+    saveUninitialized:false,
     secret: 'keyboard cat'
 }));
+app.use(flash());
+app.use(function(req, res, next) {
+    res.locals.message = req.flash();
+    next();
+});
 app.use(passport.initialize());
 app.use(passport.session());
 passport.serializeUser(function(user, done) {

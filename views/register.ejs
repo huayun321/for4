@@ -1,0 +1,69 @@
+<% include ./header %>
+ 
+    
+
+  <div class="container-fluid">
+      
+      <div ng-controller="RegisterController"  style="margin-top:30px">
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading"><strong>用户注册</strong></div>
+      <div class="panel-body">
+
+              
+
+        <form id="payment-form" class="form-horizontal" role="form" action="/users/signup" method="post">
+        
+
+          <div class="form-group">
+            <label for="email" class="col-sm-3 control-label">邮箱</label>
+            <div class="col-sm-6">
+              <input name="email" type="email" id="email" class="form-control" placeholder="Email" autocapitalize="off" ng-model="registerForm.email">
+            </div>
+          </div>
+            <div class="form-group">
+                <label for="name" class="col-sm-3 control-label">昵称</label>
+                <div class="col-sm-6">
+                    <input name="username" type="text" id="name" class="form-control" placeholder="Name" ng-model="registerForm.name">
+                </div>
+            </div>
+          <div class="form-group">
+            <label for="password" class="col-sm-3 control-label">密码</label>
+            <div class="col-sm-6">
+              <input name="password" type="password" class="form-control" placeholder="Password" ng-model="registerForm.password">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password" class="col-sm-3 control-label">重复密码</label>
+            <div class="col-sm-6">
+              <input name="password2" type="password" class="form-control" placeholder="Password" ng-model="registerForm.passwordConfirmation">
+            </div>
+          </div>
+
+ 
+          <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-6">
+              <button type="submit" class="btn btn-danger" ></i>
+                注册
+              </button>
+            </div>
+          </div>
+          
+           <div  class="col-sm-offset-3 col-sm-6">
+              <div class="forgot-password text-right">已有账号<a href="login.html">直接登陆</a></div>
+            </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  </div>
+      </div>
+    </div>
+
+
+
+
+<% include ./footer %>
