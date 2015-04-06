@@ -5,6 +5,7 @@ var flash = require('connect-flash');
 
 var RedisStore = require('connect-redis')(session);
 var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 var User = require('./models/User');
 //..end of passport
 var path = require('path');
@@ -161,7 +162,7 @@ upload.on('error', function (e, req, res) {
 
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(session({
     store: new RedisStore({
@@ -180,6 +181,26 @@ app.use(function(req, res, next) {
 });
 app.use(passport.initialize());
 app.use(passport.session());
+passport.use('local', new LocalStrategy({
+        usernameField: 'email',
+        passwordField: 'password'
+        //passReqToCallback : true
+    },
+    function(email, password, done) {
+        User.findOne({ email: email }, function(err, user) {
+            //console.log(password);
+            //console.log(user.password);
+            if (err) { return done(err); }
+            if (!user) {
+                return done(null, false, { message: '登录邮箱地址错误。' });
+            }
+            if (user.password != password) {
+                return done(null, false, { message: '密码不正确。' } );
+            }
+            return done(null, user);
+        });
+    }
+));
 passport.serializeUser(function(user, done) {
     done(null, user.id);
 });
@@ -188,6 +209,13 @@ passport.deserializeUser(function(id, done) {
     User.findById(id, function(err, user) {
         done(err, user);
     });
+});
+
+
+//for views to use user
+app.use(function(req, res, next) {
+    res.locals.user = req.user;
+    next();
 });
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);

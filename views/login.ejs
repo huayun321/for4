@@ -1,0 +1,52 @@
+<% include ./header %>
+
+     <div class="container-fluid"  style="margin-top:30px; margin-bottom:90px">
+      
+      <div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading"><strong>用户登陆</strong></div>
+      <div class="panel-body">
+
+        
+        <form class="form-horizontal" action="/users/login" method="post" >
+          <div class="form-group">
+            <label for="name" class="col-sm-3 control-label">邮箱</label>
+            <div class="col-sm-6">
+              <input type="email" id="name" name="email" class="form-control" placeholder="name" required="true" autocapitalize="off">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password" class="col-sm-3 control-label">密码</label>
+            <div class="col-sm-6">
+              <input type="password" name="password" class="form-control" placeholder="Password" required="true">
+            </div>
+          </div>
+          <!--<div class="form-group">-->
+            <!--<div class="col-sm-offset-3 col-sm-6">-->
+              <!--<div class="checkbox">-->
+                <!--<label>-->
+                  <!--<input type="checkbox" name="remember"> 记住我-->
+                <!--</label>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-3">
+              <button type="submit" class="btn btn-warning">登陆</button>
+                <a href="/users/forgot">忘记密码</a>
+            
+            </div>
+            <div class="col-sm-3">
+              <div class="forgot-password text-right"><a href="/users/signup">还没有账号？立即注册</a></div>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+
+<% include ./footer %>

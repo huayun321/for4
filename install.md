@@ -11,3 +11,5 @@ passport
 
     connect-flash
     npm install connect-flash --save
+    passport-local
+    npm install passport-local --save

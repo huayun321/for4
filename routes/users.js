@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/User');
+var passport = require('passport');
+
 
 /* GET signup page. */
 router.get('/signup', function(req, res, next) {
@@ -15,39 +17,68 @@ router.post('/signup', function(req, res, next) {
         password: req.body.password,
         username: req.body.username
     });
-    //check if email exist
+
 
     user.save(function(err) {
         if(err) {
+            //check if email exist
             if(err.code == 11000) {
-                //todo req.flash
+                req.flash('error', '邮箱地址已被使用，请使用其他邮箱注册。')
+                res.redirect('/users/signup');
+            } else {
                 console.log(err);
-                res.json(err);
+                res.render('500', {title:'500'});
             }
+        } else {
+            req.login(user, function(err) {
+                if (err) {
+                    console.log(err);
+                    res.render('500');
+                } else {
+                    req.flash('success', "谢谢您的注册，现在您已经自动登录了。")
+                    res.redirect('/users/profile');
+                }
+            });
+
         }
-        res.json(err);
     });
 });
 
 /* GET login page. */
 router.get('/login', function(req, res, next) {
-
-    res.send(user);
+    res.render('login', {title:'918diy-用户登录'});
 });
+
+/* POST login page. */
+router.post('/login',
+    passport.authenticate('local', { successRedirect: '/users/profile',
+        failureRedirect: '/users/login',
+        failureFlash: true,
+        failureMessage: "Invalid username or password"})
+);
 
 /* GET login page. */
 router.get('/logout', function(req, res, next) {
-    res.send('logout');
+
+    req.logout();
+    req.flash('success', "您现在已经登出。");
+    res.redirect('/users/login');
+
 });
 
 /* GET login page. */
 router.get('/profile', function(req, res, next) {
-    res.send('logout');
+    console.log(req.user);
+    res.render('profile', {title: "918-diy 用户资料"});
 });
 
 /* GET login page. */
 router.get('/forgot', function(req, res, next) {
-    res.send('logout');
+    router.get('/logout', function(req, res) {
+        req.logout();
+        req.flash('success', "您现在已经登出。");
+        res.redirect('/users/login');
+    });
 });
 
 module.exports = router;
