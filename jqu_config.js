@@ -20,11 +20,11 @@ exports.resizeVersion = {
     },
     rubies : {
         thumbnail:{
-            width:80,
-            height:"80^",
+            width:210,
+            height:"240^",
             imageArgs: [
                 "-gravity", "center",
-                "-extent", "80x80"
+                "-extent", "210x240"
             ]
         }
         //,

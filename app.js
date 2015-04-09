@@ -218,6 +218,11 @@ app.use(function(req, res, next) {
     next();
 });
 app.use(express.static(path.join(__dirname, 'public')));
+
+var paginate = require('express-paginate');
+// keep this before all routes that will use pagination
+app.use(paginate.middleware(10, 50));
+
 app.use('/', routes);
 app.use('/users', users);
 //admin routes
