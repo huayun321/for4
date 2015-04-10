@@ -4,8 +4,10 @@ var mongoose = require('mongoose');
  * Ruby SCHEMA
  * *************************************************/
 
-var rubySchema = mongoose.Schema({
-    tags: [String],
+var postSchema = mongoose.Schema({
+    title: {type: String, require: true, trim: true},
+    content: {type: String, require: true, trim: true},
+    category: {type: String, require: true},
     url: String,
     size: Number,
     thumbnail_url: String,
@@ -15,5 +17,5 @@ var rubySchema = mongoose.Schema({
 });
 
 //Build the User model
-var Ruby = mongoose.model('Ruby', rubySchema);
-module.exports = Ruby;
+var Post = mongoose.model('Post', postSchema);
+module.exports = Post;

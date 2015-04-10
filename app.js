@@ -57,6 +57,12 @@ app.use('/upload/rubies', upload.fileHandler({
     uploadUrl: dirs.rubies_url,
     imageVersions: resizeConf.rubies
 }));
+app.use('/upload/posts', upload.fileHandler({
+    //tmpDir: dirs.temp,
+    uploadDir: __dirname + dirs.posts,
+    uploadUrl: dirs.posts_url,
+    imageVersions: resizeConf.posts
+}));
 
 // events
 upload.on('begin', function (fileInfo, req, res) {
@@ -75,6 +81,7 @@ upload.on('begin', function (fileInfo, req, res) {
 upload.on('abort', function (fileInfo, req, res) {});
 var Material = require('./models/Material');
 var Ruby = require('./models/Ruby');
+var Post = require('./models/Post');
 var path = require('path');
 upload.on('end', function (fileInfo, req, res) {
     console.log(req.fields.model);
@@ -147,6 +154,26 @@ upload.on('end', function (fileInfo, req, res) {
             rb.thumbnail_delete_path = path.join(path.join(upload.options.uploadDir, 'thumbnail'), fileInfo.name);
             //console.log(upload);
             rb.save(function(err) {
+                if(err) {
+                    console.error(err);
+                }
+            });
+            break;
+        case 'Post':
+            var p = new Post();
+            p.title = req.fields.title;
+            p.content = req.fields.content;
+            p.category = req.fields.category;
+            p.url = fileInfo.url;
+            p.size = fileInfo.size;
+            p.thumbnail_url = fileInfo.thumbnailUrl;
+            ////console.log(upload.options.uploadDir());
+            p.delete_path = path.join(upload.options.uploadDir, fileInfo.name);
+            p.thumbnail_delete_path = path.join(path.join(upload.options.uploadDir, 'thumbnail'), fileInfo.name);
+            //console.log(p);
+
+            ////console.log(upload);
+            p.save(function(err) {
                 if(err) {
                     console.error(err);
                 }

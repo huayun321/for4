@@ -18,6 +18,30 @@ exports.resizeVersion = {
         //    height: 600
         //}
     },
+
+    posts: {
+        thumbnail:{
+            width:210,
+            height:"240^",
+            imageArgs: [
+                "-gravity", "center",
+                "-extent", "210x240"
+            ]
+        }
+        // ,
+        //small: {
+        //    width:200,
+        //    height:"150!"
+        //},
+        //medium:{
+        //    width:400,
+        //    height:300
+        //},
+        //large: {
+        //    width: 800,
+        //    height: 600
+        //}
+    },
     rubies : {
         thumbnail:{
             width:210,
@@ -51,5 +75,7 @@ exports.directors = {
     materials: '/public/uploads/materials',
     materials_url: '/uploads/materials',
     rubies: '/public/uploads/rubies',
-    rubies_url: '/uploads/rubies'
+    rubies_url: '/uploads/rubies',
+    posts: '/public/uploads/posts',
+    posts_url: '/uploads/posts'
 };
