@@ -19,6 +19,26 @@ exports.resizeVersion = {
         //}
     },
 
+    avatar: {
+        thumbnail:{
+            width:209,
+            height:"209!"
+        }
+        // ,
+        //small: {
+        //    width:200,
+        //    height:"150!"
+        //},
+        //medium:{
+        //    width:400,
+        //    height:300
+        //},
+        //large: {
+        //    width: 800,
+        //    height: 600
+        //}
+    },
+
     posts: {
         thumbnail:{
             width:210,
@@ -77,5 +97,7 @@ exports.directors = {
     rubies: '/public/uploads/rubies',
     rubies_url: '/uploads/rubies',
     posts: '/public/uploads/posts',
-    posts_url: '/uploads/posts'
+    posts_url: '/uploads/posts',
+    avatar: '/public/uploads/avatar',
+    avatar_url: '/uploads/avatar'
 };

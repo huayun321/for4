@@ -1,8 +1,14 @@
 <% include ./header %>
 
-   <div class="container">
-     <p ><img src="/chao/img/hometb.gif"> <a href="index.html" class="font12"> 首页</a>-><a href="bbs.html" class="font12">社区</a>-><a href="base.html" class="font12">个人资料</a></p>
-     
+<div class="container">
+    <p >
+        <img src="/chao/img/hometb.gif">
+        <a href="/" class="font12"> 首页</a>->
+        <a href="/bbs" class="font12">社区</a>->
+        <a href="/users/<%=muser.id%>" class="font12">用户资料</a>
+
+
+    </p>
      <div  style="border:1px solid #CCCCCC">
      
          <div  class="user_yhm" >
@@ -10,7 +16,7 @@
                    <tbody>
                       <tr>
                         <td width="57"><img src="/chao/img/newxiaotu.jpg" class="user_yhm_img"></td>
-                        <td width="85" class="user_yhm_text"><strong>用户名</strong><br> 
+                        <td width="85" class="user_yhm_text"><strong><%=muser.username%></strong><br>
                         <font color="#666666">用户等级</font></td>
                      </tr>
                    </tbody>
@@ -18,26 +24,32 @@
                <div class="height15"></div>
                <div class="tabbable">
                    <ul class="nav nav-tabs">
-                         <li ><a href="/users">主题</a></li>
-                         <li class="active"><a href="/users/profile" >个人资料</a></li>
-                         <li><a href="/users/rubies" >我的宝石</a></li>
-                         <li><a href="/users/likes" >我的收藏</a></li>
+                       <li ><a href="/users/<%=muser.id%>/posts">主题</a></li>
+                       <li class="active"><a href="/users/<%=muser.id%>/profile" >个人资料</a></li>
+                       <li><a href="/users/<%=muser.id%>/rubies" >我的宝石</a></li>
+                       <li><a href="/users/<%=muser.id%>/likes" >我的收藏</a></li>
                    </ul>
              </div>
              
              <div class="user_nr">
          
-                     <h4>个人资料<a href="modify.html" target="_blank"> <img src="/chao/img/modify.gif"></a></h4>
+                     <h4>
+                         个人资料
+                         <% if (user.id == muser.id) { %>
+                         <a href="/users/<%=user.id%>/modify" target="_blank">
+                             <img src="/chao/img/modify.gif">
+                         </a>
+                         <% } %>
+                     </h4>
                      <ul style=" line-height:2; padding-left:10px">
-                        <li>用户名：</li>
-                        <li>手机：</li>
-                        <li>QQ：</li>
-                        <li>邮箱：</li>
-                        <li>性别：</li>
-                        <li>生日：</li>
+                        <li>用户名： <%=muser.username%></li>
+                        <li>手机： <%=muser.phone%></li>
+                        <li>QQ： <%=muser.qq%></li>
+                        <li>性别： <%=muser.sex%></li>
+                        <li>生日： <%=muser.birthday_y%>-<%=muser.birthday_m%>-<%=muser.birthday_d%></li>
                         <hr>
-                        <li>社区称号：</li>
-                        <li>积分：</li>
+                        <li>社区称号：<%=muser.user_title%></li>
+                        <li>积分：<%=muser.user_rate%></li>
                      </ul>             
                
              </div>

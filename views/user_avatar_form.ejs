@@ -9,17 +9,17 @@
         <div class="row">
            <div class="col-sm-2 modify_sidebar col-xs-2">
          
-             <p class="modify_sidebar_p"><strong>资料修改</strong> <img src="img/modify.gif" width="16" height="16"></p>
-                  
-             <p class="modify_sidebar_p1"><a href="modify.html">个人资料</a></p>
-              <p class="modify_sidebar_p1"><a href="password.html">修改密码</a></p>
-              <p class="modify_sidebar_p1"><a href="head.html" >修改头像</a></p>
+             <p class="modify_sidebar_p"><strong>资料修改</strong> <img src="/chao/img/modify.gif" width="16" height="16"></p>
+
+               <p class="modify_sidebar_p1"><a href="/users/<%=user.id%>/modify">个人资料</a></p>
+               <p class="modify_sidebar_p1"><a href="/users/<%=user.id%>/password">修改密码</a></p>
+               <p class="modify_sidebar_p1"><a href="/users/<%=user.id%>/avatar" >修改头像</a></p>
          </div>
      <div class="col-sm-10 col-xs-10">
        <div class="panel panel-default">
         <div class="panel-heading"><strong>用户头像修改</strong></div>
         <div class="panel-body">
-          <form class="form-horizontal" role="form"> 
+          <form action="/upload/avatar" method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
            <table class="table"  align="center">
                <tbody>
                   <tr>
@@ -27,7 +27,7 @@
                     <td width="96%">当前我的头像<br>
              如果您还没有设置自己的头像，系统会显示为默认头像，您需要自己上传一张新照片来作为自己的个人头像<br><br>
              
-              <img src="img/huodongtu2.gif"></td>
+              <img src="<%=user.thumbnail_url%>"></td>
                <td width="2%"></td>
                   </tr>
                    <tr>

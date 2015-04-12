@@ -23,10 +23,13 @@ var schema = mongoose.Schema({
     //avatar
     url: String,
     size: Number,
-    thumbnail_url: String,
+    thumbnail_url: {type: String, default: '/chao/img/miao.jpg'},
     delete_path: String,
     thumbnail_delete_path: String,
-    created_on:{type:Date, default:Date.now()}
+    created_on:{type:Date, default:Date.now()},
+    //rate
+    user_title: {type:String, default:"初级用户"},
+    user_rate: {type:String, default:0}
 });
 
 var User = mongoose.model('User', schema);

@@ -37,7 +37,7 @@ router.post('/signup', function(req, res, next) {
                     res.render('500');
                 } else {
                     req.flash('success', "谢谢您的注册，现在您已经自动登录了。")
-                    res.redirect('/users/:' + user.id);
+                    res.redirect('/users/' + user.id);
                 }
             });
 
@@ -151,16 +151,79 @@ router.get('/:id/profile', function(req, res, next) {
 });
 
 /* GET rubies  page. */
-router.get('/rubies', function(req, res, next) {
+router.get('/:id/rubies', function(req, res, next) {
     console.log(req.user);
     res.render('user_rubies', {title: "918-diy 用户宝石"});
 });
 
 /* GET likes  page. */
-router.get('/likes', function(req, res, next) {
+router.get('/:id/likes', function(req, res, next) {
     console.log(req.user);
     res.render('user_likes', {title: "918-diy 用户收藏"});
 });
+
+/* GET modify  page. */
+router.get('/:id/modify', function(req, res, next) {
+    console.log(req.user);
+    res.render('user_profile_form', {title: "918-diy 用户收藏"});
+});
+router.post('/:id/modify', function(req, res, next) {
+
+    var user = req.user;
+    user.phone = req.body.phone;
+    user.real_name = req.body.real_name;
+    user.qq = req.body.qq;
+    user.sex = req.body.sex;
+    user.birthday_y = req.body.birthday_y;
+    user.birthday_m = req.body.birthday_m;
+    user.birthday_d = req.body.birthday_d;
+    user.save(function(err, user) {
+        if(err) {
+            console.log(err);
+            res.render('500', {title:'500'});
+        } else {
+            req.flash('success', "修改成功。");
+            res.redirect('/users/' + user.id + '/modify');
+        }
+    });
+
+});
+
+/* GET password  page. */
+router.get('/:id/password', function(req, res, next) {
+    console.log(req.user);
+    res.render('user_password_form', {title: "918-diy 用户收藏"});
+});
+router.post('/:id/password', function(req, res, next) {
+    var user = req.user;
+    if( user.password != req.body.old_password ) {
+        req.flash('error', "原密码不匹配。");
+        res.redirect('/users/' + user.id + '/password');
+        return
+    }
+    user.password = req.body.new_password;
+    user.save(function(err, user) {
+        if(err) {
+            console.log(err);
+            res.render('500', {title:'500'});
+        } else {
+            req.flash('success', "修改成功。");
+            res.redirect('/users/' + user.id + '/password');
+        }
+    });
+});
+
+/* GET avatar  page. */
+router.get('/:id/avatar', function(req, res, next) {
+    console.log(req.user);
+    res.render('user_avatar_form', {title: "918-diy 用户收藏"});
+});
+router.post('/:id/avatar', function(req, res, next) {
+    res.json(req.body);
+    //res.render('user_profile_form', {title: "918-diy 用户收藏"});
+});
+
+
 
 module.exports = router;
 
