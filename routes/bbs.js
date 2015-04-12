@@ -1,10 +1,52 @@
 var express = require('express');
 var router = express.Router();
 var Post = require('../models/Post');
+var async = require('async');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('bbs', {title: '918diy-社区'});
+    async.auto({
+        get_sucai: function(callback){
+            Post.paginate({category:'sucai'}, 1, 10, function(error, pageCount, paginatedResults, itemCount) {
+                if (error) {
+                    callback(error);
+                } else {
+                    callback(null, paginatedResults);
+                }
+            }, { sortBy : { createdOn : -1 }});
+
+        },
+        get_jiaoliu: function(callback){
+            Post.paginate({category:'jiaoliu'}, 1, 10, function(error, pageCount, paginatedResults, itemCount) {
+                if (error) {
+                    callback(error);
+                } else {
+                    callback(null, paginatedResults);
+                }
+            }, { sortBy : { createdOn : -1 }});
+        },
+        get_gouda: function(callback){
+            Post.paginate({category:'gouda'}, 1, 10, function(error, pageCount, paginatedResults, itemCount) {
+                if (error) {
+                    callback(error);
+                } else {
+                    callback(null, paginatedResults);
+                }
+            }, { sortBy : { createdOn : -1 }});
+        }
+
+    }, function(err, results) {
+        if(err) {
+            console.log(err);
+            res.render('500', {title: '500'});
+        } else {
+            res.render('bbs', {title: '918diy-社区',
+                                sucai:results.get_sucai,
+                                gouda: results.get_gouda,
+                                jiaoliu:results.get_jiaoliu});
+        }
+    });
+
 });
 
 /* GET home page. */

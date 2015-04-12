@@ -37,7 +37,7 @@ router.post('/signup', function(req, res, next) {
                     res.render('500');
                 } else {
                     req.flash('success', "谢谢您的注册，现在您已经自动登录了。")
-                    res.redirect('/users/profile');
+                    res.redirect('/users/:' + user.id);
                 }
             });
 
@@ -51,26 +51,36 @@ router.get('/login', function(req, res, next) {
 });
 
 /* POST login page. */
-router.post('/login',
-    passport.authenticate('local', { successRedirect: '/users/profile',
-        failureRedirect: '/users/login',
-        failureFlash: true,
-        failureMessage: "Invalid username or password"})
-);
+router.post('/login', function(req, res, next) {
+    passport.authenticate('local', function(err, user, info) {
+        console.log(user);
+        console.log('===11111');
+        if (err) {
+            res.render('500', {title:'500'});
+            return next(err); }
+        if (!user) {
+            console.log('===222222');
+            console.log('why' + !user);
+            req.flash('error', "用户不存在。");
+            return res.redirect('/login');
+        }
+        req.logIn(user, function(err) {
+            if (err) {
+                req.flash('error', "密码错误。");
+                return res.redirect('/login');
+            }
+            return res.redirect('/users/' + user.id);
+        });
+    })(req, res, next);
+});
 
-/* GET login page. */
+/* GET logout page. */
 router.get('/logout', function(req, res, next) {
 
     req.logout();
     req.flash('success', "您现在已经登出。");
     res.redirect('/users/login');
 
-});
-
-/* GET login page. */
-router.get('/profile', function(req, res, next) {
-    console.log(req.user);
-    res.render('profile', {title: "918-diy 用户资料"});
 });
 
 /* GET forgot page. */
@@ -102,6 +112,54 @@ router.post('/forgot', function(req, res, next) {
         }
     });
 
+});
+
+
+
+/* GET profile index page. */
+router.get('/:id', function(req, res, next) {
+    //res.json(req.params.id);
+    User.findById(req.params.id, function(err, user) {
+        if(err) {
+            console.log(err);
+            res.render('500', {title:'500'});
+        }
+        if(!user) {
+            req.flash('error', "用户不存在。");
+            res.redirect('/users/login');
+        } else {
+            res.render('user', {title: "918-diy 用户资料", muser:user});
+        }
+    });
+});
+
+/* GET profile  page. */
+router.get('/:id/profile', function(req, res, next) {
+    User.findById(req.params.id, function(err, user) {
+        if(err) {
+            console.log(err);
+            res.render('500', {title:'500'});
+        }
+        if(!user) {
+            req.flash('error', "用户不存在。");
+            res.redirect('/users/login');
+        } else {
+            res.render('user_profile', {title: "918-diy 用户资料", muser:user});
+        }
+    });
+
+});
+
+/* GET rubies  page. */
+router.get('/rubies', function(req, res, next) {
+    console.log(req.user);
+    res.render('user_rubies', {title: "918-diy 用户宝石"});
+});
+
+/* GET likes  page. */
+router.get('/likes', function(req, res, next) {
+    console.log(req.user);
+    res.render('user_likes', {title: "918-diy 用户收藏"});
 });
 
 module.exports = router;

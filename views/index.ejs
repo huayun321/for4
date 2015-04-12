@@ -102,10 +102,17 @@
                 </div>
 
             </form>
+            <% if(!locals.user) { %>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="register.html" > <button type="submit" class="btn btn-sm  topdl" >注册</button></a></li>
-                <li><a href="login.html" > <button type="submit" class="btn btn-sm topzc">登陆</button></a></li>
+                <li><a href="/users/signup"> <button type="submit" class="btn btn-sm  topdl" >注册</button></a></li>
+                <li><a href="/users/login"> <button type="submit" class="btn btn-sm topzc">登陆</button></a></li>
             </ul>
+            <% } else { %>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="liyhm"><a href="/users"><img src="/chao/img/user.jpg"> <font color="#FF0033"><strong><%=user.username%></strong></font></a></li>
+                <li><a href="/users/logout"> <button type="submit" class="btn btn-sm topzc">退出</button></a></li>
+            </ul>
+            <% } %>
         </div><!--/.nav-collapse -->
     </div>
 </nav>

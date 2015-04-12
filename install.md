@@ -19,3 +19,5 @@ passport
     npm install mongoose-paginate --save
     express-paginate
     npm install express-paginate --save
+bbs
+    npm install async --save

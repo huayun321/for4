@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%=title%></title>
+    <link href="/chao/css/css.css"  rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="/chao/css/bootstrap.min.css" rel="stylesheet">
+     <!-- pubuliu -->
+     <link href="/chao/css/docs.css" rel="stylesheet">
+     <link href="/chao/css/lightbox.css" rel="stylesheet">
+    <link href="/chao/css/bootstrap-responsive.css" rel="stylesheet">
+
+	<!--[if lt IE 9]>
+		<script src="http://fineui.com/lib/html5shim/html5.js"></script>
+	<![endif]-->
+  
+	<style>
+		#masonry
+		{
+			padding: 0;
+			min-height: 200px;
+			margin: 0 auto;
+		}
+		#masonry .thumbnail
+		{
+			width: 210px;
+			margin-right: 9px;
+			padding: 0;
+			border-width: 1px;
+			-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+					box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+		}
+		#masonry .thumbnail .imgs
+		{
+			padding: 5px;
+		}
+		#masonry .thumbnail .imgs img
+		{
+			margin-bottom: 5px;
+		}
+		#masonry .thumbnail .caption
+		{
+			background-color: #fff;
+			padding-top: 0;
+			font-size: 13px;
+		}
+		#masonry .thumbnail .caption .title
+		{
+			font-size: 13px;
+			font-weight: bold;
+			margin: 5px 0;
+			text-align: left;
+		}
+		#masonry .thumbnail .caption .author
+		{
+			font-size: 11px;
+			text-align: right;
+		}
+		.lightbox .lb-image
+		{
+			max-width: none;
+		}
+		
+	</style>
+　　
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--   轮换图   -->
+    <link href="/chao/css/lunhuan.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/chao/js/lunhuan.js"></script>
+    <!--  编辑器   -->
+    <script type="text/javascript" src="/chao/ckeditor/ckeditor.js"></script>
+
+   
+  </head>
+    <body data-spy="scroll" data-target=".bs-docs-sidebar">
+        <!-- Fixed navbar -->
+    <nav class="navbar-default navbar-fixed-top top ">
+      <div class="container top"  >
+        <div class="navbar-header" >
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand litop" href="index.html">LOGO</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+             <li class="litop" ><a href="index.html"><img src="/chao/img/home.gif">   首页</a></li>
+            <li class="litop"><a href="bbs.html"><img src="/chao/img/green_pixel_95.gif">  社区</a></li>
+            <li class="litop"><a href="bag.html"><img src="/chao/img/green_pixel_xin.gif">   宝石袋</a></li>
+
+          </ul>
+          
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group  lisearch">
+              <input type="text" class="form-control" placeholder="搜索感兴趣的内容">
+              <button type="submit" class="btn btn-default">Search</button>
+            </div>
+            
+          </form>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="register.html"> <button type="submit" class="btn btn-sm  topdl" >注册</button></a></li>
+            <li><a href="login.html"> <button type="submit" class="btn btn-sm topzc">登陆</button></a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+   </nav>
+        
+  
+   <!--  top    top   top   -->
+   <div class="container">
+     <p ><img src="/chao/img/hometb.gif"> <a href="index.html" class="font12"> 首页</a>-><a href="bbs.html" class="font12">社区</a>-><a href="#" class="font12">我的收藏</a></p>
+     
+     <div  style="border:1px solid #CCCCCC">
+     
+         <div  class="user_yhm" >
+                <table cellspacing="0" cellpadding="0">
+                   <tbody>
+                      <tr>
+                        <td width="57"><img src="/chao/img/newxiaotu.jpg" class="user_yhm_img"></td>
+                        <td width="85" class="user_yhm_text"><strong>用户名</strong><br> 
+                        <font color="#666666">用户等级</font></td>
+                     </tr>
+                   </tbody>
+                 </table>
+               <div class="height15"></div>
+               <div class="tabbable">
+                   <ul class="nav nav-tabs">
+                         <li ><a href="/users">主题</a></li>
+                         <li><a href="/users/profile" >个人资料</a></li>
+                         <li><a href="/users/rubies" >我的宝石</a></li>
+                         <li class="active"><a href="/users/likes" >我的收藏</a></li>
+                   </ul>
+             </div>
+             
+             <div class="user_nr">
+                     
+                       <h4>我的收藏</h4>
+                       <div class="row-fluid">
+                          <div id="masonry" >
+		                  
+                                 <!--  start   -->
+	                    		<div class="thumbnail">
+	                    			<div class="imgs">
+	                    				   <a href="images/t10.jpg" data-lightbox="lightbox_" ><img src="images/t10.jpg" width="200"></a>
+	                    			</div>
+	                    			<div class="caption">
+                                    	<div class="author">
+	                    					 <button type="button"  class="btn "  style="background:#FFFFFF; border:#FFFFFF;  height:31px; width:62px; margin-top:0px"><img src="/chao/img/xin.jpg"><span style="color:#000000; font-size:12px">收藏</span></button>
+                                              <button type="button"  class="btn" data-toggle="modal" data-target="#myModal" style="background:#FFFFFF; border:#FFFFFF;  height:31px; width:65px; margin-top:0px"><img src="/chao/img/weixin.jpg"><span style="color:#000000; font-size:12px">讨论</span></button>
+                                            
+			                    		</div>
+			                    	</div>
+		                    	</div>
+                                <!--   end    -->
+                                 <!--  start   -->
+	                    		<div class="thumbnail">
+	                    			<div class="imgs">
+	                    				   <a href="images/t6.jpg" data-lightbox="lightbox_" ><img src="images/t6.jpg" width="200"></a>
+	                    			</div>
+	                    			<div class="caption">
+                                    	<div class="author">
+	                    					 <button type="button"  class="btn "  style="background:#FFFFFF; border:#FFFFFF;  height:31px; width:62px; margin-top:0px"><img src="/chao/img/xin.jpg"><span style="color:#000000; font-size:12px">收藏</span></button>
+                                              <button type="button"  class="btn" data-toggle="modal" data-target="#myModal" style="background:#FFFFFF; border:#FFFFFF;  height:31px; width:65px; margin-top:0px"><img src="/chao/img/weixin.jpg"><span style="color:#000000; font-size:12px">讨论</span></button>
+                                            
+			                    		</div>
+			                    	</div>
+		                    	</div>
+                                <!--   end    -->
+                                 <!--  start   -->
+	                    		<div class="thumbnail">
+	                    			<div class="imgs">
+	                    				   <a href="images/t8.jpg" data-lightbox="lightbox_" ><img src="images/t8.jpg" width="200"></a>
+	                    			</div>
+	                    			<div class="caption">
+                                    	<div class="author">
+	                    					 <button type="button"  class="btn "  style="background:#FFFFFF; border:#FFFFFF;  height:31px; width:62px; margin-top:0px"><img src="/chao/img/xin.jpg"><span style="color:#000000; font-size:12px">收藏</span></button>
+                                              <button type="button"  class="btn" data-toggle="modal" data-target="#myModal" style="background:#FFFFFF; border:#FFFFFF;  height:31px; width:65px; margin-top:0px"><img src="/chao/img/weixin.jpg"><span style="color:#000000; font-size:12px">讨论</span></button>
+                                            
+			                    		</div>
+			                    	</div>
+		                    	</div>
+                                <!--   end    -->
+                                 <!--  start   -->
+	                    		<div class="thumbnail">
+	                    			<div class="imgs">
+	                    				   <a href="images/t10.jpg" data-lightbox="lightbox_" ><img src="images/t10.jpg" width="200"></a>
+	                    			</div>
+	                    			<div class="caption">
+                                    	<div class="author">
+	                    					 <button type="button"  class="btn "  style="background:#FFFFFF; border:#FFFFFF;  height:31px; width:62px; margin-top:0px"><img src="/chao/img/xin.jpg"><span style="color:#000000; font-size:12px">收藏</span></button>
+                                              <button type="button"  class="btn" data-toggle="modal" data-target="#myModal" style="background:#FFFFFF; border:#FFFFFF;  height:31px; width:65px; margin-top:0px"><img src="/chao/img/weixin.jpg"><span style="color:#000000; font-size:12px">讨论</span></button>
+                                            
+			                    		</div>
+			                    	</div>
+		                    	</div>
+                                <!--   end    -->
+                                 <!--  start   -->
+	                    		<div class="thumbnail">
+	                    			<div class="imgs">
+	                    				   <a href="images/t10.jpg" data-lightbox="lightbox_" ><img src="images/t10.jpg" width="200"></a>
+	                    			</div>
+	                    			<div class="caption">
+                                    	<div class="author">
+	                    					 <button type="button"  class="btn "  style="background:#FFFFFF; border:#FFFFFF;  height:31px; width:62px; margin-top:0px"><img src="/chao/img/xin.jpg"><span style="color:#000000; font-size:12px">收藏</span></button>
+                                              <button type="button"  class="btn" data-toggle="modal" data-target="#myModal" style="background:#FFFFFF; border:#FFFFFF;  height:31px; width:65px; margin-top:0px"><img src="/chao/img/weixin.jpg"><span style="color:#000000; font-size:12px">讨论</span></button>
+                                            
+			                    		</div>
+			                    	</div>
+		                    	</div>
+                                <!--   end    -->
+                                 <!--  start   -->
+	                    		<div class="thumbnail">
+	                    			<div class="imgs">
+	                    				   <a href="images/t10.jpg" data-lightbox="lightbox_" ><img src="images/t10.jpg" width="200"></a>
+	                    			</div>
+	                    			<div class="caption">
+                                    	<div class="author">
+	                    					 <button type="button"  class="btn "  style="background:#FFFFFF; border:#FFFFFF;  height:31px; width:62px; margin-top:0px"><img src="/chao/img/xin.jpg"><span style="color:#000000; font-size:12px">收藏</span></button>
+                                              <button type="button"  class="btn" data-toggle="modal" data-target="#myModal" style="background:#FFFFFF; border:#FFFFFF;  height:31px; width:65px; margin-top:0px"><img src="/chao/img/weixin.jpg"><span style="color:#000000; font-size:12px">讨论</span></button>
+                                            
+			                    		</div>
+			                    	</div>
+		                    	</div>
+                                <!--   end    -->
+                              
+                          </div>
+                        </div>
+                            <!--  分页  -->
+                           <div  style=" border-top:1px dashed #dddddd; text-align:center">
+                              <ul class="pagination">
+                                 <li><a href="#">&laquo;</a></li>
+                                 <li><a href="#">1</a></li>
+                                 <li><a href="#">2</a></li>
+                                 <li><a href="#">3</a></li>
+                                 <li><a href="#">4</a></li>
+                                 <li><a href="#">5</a></li>
+                                 <li><a href="#">&raquo;</a></li>
+                             </ul>
+                         </div>
+
+             </div>
+         </div>
+
+     </div>  
+   </div>
+    
+	
+ 
+ 
+ 
+  <!-------   foot   -------->
+     <div class="container foot">
+       <p class="foot_p"> Copyright © 2015-2016      918diy.com </p>               
+           <p class="foot_p" style="text-align:right"><a href="index.html">首页 </a>|<a href="bbs.html"> 社区 </a>|<a href="bag.html"> 宝石袋 </a>|<a href="about.html"> 关于我们 </a>|<a href="contact.html"> 联系我们</a></p>
+           <div class="bshare-custom"><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+  </div>
+    
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/chao/js/bootstrap.min.js"></script>
+    
+    <!--   pubuliu   -->
+        <script src="/chao/pubuliu/jquery-1.8.2.min.js"></script>
+
+    <script src="/chao/pubuliu/main.js"></script>
+	
+	<script src="/chao/pubuliu/masonry.pkgd.min.js"></script>
+	<script src="/chao/pubuliu/imagesloaded.pkgd.min.js"></script>
+	<script src="/chao/pubuliu/lightbox-2.6.min.js"></script>
+  
+
+	<script>
+		$(function() {
+		
+			var masonryNode = $('#masonry');
+			masonryNode.imagesLoaded(function(){
+				masonryNode.masonry({
+					itemSelector: '.thumbnail',
+					isFitWidth: true
+				});
+			});
+			
+			
+		});
+	</script>
+    
+       <!--   弹出讨论列  -->
+                         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                           <div class="modal-dialog"  style="width:800px">
+                             <div class="modal-content">
+                               <div class="modal-header">
+                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                 <h4 class="modal-title" id="myModalLabel">讨论</h4>
+                               </div>
+                               <div class="modal-body">
+                                    <table cellpadding="2" cellspacing="0">
+                                       <tbody>
+                                          <tr>
+                                             <td rowspan="2" width="215" valign="top">
+                                                 <img src="/chao/img/miao.jpg" width="209" height="auto">
+                                                 <p class="index_yhm"><img src="/chao/img/14082013370c92165f409bc27d.gif"> 用户名</p>
+                                               
+                                             </td>
+                                            
+                                             <td valign="top" align="left" >
+                                                 <!--  回复列表  -->
+                                                 <div style="padding-left:15px">
+                                                     <p class="text-danger" style=" border-bottom:1px  dashed #cccccc; height:30px; line-height:30px">
+                                                         用户名 <font color="#cccccc"> 2015/01/01</font>
+                                                     </p>
+                                                     <p style=" color:#666666; font-size:12px; font-family:宋体 ">
+                                                        评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论评论内容评论内容评论内容评论
+                                                     </p>
+                                                 </div>
+                                                <div style="padding-left:15px">
+                                                     <p class="text-danger" style=" border-bottom:1px  dashed #cccccc; height:30px; line-height:30px">
+                                                         用户名 <font color="#cccccc"> 2015/01/01</font>
+                                                     </p>
+                                                     <p style=" color:#666666; font-size:12px; font-family:宋体 ">
+                                                        评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论评论内容评论内容评论内容评论
+                                                     </p>
+                                                 </div>
+                                                  <div style="padding-left:15px">
+                                                     <p class="text-danger" style=" border-bottom:1px  dashed #cccccc; height:30px; line-height:30px">
+                                                         用户名 <font color="#cccccc"> 2015/01/01</font>
+                                                     </p>
+                                                     <p style=" color:#666666; font-size:12px; font-family:宋体 ">
+                                                        评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论评论内容评论内容评论内容评论
+                                                     </p>
+                                                 </div>
+                                                  <div style="padding-left:15px">
+                                                     <p class="text-danger" style=" border-bottom:1px  dashed #cccccc; height:30px; line-height:30px">
+                                                         用户名 <font color="#cccccc"> 2015/01/01</font>
+                                                     </p>
+
+                                                     <p style=" color:#666666; font-size:12px; font-family:宋体 ">
+                                                        评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论评论内容评论内容评论内容评论
+                                                     </p>
+                                                 </div>
+                                               
+                                             </td>
+                                          </tr>
+                                           <tr>
+                                              
+                                             <td valign="top" align="left" style="padding-left:15px">
+                                                   <textarea id="TextArea1" cols="20" rows="2" class="ckeditor"></textarea>
+                                                        <script type="text/javascript">
+                                                           CKEDITOR.replace('TextArea1');</script>
+                                                        <div class="height15"></div>
+                                                        <div>
+                                                           <span style="float:left"> <button class="btn btn-primary " type="button" >发表帖子 </button> </span>
+                                                           <span style="float:right"><a href="rules.html">社区积分规则</a></span>    
+                                                        </div>
+                                             </td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                               </div>
+                               <div class="modal-footer">
+                                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                               </div> 
+                             </div>
+                           </div>
+                         </div>
+                         <!--   弹出讨论列表结束    -->
+  </body>
+</html>
