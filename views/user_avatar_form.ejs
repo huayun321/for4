@@ -19,7 +19,9 @@
        <div class="panel panel-default">
         <div class="panel-heading"><strong>用户头像修改</strong></div>
         <div class="panel-body">
-          <form action="/upload/avatar" method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
+          <form id="myForm" action="/upload/avatar" method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
+              <input name="model" type="hidden" value="User">
+              <input id="id" name="id" type="hidden" value="<%=user.id%>">
            <table class="table"  align="center">
                <tbody>
                   <tr>
@@ -33,12 +35,17 @@
                    <tr>
                       <td width="2%"></td>
                       <td width="96%">设置我的新头像<br>
-                           请选择一个新照片进行上传编辑。头像保存后，您可能需要刷新一下本页面(按F5键)，才能查看最新的头像效果<br><br>
+                           请选择一个新照片进行上传编辑。支持jpg jpeg png格式图片。图片大小不要超过2M。<br><br>
                           <div class="form-group">
                             <div  class=" col-sm-6">
-                                <label class="sr-only" for="inputfile">文件输入</label>
-                                <input type="file" id="inputfile">
+                                <label class="sr-only" for="files">文件输入</label>
+                                <input   type="file" id="files">
                              </div>
+                          </div>
+                          <div id="img-box"></div>
+                          <!-- The global progress bar -->
+                          <div id="progress" class="progress">
+                              <div class="progress-bar progress-bar-success"></div>
                           </div>
                       </td>
                      <td width="2%"></td>
@@ -74,3 +81,109 @@
 
 
 <% include ./footer %>
+
+<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+<script src="/jqu/js/vendor/jquery.ui.widget.js"></script>
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<script src="/jqu/js/jquery.iframe-transport.js"></script>
+<!-- The basic File Upload plugin -->
+<script src="/jqu/js/jquery.fileupload.js"></script>
+
+<script>
+
+    ////    Change this to the location of your server-side upload handler:
+    var url = window.location.hostname === 'localhost' ?
+            '//localhost:3000/upload/avatar' : 'upload/avatar/';
+    var sendData= true;
+    $('#files').fileupload({
+        url: url,
+        dataType : 'json',
+        autoUpload : false,
+        add : function(e,data){
+            $("#myForm button").on("click",function(e){
+//
+                e.preventDefault();
+                if(sendData){
+                    data.formData = $("#myForm").serializeArray();
+                    sendData = false;
+                }
+                $("#myForm button").addClass('disabled');
+                data.submit();
+//
+            });
+        },
+        progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#progress .progress-bar').css(
+                    'width',
+                    progress + '%'
+            );
+        },
+
+        done: function(e,data){
+            sendData = true;
+            var id = $('#id').val();
+            var url = window.location.hostname === 'localhost' ?
+            '//localhost:3000/users/'+ id + '/avatar' : 'users/'+ id + '/avatar';
+            window.location.replace(url);
+        }
+    })
+</script>
+
+<script>
+    $( document ).ready(function() {
+        /*
+         *  browser upload img
+         * */
+        function browser_check() {
+            if (window.File && window.FileReader && window.FileList &&
+                    window.Blob) {
+                //All the File APIs are supported.
+            } else {
+                alert('当前网页浏览器版本过低，请下载新版浏览器。建议使用新版google浏览器或火狐浏览器。');
+            }
+        }
+
+        browser_check();
+
+
+        function handleFileSelect(evt) {
+
+            $('#img-box').empty();
+            var files = evt.target.files;
+
+            //loop throuth the FileList and render image files as thumbnails.
+            for (var i = 0, f; f = files[i]; i++) {
+
+                //only process image files.
+                if (!f.type.match('image.*')) {
+                    continue;
+                }
+
+
+                var reader = new FileReader();
+
+                //closure to capture the file information.
+                reader.onload = (function (theFile) {
+                    return function (e) {
+                        //Render thumbnail.
+                        var thumb = ['<img width="209" class="img-thumbnail"  src="',
+                            e.target.result,
+                            '" title="', escape(theFile.name),
+                            '"/>'].join('');
+                        $('#img-box').append(thumb);
+
+                    };
+                })(f);
+
+                //read in the image file as a data URL.
+                reader.readAsDataURL(f);
+            }
+        }
+
+        document.getElementById('files').addEventListener('change',
+                handleFileSelect, false);
+
+    });
+</script>
+

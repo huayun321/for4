@@ -64,6 +64,13 @@ app.use('/upload/posts', upload.fileHandler({
     imageVersions: resizeConf.posts
 }));
 
+app.use('/upload/avatar', upload.fileHandler({
+    //tmpDir: dirs.temp,
+    uploadDir: __dirname + dirs.avatar,
+    uploadUrl: dirs.avatar_url,
+    imageVersions: resizeConf.avatar
+}));
+
 // events
 upload.on('begin', function (fileInfo, req, res) {
     // fileInfo structure is the same as returned to browser
@@ -82,7 +89,9 @@ upload.on('abort', function (fileInfo, req, res) {});
 var Material = require('./models/Material');
 var Ruby = require('./models/Ruby');
 var Post = require('./models/Post');
+var User = require('./models/User');
 var path = require('path');
+var fs = require('fs');
 upload.on('end', function (fileInfo, req, res) {
     console.log(req.fields.model);
     switch(req.fields.model) {
@@ -157,6 +166,43 @@ upload.on('end', function (fileInfo, req, res) {
                 if(err) {
                     console.error(err);
                 }
+            });
+            break;
+        case 'User':
+            User.findById(req.fields.id, function(err, user) {
+                if(err) {
+                    console.log(err);
+                } else {
+                    //delete old
+                    if(user.delete_path) {
+                        fs.unlink(user.delete_path, function(err) {
+                            if(err) {
+                                console.log(err);
+                            }
+                        });
+                    }
+                    if(user.thumbnail_delete_path) {
+                        fs.unlink(user.thumbnail_delete_path, function(err) {
+                            if(err) {
+                                console.log(err);
+                            }
+                        });
+                    }
+                }
+
+                user.url = fileInfo.url;
+                user.size = fileInfo.size;
+                user.thumbnail_url = fileInfo.thumbnailUrl;
+                ////console.log(upload.options.uploadDir());
+                user.delete_path = path.join(upload.options.uploadDir, fileInfo.name);
+                user.thumbnail_delete_path = path.join(path.join(upload.options.uploadDir, 'thumbnail'), fileInfo.name);
+                user.save(function(err) {
+                    if(err) {
+                        console.error(err);
+                    }
+                });
+                console.log('===================upload avatar');
+                console.log(user);
             });
             break;
         case 'Post':

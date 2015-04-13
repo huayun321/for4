@@ -22,7 +22,7 @@ exports.resizeVersion = {
     avatar: {
         thumbnail:{
             width:209,
-            height:"209!"
+            height:209
         }
         // ,
         //small: {
