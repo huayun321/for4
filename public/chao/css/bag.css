@@ -1,0 +1,14 @@
+@charset "utf-8";
+/* CSS Document */
+body{ overflow-x:hidden}
+.button1{
+     margin-bottom:12px; 
+	 border:1px dashed #CCCCCC;
+	 margin-left:6px
+	 }
+
+ .modal-body > a { display:block; width:100px; height:100px;   border:3px #fff solid; float:left; margin:6px}
+ .modal-body > a:hover {border:3px  #FF9900 solid}
+
+ .modal-body > a:active { border:3px  #FF9900  solid}
+ 

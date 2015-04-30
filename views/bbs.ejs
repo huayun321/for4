@@ -95,13 +95,13 @@
                      <% } %>
                  </td>
                <td width="13%"><div class="media">
-                         <a class="pull-left" href="#">
-                            <img class="media-object" src="/chao/img/home.gif" 
+                         <a class="pull-left" href="/users/<%=post.created_by.id%>">
+                            <img width="40" class="media-object" src="<%=post.created_by.thumbnail_url%>"
                             alt="媒体对象">
                          </a>
                          <div class="media-body">
-                            <h6 class="media-heading"><a  href="base.html">用户名</a></h6>
-                             <span class="font10">2015-04-04</span>
+                            <h6 class="media-heading"><a  href="/users/<%=post.created_by.id%>"><%=post.created_by.username%></a></h6>
+                             <span class="font10"><%=post.created_on%></span>
                          </div>
                       </div></td>
                <td width="10%"><a href="#" >16</a><br><em span class="font10">264</em></td>

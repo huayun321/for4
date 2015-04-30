@@ -61,13 +61,13 @@ router.post('/login', function(req, res, next) {
         if (!user) {
             console.log('===222222');
             console.log('why' + !user);
-            req.flash('error', "用户不存在。");
-            return res.redirect('/login');
+            req.flash('error', "用户不存在,或密码错误。");
+            return res.redirect('/users/login');
         }
         req.logIn(user, function(err) {
             if (err) {
                 req.flash('error', "密码错误。");
-                return res.redirect('/login');
+                return res.redirect('/users/login');
             }
             return res.redirect('/users/' + user.id);
         });

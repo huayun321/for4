@@ -57,55 +57,31 @@
                 </p> 
                <table class="table table-condensed" cellspacing="0" cellpadding="0" style="border-bottom:1px solid #CCCCCC; font-size:12px; clear:both">
           <tbody>
-             <tr>
-                <td width="65%" style=" vertical-align:middle" ><img src="/chao/img/sq_sucia_biao.gif"> <a href="shequneiye.html">杀光所有报晓的公鸡，天，还是会亮</a> <img src="/chao/img/sq_sucai_jing.gif" width="21" height="14"></td>
-               <td width="13%"><div class="media">
-                         <a class="pull-left" href="base.html">
-                            <img class="media-object" src="/chao/img/home.gif" 
-                            alt="媒体对象">
-                         </a>
-                         <div class="media-body">
-                            <h6 class="media-heading"><a  href="base.html">用户名</a></h6>
-                             <span class="font10">2015-04-04</span>
-                         </div>
-                      </div></td>
-               <td width="10%"><a href="#" >16</a><br><em span class="font10">264</em></td>
-               <td width="12%"><span class="font12">回复用户名</span><br><span class="font10">2015-04-04</span></td>
-            </tr>
+          <% posts.forEach(function(post) {  %>
+          <tr>
+              <td width="65%"  style=" vertical-align:middle">
+                  <img src="/chao/img/sq_sucia_biao.gif">
+                  <a href="/bbs/post/<%=post.id%>"><%=post.title%></a>
+                  <% if(post.is_nice) { %>
+                  <img src="/chao/img/sq_sucai_jing.gif" width="21" height="14">
+                  <% } %>
+              </td>
+              <td width="13%"><div class="media">
+                      <a class="pull-left" href="/users/<%=post.created_by.id%>">
+                          <img width="40" class="media-object" src="<%=post.created_by.thumbnail_url%>"
+                               alt="媒体对象">
+                      </a>
+                      <div class="media-body">
+                          <h6 class="media-heading"><a  href="/users/<%=post.created_by.id%>"><%=post.created_by.username%></a></h6>
+                          <span class="font10"><%=post.created_on%></span>
+                      </div>
+                  </div></td>
+              <td width="10%"><a href="#" >16</a><br><em span class="font10">264</em></td>
+              <td width="12%"><span class="font12">回复用户名</span><br><span class="font10">2015-04-04</span></td>
+          </tr>
+          <% }) %>
             
-             <tr>
-                <td width="65%"  style=" vertical-align:middle"><img src="/chao/img/sq_sucia_biao.gif">  <a href="shequneiye.html">杀光所有报晓的公鸡，天，还是会亮</a>  <img src="/chao/img/sq_sucai_jing.gif" width="21" height="14"></td>
-               <td width="13%"><div class="media">
-                         <a class="pull-left" href="#">
-                            <img class="media-object" src="/chao/img/home.gif" 
-                            alt="媒体对象">
-                         </a>
-                         <div class="media-body">
-                            <h6 class="media-heading"><a  href="base.html">用户名</a></h6>
-                             <span class="font10">2015-04-04</span>
-                         </div>
-                      </div></td>
-               <td width="10%"><a href="#" >16</a><br><em span class="font10">264</em></td>
-               <td width="12%"><span class="font12">回复用户名</span><br><span class="font10">2015-04-04</span></td>
-            </tr>
-           
-           
-           
-             <tr>
-                <td width="65%"  style=" vertical-align:middle"><img src="/chao/img/sq_sucia_biao.gif">  <a href="shequneiye.html">杀光所有报晓的公鸡，天，还是会亮</a>  <img src="/chao/img/sq_sucai_jing.gif" width="21" height="14"></td>
-               <td width="13%"><div class="media">
-                         <a class="pull-left" href="#">
-                            <img class="media-object" src="/chao/img/home.gif" 
-                            alt="媒体对象">
-                         </a>
-                         <div class="media-body">
-                            <h6 class="media-heading"><a  href="base.html">用户名</a></h6>
-                             <span class="font10">2015-04-04</span>
-                         </div>
-                      </div></td>
-               <td width="10%"><a href="#" >16</a><br><em span class="font10">264</em></td>
-               <td width="12%"><span class="font12">回复用户名</span><br><span class="font10">2015-04-04</span></td>
-            </tr>
+
             
             
             

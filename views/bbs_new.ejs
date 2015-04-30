@@ -16,6 +16,7 @@
        <div style="width:920px;">
            <form id="myForm" action="/bbs/new" method="post" >
                <input name="model" type="hidden" value="Post">
+               <input name="id" type="hidden" value="<%=user.id%>">
                <input id="category" name="category" type="hidden" value="<%=category%>">
                <div class="form-group">
                    <label for="exampleInputTitle">文章标题</label>

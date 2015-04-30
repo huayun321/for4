@@ -14,8 +14,9 @@ var postSchema = mongoose.Schema({
     thumbnail_url: String,
     delete_path: String,
     thumbnail_delete_path: String,
-    createdOn: { type: Date, default: Date.now },
-    is_nice:{ type: Boolean, default: false }
+    created_on: { type: Date, default: Date.now },
+    is_nice:{ type: Boolean, default: false },
+    created_by: {type:mongoose.Schema.Types.ObjectId, ref: 'User'}
 });
 
 postSchema.plugin(mongoosePaginate);

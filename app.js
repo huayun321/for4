@@ -17,6 +17,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var bbs = require('./routes/bbs');
+var rubies = require('./routes/rubies');
 //admin routes
 var admin_index = require('./routes/admin/index');
 var admin_materials = require('./routes/admin/materials');
@@ -207,6 +208,7 @@ upload.on('end', function (fileInfo, req, res) {
             break;
         case 'Post':
             var p = new Post();
+            p.created_by = req.fields.id;
             p.title = req.fields.title;
             p.content = req.fields.content;
             p.category = req.fields.category;
@@ -300,6 +302,7 @@ app.use(paginate.middleware(10, 50));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/bbs', bbs);
+app.use('/rubies', rubies);
 //admin routes
 app.use('/admin', admin_index);
 app.use('/admin/materials', admin_materials);
