@@ -1,14 +1,39 @@
-<!-------   foot   -------->
+<!--     foot    -->
 <div class="container foot">
-    <p class="foot_p"> Copyright © 2015-2016      918diy.com </p>
-    <p class="foot_p" style="text-align:right"><a href="index.html">首页 </a>|<a href="bbs.html"> 社区 </a>|<a href="bag.html"> 宝石袋 </a>|<a href="about.html"> 关于我们 </a>|<a href="contact.html"> 联系我们</a></p>
+    <p class="foot_p"> Copyright © 2015-2016      918diy.com  </p>
+    <p class="foot_p" style="text-align:right"><a href="index.ejs">首页 </a>|<a href="bbs.html"> 社区 </a>|<a href="bag.html"> 宝石袋 </a>|<a href="about.html"> 关于我们 </a>|<a href="contact.html"> 联系我们</a></p>
     <div class="bshare-custom"><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
 </div>
-</div>
+
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/chao/js/bootstrap.min.js"></script>
+
+
+<script src="/chao/pubuliu/jquery-1.8.2.min.js"></script>
+<script src="/chao/pubuliu/bootstrap.min.js"></script>
+
+<script src="/chao/pubuliu/masonry.pkgd.min.js"></script>
+<script src="/chao/pubuliu/imagesloaded.pkgd.min.js"></script>
+
+<script src="/chao/pubuliu/lightbox-2.6.min.js"></script>
+<script>
+    $(function() {
+
+        var masonryNode = $('#masonry');
+        masonryNode.imagesLoaded(function(){
+            masonryNode.masonry({
+                itemSelector: '.thumbnail',
+                isFitWidth: true
+            });
+        });
+
+
+    });
+
+
+</script>
 </body>
 </html>

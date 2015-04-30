@@ -1,295 +1,220 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title><%=title%></title>
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="/chao/css/css.css"  rel="stylesheet">
-    <!-- Bootstrap -->
-    <link href="/chao/css/bootstrap.min.css" rel="stylesheet">
-    <!--  pubuliu   -->
-    <link href="/chao/css/bootstrap.css" rel="stylesheet">
+<% include ./header %>
+     <!--  pubuliu   -->
     <link href="/chao/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="/chao/css/docs.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="http://fineui.com/lib/html5shim/html5.js"></script>
-    <![endif]-->
+    <link href="/chao/css/docs.css" rel="stylesheet">	
     <link href="/chao/css/lightbox.css" rel="stylesheet">
-    <style>
-        #masonry
-        {
-            padding: 0;
-            min-height: 450px;
-            margin: 0 ;
-
-        }
-        #masonry .thumbnail
-        {
-            width: 210px;
-            margin: 14px;
-            padding: 0px;
-            border-width: 1px;
-            -webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.175);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.175);
-            height:290px;
-        }
-        #masonry .thumbnail .imgs
-        {
-            padding: 6px;
-            height:246px;
-
-
-        }
-        #masonry .thumbnail .imgs img
-        {
-            margin-bottom: 5px;
-            width:100%;
-            height:240px;
-
-
-        }
-        #masonry .thumbnail .caption
-        {
-            background-color: #fff;
-            padding-top: 0;
-            font-size: 13px;
-        }
-
-        .lightbox .lb-image
-        {
-            max-width: none;
-        }
-
-    </style>
-
-
-    <!--   轮换图   -->
-    <link href="/chao/css/lunhuan.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" href="/chao/js/lunhuan.js"></script>
-
-    <!--  编辑器   -->
-    <script type="text/javascript" src="/chao/ckeditor/ckeditor.js"></script>
-</head>
-
-<body data-spy="scroll" data-target=".bs-docs-sidebar">
-
-
-<!-- Fixed navbar -->
-<nav class="navbar-default navbar-fixed-top top " >
-    <div class="container top" >
-        <div class="navbar-header" >
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand litop" href="/">LOGO</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="litop" ><a href="/"><img src="/chao/img/home.gif">   首页</a></li>
-                <li class="litop"><a href="/bbs"><img src="/chao/img/green_pixel_95.gif">  社区</a></li>
-                <li class="litop"><a href="/rubies"><img src="/chao/img/green_pixel_xin.gif">   宝石袋</a></li>
-
-            </ul>
-
-            <form class="navbar-form navbar-left" role="search">
-                <div class="form-group  lisearch">
-                    <input type="text" class="form-control" placeholder="搜索感兴趣的内容">
-                    <button type="submit" class="btn btn-default">Search</button>
+    <link href="/chao/css/indexpic.css"  rel="stylesheet">
+     
+     
+     
+     
+   <div class="height15"></div>   
+    <div class="container   banner">
+       <div class="row">
+            <div class=" col-lg-8 col-md-8 col-xs-6">
+                 <!-- 代码 开始 -->
+                   <div id="playBox">
+                     <div class="pre"></div>
+                     <div class="next"></div>
+                     <div class="smalltitle">
+                       <ul>
+                         <li class="thistitle"></li>
+                         <li></li>
+                         <li></li>
+                         <li></li>
+                         <li></li>
+                         <li></li>
+                       </ul>
+                     </div>
+                     <ul class="oUlplay">
+                        <li><img src="/chao/img/banner.jpg"></li>
+                        <li><img src="/chao/img/banner1.jpg"></li>
+                         <li><img src="/chao/img/banner2.jpg"></li>
+                        <li><img src="/chao/img/banner.jpg"></li>
+                        <li><img src="/chao/img/banner1.jpg"></li>
+                        <li><img src="/chao/img/banner2.jpg"></li>
+                     </ul>
+                   </div>
+              <!-- 代码 结束 --> 
+            </div>           
+            <div class=" col-lg-4 col-md-4 col-xs-6" style="background:#FFFFFF; border:#dedfe0 1px solid; height:445px; margin-left:-10px" >
+               <img src="/chao/img/notice.gif" style="margin-top:15px">
+                 <!--  活动内容开始 -->
+                 <div class="media notice_margin" >
+                       <a class="pull-left" href="notice.html" >
+                          <img class="media-object" src="/chao/img/huodongtu.gif" >
+                       </a>
+                       <div class="media-body">
+                          <a href="notice.html"><h5 class="media-heading" style="border-bottom:#dedfe0 1px solid; color:#000000; line-height:1.5"><strong>午后一杯咖啡</strong></h5></a>
+                            <span  style="font-size:12px">午后一杯咖啡，听听音乐。让我们认真的消磨时光午后一杯咖啡，听听音乐。让我们认真的消磨时光午后一杯咖啡，听听音乐</span>
+                       </div>
                 </div>
-
-            </form>
-            <% if(!locals.user) { %>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/users/signup"> <button type="submit" class="btn btn-sm  topdl" >注册</button></a></li>
-                <li><a href="/users/login"> <button type="submit" class="btn btn-sm topzc">登陆</button></a></li>
-            </ul>
-            <% } else { %>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="liyhm"><a href="/users/<%=user.id%>"><img src="/chao/img/user.jpg"> <font color="#FF0033"><strong><%=user.username%></strong></font></a></li>
-                <li><a href="/users/logout"> <button type="submit" class="btn btn-sm topzc">退出</button></a></li>
-            </ul>
-            <% } %>
-        </div><!--/.nav-collapse -->
+                <!--  活动内容结束 -->
+                <!--  活动内容开始 -->
+            
+                <div class="media notice_margin" >
+                       <a class="pull-left" href="notice.html" >
+                          <img class="media-object" src="/chao/img/huodongtu.gif" >
+                       </a>
+                       <div class="media-body">
+                          <a href="notice.html"><h5 class="media-heading" style="border-bottom:#dedfe0 1px solid; color:#000000; line-height:1.5"><strong>午后一杯咖啡</strong></h5></a>
+                            <span  style="font-size:12px">午后一杯咖啡，听听音乐。让我们认真的消磨时光午后一杯咖啡，听听音乐。让我们认真的消磨时光午后一杯咖啡，听听音乐</span>
+                       </div>
+                </div>
+           <!--  活动内容结束 -->
+             <!--  活动内容开始 -->
+            
+                <div class="media notice_margin" >
+                       <a class="pull-left" href="notice.html" >
+                          <img class="media-object" src="/chao/img/huodongtu.gif" >
+                       </a>
+                       <div class="media-body">
+                          <a href="notice.html"><h5 class="media-heading" style="border-bottom:#dedfe0 1px solid; color:#000000; line-height:1.5"><strong>午后一杯咖啡</strong></h5></a>
+                            <span  style="font-size:12px">午后一杯咖啡，听听音乐。让我们认真的消磨时光午后一杯咖啡，听听音乐。让我们认真的消磨时光午后一杯咖啡，听听音乐</span>
+                       </div>
+                </div>
+           <!--  活动内容结束 -->
+         </div>
+      </div>
     </div>
-</nav>
+   <!--  baner    baner   baner   -->
+    <div class=" height30"></div>
+    <div class="container "  style="border-top:#d4d5d5 1px solid;">  <img src="/chao/img/baoshidai.gif" style=" margin-top:20px">
+      <div class="row ">
+		  <div  class="col-md-10 col-xs-12  col-lg-10 " style="margin:0px; padding:-15px; margin:-15px; margin-top:0px;">
+		
+    
+             
+			  <div id="masonry" class="container-fluid">
+                  <% rubies.forEach( function(ruby) { %>
+                  <!--  瀑布流图片展示开始  -->
+                  <div id="scroll" class="thumbnail pull-left" >
+                      <div class="imgs">
+                          <a href="<%=ruby.thumbnail_url%>" data-lightbox="lightbox_" ><img  src="<%=ruby.thumbnail_url%>" class="img-responsive"  /></a>
+                      </div>
+                      <div class="caption">
+                          <div class="author">
+                              <button type="button"  class="btn "  style="background:#FFFFFF; border:#FFFFFF;  height:31px; width:62px; margin-top:0px"><img src="/chao/img/xin.jpg"><span style="color:#000000; font-size:12px">收藏</span></button>
+                              <button type="button"  class="btn" data-toggle="modal" data-target="#myModal" style="background:#FFFFFF; border:#FFFFFF;  height:31px; width:65px; margin-top:0px"><img src="/chao/img/weixin.jpg"><span style="color:#000000; font-size:12px">讨论</span></button>
+                          </div>
+                      </div>
+                  </div>
+                  <!--  瀑布流图片展示结束  -->
+                  <% }) %>
+                  <div class="nav">
+                      <% if(paginate.hasNextPages(pageCount)) { %>
+                      <a href="<%= paginate.href()%>">next</a>
+                      <% } %>
+                  </div>
 
-<div class="height15"></div>
-<!--  top    top   top   -->
-
-<div class="container   banner">
-    <div class="row">
-        <div class=" col-md-8 col-xs-6">
-            <!-- 代码 开始 -->
-            <div id="playBox">
-                <div class="pre"></div>
-                <div class="next"></div>
-                <div class="smalltitle">
-                    <ul>
-                        <li class="thistitle"></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                </div>
-                <ul class="oUlplay">
-                    <li><img src="/chao/img/banner.jpg"></li>
-                    <li><img src="/chao/img/banner1.jpg"></li>
-                    <li><img src="/chao/img/banner2.jpg"></li>
-                    <li><img src="/chao/img/banner.jpg"></li>
-                    <li><img src="/chao/img/banner1.jpg"></li>
-                    <li><img src="/chao/img/banner2.jpg"></li>
-                </ul>
-            </div>
-            <!-- 代码 结束 -->
-        </div>
-        <div class=" col-md-4 col-xs-6" style="background:#FFFFFF; border:#dedfe0 1px solid; height:445px; margin-left:-10px" >
-            <img src="/chao/img/notice.gif" style="margin-top:15px">
-            <!--  活动内容开始 -->
-            <div class="media notice_margin" >
-                <a class="pull-left" href="notice.html" >
-                    <img class="media-object" href="/chao/img/huodongtu.gif" >
-                </a>
-                <div class="media-body">
-                    <a href="notice.html"><h5 class="media-heading" style="border-bottom:#dedfe0 1px solid; color:#000000; line-height:1.5"><strong>午后一杯咖啡</strong></h5></a>
-                    <span  style="font-size:12px">午后一杯咖啡，听听音乐。让我们认真的消磨时光午后一杯咖啡，听听音乐。让我们认真的消磨时光午后一杯咖啡，听听音乐</span>
-                </div>
-            </div>
-            <!--  活动内容结束 -->
-            <!--  活动内容开始 -->
-
-            <div class="media notice_margin" >
-                <a class="pull-left" href="notice.html" >
-                    <img class="media-object" href="/chao/img/huodongtu.gif" >
-                </a>
-                <div class="media-body">
-                    <a href="notice.html"><h5 class="media-heading" style="border-bottom:#dedfe0 1px solid; color:#000000; line-height:1.5"><strong>午后一杯咖啡</strong></h5></a>
-                    <span  style="font-size:12px">午后一杯咖啡，听听音乐。让我们认真的消磨时光午后一杯咖啡，听听音乐。让我们认真的消磨时光午后一杯咖啡，听听音乐</span>
-                </div>
-            </div>
-            <!--  活动内容结束 -->
-            <!--  活动内容开始 -->
-
-            <div class="media notice_margin" >
-                <a class="pull-left" href="notice.html" >
-                    <img class="media-object" href="/chao/img/huodongtu.gif" >
-                </a>
-                <div class="media-body">
-                    <a href="notice.html"><h5 class="media-heading" style="border-bottom:#dedfe0 1px solid; color:#000000; line-height:1.5"><strong>午后一杯咖啡</strong></h5></a>
-                    <span  style="font-size:12px">午后一杯咖啡，听听音乐。让我们认真的消磨时光午后一杯咖啡，听听音乐。让我们认真的消磨时光午后一杯咖啡，听听音乐</span>
-                </div>
-            </div>
-            <!--  活动内容结束 -->
-        </div>
-    </div>
-</div>
-<!--  baner    baner   baner   -->
-<div class=" height30"></div>
-<div class="container "  style="border-top:#d4d5d5 1px solid;">  <img src="/chao/img/baoshidai.gif" style=" margin-top:20px">
-    <div class="row ">
-        <div  class="col-md-10 col-xs-12  " style="margin:0px; padding:-15px; margin:-15px; margin-top:0px;">
-
-
-
-            <div id="masonry" class="container-fluid">
-                <% rubies.forEach( function(ruby) { %>
-                <!--  瀑布流图片展示开始  -->
-                <div id="scroll" class="thumbnail pull-left" >
-                    <div class="imgs">
-                        <a href="<%=ruby.thumbnail_url%>" data-lightbox="lightbox_" ><img  src="<%=ruby.thumbnail_url%>" class="img-responsive"  /></a>
-                    </div>
-                    <div class="caption">
-                        <div class="author">
-                            <button type="button"  class="btn "  style="background:#FFFFFF; border:#FFFFFF;  height:31px; width:62px; margin-top:0px"><img src="/chao/img/xin.jpg"><span style="color:#000000; font-size:12px">收藏</span></button>
-                            <button type="button"  class="btn" data-toggle="modal" data-target="#myModal" style="background:#FFFFFF; border:#FFFFFF;  height:31px; width:65px; margin-top:0px"><img src="/chao/img/weixin.jpg"><span style="color:#000000; font-size:12px">讨论</span></button>
-                        </div>
-                    </div>
-                </div>
-                <!--  瀑布流图片展示结束  -->
-                <% }) %>
-                <div class="nav">
-                    <% if(paginate.hasNextPages(pageCount)) { %>
-                    <a href="<%= paginate.href()%>">next</a>
-                    <% } %>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-2 col-xs-4  biaoqian"  >
-            <div class="baoshichicun" >
-                <img src="/chao/img/bsbq.gif">
-                <ul style="margin-top:15px">
-                    <li class="baoshibiaoqian_li">新闻</li>
-                    <li class="baoshibiaoqian_li">新闻</li>
-                    <li class="baoshibiaoqian_li">新闻</li>
-                    <li class="baoshibiaoqian_li">新闻</li>
-                    <li class="baoshibiaoqian_li">新闻</li>
-                    <li class="baoshibiaoqian_li">新闻</li>
-                    <li class="baoshibiaoqian_li">新闻</li>
-                    <li class="baoshibiaoqian_li">新闻</li>
-                    <li class="baoshibiaoqian_li">新闻</li>
-                    <li class="baoshibiaoqian_li">新闻</li>
-                    <li class="baoshibiaoqian_li">新闻</li>
-                    <li class="baoshibiaoqian_li">新闻</li>
-                    <li class="baoshibiaoqian_li">新闻</li>
-                    <li class="baoshibiaoqian_li">新闻</li>
-                    <li class="baoshibiaoqian_li">新闻</li>
-                    <li class="baoshibiaoqian_li">新闻</li>
-                </ul>
-                <div style="clear:both"></div>
-            </div>
+		   </div>
+		  </div>
+	    
+         <div class="col-md-2 col-xs-4  col-lg-2 biaoqian"  >
+               <div class="baoshichicun" >
+                   <img src="/chao/img/bsbq.gif">
+                      <ul style="margin-top:15px">
+                         <li class="baoshibiaoqian_li">新闻</li>
+                         <li class="baoshibiaoqian_li">新闻</li>
+                         <li class="baoshibiaoqian_li">新闻</li>
+                         <li class="baoshibiaoqian_li">新闻</li>
+                         <li class="baoshibiaoqian_li">新闻</li>
+                         <li class="baoshibiaoqian_li">新闻</li>
+                         <li class="baoshibiaoqian_li">新闻</li>
+                         <li class="baoshibiaoqian_li">新闻</li>
+                         <li class="baoshibiaoqian_li">新闻</li>
+                         <li class="baoshibiaoqian_li">新闻</li>
+                         <li class="baoshibiaoqian_li">新闻</li>
+                         <li class="baoshibiaoqian_li">新闻</li>
+                         <li class="baoshibiaoqian_li">新闻</li>
+                         <li class="baoshibiaoqian_li">新闻</li>
+                         <li class="baoshibiaoqian_li">新闻</li>
+                         <li class="baoshibiaoqian_li">新闻</li>
+                      </ul>
+                      <div style="clear:both"></div>
+                </div>    
             <div class="height30"></div>
-            <div class="baoshichicun" >
-                <img src="/chao/img/bscc.gif">
-                <ul style="margin-top:15px">
-                    <li class="baoshibiaoqian_li">20mm圆</li>
-                    <li class="baoshibiaoqian_li">20mm圆</li>
-                    <li class="baoshibiaoqian_li">20mm圆</li>
-                    <li class="baoshibiaoqian_li">20mm圆</li>
-                </ul>
-                <div style="clear:both"></div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-<!--     foot    -->
-<div class="container foot">
-    <p class="foot_p"> Copyright © 2015-2016      918diy.com  </p>
-    <p class="foot_p" style="text-align:right"><a href="index.html">首页 </a>|<a href="bbs.html"> 社区 </a>|<a href="bag.html"> 宝石袋 </a>|<a href="about.html"> 关于我们 </a>|<a href="contact.html"> 联系我们</a></p>
-    <div class="bshare-custom"><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
-</div>
-
-<script src="/chao/pubuliu/jquery-1.8.2.min.js"></script>
-<script src="/chao/pubuliu/bootstrap.min.js"></script>
-<!-- <script src="/chao/pubuliu/main.js"></script> -->
-
- <script src="/chao/pubuliu/masonry.pkgd.min.js"></script>
- <script src="/chao/pubuliu/imagesloaded.pkgd.min.js"></script>
-<script src="/chao/pubuliu/lightbox-2.6.min.js"></script>
-
-
-<script>
-    $(function() {
-
-        var masonryNode = $('#masonry');
-        masonryNode.imagesLoaded(function(){
-            masonryNode.masonry({
-                itemSelector: '.thumbnail',
-                isFitWidth: true
-            });
-        });
-
-
-    });
-
-
-</script>
+               <div class="baoshichicun" >
+                        <img src="/chao/img/bscc.gif">
+                          <ul style="margin-top:15px">
+                             <li class="baoshibiaoqian_li">20mm圆</li>
+                            <li class="baoshibiaoqian_li">20mm圆</li>
+                            <li class="baoshibiaoqian_li">20mm圆</li>
+                            <li class="baoshibiaoqian_li">20mm圆</li>
+                           </ul>
+                        <div style="clear:both"></div>
+                </div>
+           </div>
+	     </div>
+      </div>
+   </div>
+  
+      
+     <!--   轮换图   -->
+    <link href="/chao/css/lunhuan.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/chao/js/lunhuan.js"></script>
+   
+   <!--   弹出讨论列  -->
+         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                           <div class="modal-dialog"  style="width:800px">
+                             <div class="modal-content">
+                               <div class="modal-header">
+                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                 <h4 class="modal-title" id="myModalLabel">讨论</h4>
+                               </div>
+                               <div class="modal-body">
+                                    <table cellpadding="2" cellspacing="0">
+                                       <tbody>
+                                          <tr>
+                                             <td rowspan="2" width="215" valign="top">
+                                                 <a href="#"><img src="/chao/img/5c1d8f8eed1208472570d3dad8cda699.jpg"  style="width:210px; height:auto"></a>
+                                                 <p style="text-align:left; padding-top:15px; font-family:微软雅黑; font-size:12px; color:#666666"> <font color="#FF6699">幼儿简易枕套</font> 于40分钟前上传</p>
+                                                
+                                               
+                                             </td>
+                                            
+                                             <td valign="top" align="left" >
+                                                 
+                                                 <div style="padding-left:15px">
+                                                   <div class="media">
+                                                     <a class="pull-left" href="base.html">
+                                                        <img class="media-object" src="/chao/img/newxiaotu.jpg" width="35" height="35" style="border:1px solid #dedede; padding:2px;">                       </a>
+                                                     <div class="media-body">
+                                                       <h6 class="media-heading"><a  href="base.html">用户名</a></h6>
+                                                       <span class="font10">2015-04-04</span>                         
+                                                     </div>
+                                                   </div>
+                                                     <p style=" color:#666666; font-size:12px; font-family:微软雅黑; border-top:1px dashed #ccc; padding-top:5px ">
+                                                        评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论评论内容评论内容评论内容评论
+                                                     </p>
+                                                 </div><!--  回复列表  -->
+                                              
+                                             </td>
+                                          </tr>
+                                           <tr>
+                                               <script type="text/javascript" src="/chao/ckeditor/ckeditor.js"></script>
+                                             <td valign="top" align="left" style="padding-left:15px">
+                                                   <textarea id="TextArea1" cols="20" rows="2" class="ckeditor"></textarea>
+                                                        <script type="text/javascript">
+                                                           CKEDITOR.replace('TextArea1');</script>
+                                                        <div class="height15"></div>
+                                                        <div>
+                                                           <span style="float:left"> <button class="btn btn-danger " type="button" style="background:#FF6699" >发表帖子 </button> </span>
+                                                           <span style="float:right"><a href="rules.html">社区积分规则</a></span>    
+                                                        </div>
+                                             </td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                               </div>
+                               <div class="modal-footer">
+                                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                               </div> 
+                             </div>
+                           </div>
+                         </div>
+    <!--   弹出讨论列表结束    -->
+<% include ./footer %>
 <script src="/waterfall/jquery.infinitescroll.min.js"></script>
 <script>
     // infinitescroll() is called on the element that surrounds
@@ -304,85 +229,3 @@
         // selector for all items you'll retrieve
     });
 </script>
-<!--   弹出讨论列  -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog"  style="width:800px">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">讨论</h4>
-            </div>
-            <div class="modal-body">
-                <table cellpadding="2" cellspacing="0">
-                    <tbody>
-                    <tr>
-                        <td rowspan="2" width="215" valign="top">
-                            <a href="#"><img src="/chao/img/miao.jpg" width="209" height="auto"></a>
-                            <p class="index_yhm"><img src="/chao/img/14082013370c92165f409bc27d.gif"> 用户名</p>
-
-                        </td>
-
-                        <td valign="top" align="left" >
-                            <!--  回复列表  -->
-                            <div style="padding-left:15px">
-                                <p class="text-danger" style=" border-bottom:1px  dashed #cccccc; height:30px; line-height:30px">
-                                    用户名 <font color="#cccccc"> 2015/01/01</font>
-                                </p>
-                                <p style=" color:#666666; font-size:12px; font-family:宋体 ">
-                                    评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论评论内容评论内容评论内容评论
-                                </p>
-                            </div>
-                            <div style="padding-left:15px">
-                                <p class="text-danger" style=" border-bottom:1px  dashed #cccccc; height:30px; line-height:30px">
-                                    用户名 <font color="#cccccc"> 2015/01/01</font>
-                                </p>
-                                <p style=" color:#666666; font-size:12px; font-family:宋体 ">
-                                    评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论评论内容评论内容评论内容评论
-                                </p>
-                            </div>
-                            <div style="padding-left:15px">
-                                <p class="text-danger" style=" border-bottom:1px  dashed #cccccc; height:30px; line-height:30px">
-                                    用户名 <font color="#cccccc"> 2015/01/01</font>
-                                </p>
-                                <p style=" color:#666666; font-size:12px; font-family:宋体 ">
-                                    评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论评论内容评论内容评论内容评论
-                                </p>
-                            </div>
-                            <div style="padding-left:15px">
-                                <p class="text-danger" style=" border-bottom:1px  dashed #cccccc; height:30px; line-height:30px">
-                                    用户名 <font color="#cccccc"> 2015/01/01</font>
-                                </p>
-
-                                <p style=" color:#666666; font-size:12px; font-family:宋体 ">
-                                    评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论评论内容评论内容评论内容评论
-                                </p>
-                            </div>
-
-                        </td>
-                    </tr>
-                    <tr>
-
-                        <td valign="top" align="left" style="padding-left:15px">
-                            <textarea id="TextArea1" cols="20" rows="2" class="ckeditor"></textarea>
-                            <script type="text/javascript">
-                                CKEDITOR.replace('TextArea1');</script>
-                            <div class="height15"></div>
-                            <div>
-                                <span style="float:left"> <button class="btn btn-primary " type="button" >发表帖子 </button> </span>
-                                <span style="float:right"><a href="rules.html">社区积分规则</a></span>
-                            </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!--   弹出讨论列表结束    -->
-
-</body>
-</html>
