@@ -30,7 +30,23 @@ var upload = require('jquery-file-upload-middleware');
 var resizeConf = require('./jqu_config').resizeVersion;
 var dirs = require('./jqu_config').directors;
 
+
 var app = express();
+
+var moment = require('moment-timezone');
+moment.locale('zh-cn');
+app.locals.dateFormat = function(date) {
+    var ret = moment(date).tz("Asia/Shanghai").fromNow();
+    return ret;
+};
+
+app.locals.ellipsis = function(str, len) {
+    if(str.length >= len) {
+        str = str.substr(0,len) + '...';
+    }
+    return str;
+}
+
 
 //connect to mongodb
 require('./models/conn');

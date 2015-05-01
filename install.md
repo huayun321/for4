@@ -21,3 +21,4 @@ passport
     npm install express-paginate --save
 bbs
     npm install async --save
+    npm install moment-timezone --save

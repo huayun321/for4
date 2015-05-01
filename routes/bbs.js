@@ -1,13 +1,24 @@
 var express = require('express');
 var router = express.Router();
 var Post = require('../models/Post');
+var User = require('../models/User');
 var async = require('async');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
     async.auto({
+        get_news: function(callback){
+            Post.paginate({}, 1, 10, function(error, pageCount, paginatedResults, itemCount) {
+                if (error) {
+                    callback(error);
+                } else {
+                    callback(null, paginatedResults);
+                }
+            }, { populate: 'created_by', sortBy : { created_on : -1 }});
+
+        },
         get_sucai: function(callback){
-            Post.paginate({category:'sucai'}, 1, 10, function(error, pageCount, paginatedResults, itemCount) {
+            Post.paginate({category:'sucai'}, 1, 1, function(error, pageCount, paginatedResults, itemCount) {
                 if (error) {
                     callback(error);
                 } else {
@@ -17,7 +28,7 @@ router.get('/', function(req, res, next) {
 
         },
         get_jiaoliu: function(callback){
-            Post.paginate({category:'jiaoliu'}, 1, 10, function(error, pageCount, paginatedResults, itemCount) {
+            Post.paginate({category:'jiaoliu'}, 1, 1, function(error, pageCount, paginatedResults, itemCount) {
                 if (error) {
                     callback(error);
                 } else {
@@ -26,13 +37,22 @@ router.get('/', function(req, res, next) {
             }, { populate: 'created_by', sortBy : { created_on : -1 }});
         },
         get_gouda: function(callback){
-            Post.paginate({category:'gouda'}, 1, 10, function(error, pageCount, paginatedResults, itemCount) {
+            Post.paginate({category:'gouda'}, 1, 1, function(error, pageCount, paginatedResults, itemCount) {
                 if (error) {
                     callback(error);
                 } else {
                     callback(null, paginatedResults);
                 }
             }, { populate: 'created_by', sortBy : { created_on : -1 }});
+        },
+        get_users: function(callback){
+            User.paginate({}, 1, 9, function(error, pageCount, paginatedResults, itemCount) {
+                if (error) {
+                    callback(error);
+                } else {
+                    callback(null, paginatedResults);
+                }
+            }, {  sortBy : { user_rate : -1 }});
         }
 
     }, function(err, results) {
@@ -41,9 +61,11 @@ router.get('/', function(req, res, next) {
             res.render('500', {title: '500'});
         } else {
             res.render('bbs', {title: '918diy-社区',
+                                news:results.get_news,
                                 sucai:results.get_sucai,
                                 gouda: results.get_gouda,
-                                jiaoliu:results.get_jiaoliu});
+                                jiaoliu:results.get_jiaoliu,
+                                users: results.get_users});
         }
     });
 

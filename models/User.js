@@ -1,5 +1,6 @@
 //Bring mongoose into the project
 var mongoose = require('mongoose');
+var mongoosePaginate = require('mongoose-paginate');
 /***************************************************
  * User SCHEMA
  * *************************************************/
@@ -29,8 +30,10 @@ var schema = mongoose.Schema({
     created_on:{type:Date, default:Date.now()},
     //rate
     user_title: {type:String, default:"初级用户"},
-    user_rate: {type:String, default:0}
+    user_rate: {type:Number, default:0, index:true}
 });
+
+schema.plugin(mongoosePaginate);
 
 var User = mongoose.model('User', schema);
 module.exports = User;

@@ -1,213 +1,140 @@
 <% include ./header %>
-<script type="text/javascript" src="/chao/js/lunhuan.js"></script>
-
-<div class="container  ">
-      <div class="row  sq_border">
-       <!--==================  列 1 ======================= -->
-         <div class="col-md-4 col-xs-12">
-              <!--  轮换图  -->
-                <div id="myCarousel" class="carousel slide">
-                     <div class="carousel-inner">
-                          <div class="item active">
-                              <img src="/chao/img/banner.jpg" alt="">
-                              <div class="sq_p">
-                                 <h5>即使杀光所有报晓的公鸡，天，还是会亮的</h5>
-                              </div>
-                          </div>
-                          <div class="item">
-                             <img src="/chao/img/banner2.jpg" alt="">
-                             <div class="sq_p">
-                               <h5>如果人民不欢迎我们，就该我们下台了</h5>
-                            </div>
-                         </div>
-                          <div class="item">
-                             <img src="/chao/img/banner2.jpg" alt="">
-                             <div class="sq_p">
-                               <h5>如果人民不欢迎我们，就该我们下台了</h5>
-                            </div>
-                         </div>
-                    </div>
-                    <a class="left carousel-control" href="http://wrongwaycn.github.io/bootstrap/docs/javascript.html#myCarousel" data-slide="prev"></a>
-                   <a class="right carousel-control" href="http://wrongwaycn.github.io/bootstrap/docs/javascript.html#myCarousel" data-slide="next"></a>
-              </div>
-           
-         </div>
+  
+   <!--  top    top   top   -->
+  <div class="height15"></div>
+   <div class="container  ">
+      <div class="row ">
+    
+             <!--==================  列 1 ======================= -->
+         <div class="col-md-8 col-xs-12"><span style="background:#FFFFFF"><img src="/chao/img/bbs_banenr.jpg" height="320" ></span></div>
          
-         <!--==================  列 2 ======================= -->
-         <div class="col-md-4 col-xs-12">
-            
-             <h4 class="sq_yzrt"><strong>一周热帖</strong></h4>
-             <ul class="sq_yzrt_ul">
-                 <li class="sq_yzrt_ul_li">
-                
-                     <div class="media"  style="height:80px">
-                       <a class="pull-left" href="#" >
-                          <img class="media-object" src="/chao/img/sq_yzrt_tu.jpg"  width="100" height="76">
-                       </a>
-                       <div class="media-body">
-                          <a href="shequneiye.html"><h5 class="media-heading" style="border-bottom:#dedfe0 1px solid; color:#000000; line-height:1.5"><strong>午后一杯咖啡</strong></h5></a>
-                            <span  style="font-size:12px">午后一杯咖啡，听听音乐。让我们认真的消磨时光午后一杯咖啡，听听音乐</span>
-                       </div>
-                </div>
-                <!--  活动内容结束 -->
-                                       
-                 </li>
-                  <li class=" sq_yzrt_ul_li1">【热门活动】<a href="shequneiye.html"> 即使杀光所有报晓的公鸡，天，还是会亮的</a></li>
-                  <li class=" sq_yzrt_ul_li1">【热门活动】<a href="shequneiye.html"> 即使杀光所有报晓的公鸡，天，还是会亮的</a></li>
-                  <li class=" sq_yzrt_ul_li1">【热门活动】<a href="shequneiye.html"> 即使杀光所有报晓的公鸡，天，还是会亮的</a></li>
-                  <li class=" sq_yzrt_ul_li1">【热门活动】<a href="shequneiye.html"> 即使杀光所有报晓的公鸡，天，还是会亮的</a></li>
+      <!--==================  列 2 ======================= -->
+         <div class="col-md-4 col-xs-12" >
+             <ul class="sq_yzrt_ul"  style="background:#FFFFFF; height:320px;padding-left:20px ">
+                 <% news.forEach(function(n) {  %>
+                <li class=" sq_yzrt_ul_li1"><img src="/chao/img/dot.gif" class="img_margin"><a href="shequneiye.html"><%=n.created_by.username%></a><span class="bbs_span"><%= dateFormat(n.created_on) %></span><a href="hala" ><span class="bbs_span1"><%= ellipsis(n.title, 20) %></span></a></li>
+                 <% }) %>
+                <!--<li class=" sq_yzrt_ul_li1"><img src="/chao/img/dot.gif" class="img_margin"><a href="shequneiye.html">布靠谱生活</a><span class="bbs_span">40分钟前</span><span class="bbs_span1">《幼儿简易枕套》</span></li>-->
+                <!--<li class=" sq_yzrt_ul_li1"><img src="/chao/img/dot.gif" class="img_margin"><a href="shequneiye.html">暖阳</a><span class="bbs_span">40分钟前</span><span class="bbs_span1">《幼儿简易枕套》</span></li>-->
+                <!--<li class=" sq_yzrt_ul_li1"><img src="/chao/img/dot.gif" class="img_margin"><a href="shequneiye.html">王家小布</a><span class="bbs_span">40分钟前</span><span class="bbs_span1">《幼儿简易枕套》</span></li>-->
+                <!--<li class=" sq_yzrt_ul_li1"><img src="/chao/img/dot.gif" class="img_margin"><a href="shequneiye.html">王家小布</a><span class="bbs_span">40分钟前上传了图片</span><span class="bbs_span1">《幼儿简易枕套》</span></li>-->
+                <!--<li class=" sq_yzrt_ul_li1"><img src="/chao/img/dot.gif" class="img_margin"><a href="shequneiye.html">王家小布</a><span class="bbs_span">40分钟前</span><span class="bbs_span1">《幼儿简易枕套》</span></li>-->
+                <!--<li class=" sq_yzrt_ul_li1"><img src="/chao/img/dot.gif" class="img_margin"><a href="shequneiye.html">王家小布</a><span class="bbs_span">40分钟前</span><span class="bbs_span1">《幼儿简易枕套》</span></li>-->
+                <!--<li class=" sq_yzrt_ul_li1"><img src="/chao/img/dot.gif" class="img_margin"><a href="shequneiye.html">布靠谱生活</a><span class="bbs_span">40分钟前上传</span><span class="bbs_span1">《幼儿简易枕套》</span></li>-->
+                <!--<li class=" sq_yzrt_ul_li1"><img src="/chao/img/dot.gif" class="img_margin"><a href="shequneiye.html">暖阳</a><span class="bbs_span">40分钟前</span><span class="bbs_span1">《幼儿简易枕套》</span></li>-->
+                <!--<li class=" sq_yzrt_ul_li1"><img src="/chao/img/dot.gif" class="img_margin"><a href="shequneiye.html">王家小布</a><span class="bbs_span">40分钟前</span><span class="bbs_span1">《幼儿简易枕套》</span></li>-->
              </ul>
-         </div>
-         <!--==================  列 3 ======================= -->
-         <div class="col-md-4 col-xs-12">
-              <div style="background: #f8fcff ">
-                   <a href="video.html"><img src="/chao/img/sq_zxhd.gif" style="margin-top:12px"></a>
-                    <ul style=" margin-top:15px">
-              
-                     <li class=" sq_yzrt_ul_li1">【视频教程】<a href="video.html"> 即使杀光所有报晓的公鸡，天，还是会亮的</a></li>
-                     <li class=" sq_yzrt_ul_li1">【视频教程】<a href="video.html"> 即使杀光所有报晓的公鸡，天，还是会亮的</a></li>
-                   
-                   
-                  </ul>
-              </div>
-         </div>
-        <!--==================  列完  ======================= -->
-      </div>
+        </div>
+                
+        <!--  列完  -->
+
+   
+     </div>
       <!--================== row完 ======================= -->
    </div>
 
  <div class="height15"></div>
-
-   <div class="container" style="background:#FFFFFF; padding-top:10px" >
-    <p style="float:left; font-size:16px; font-weight:bold"><img src="/chao/img/sq_sucai.gif">【素材专区】</p><p style="float:right" class="font12"><a href="/bbs/list/sucai">查看更多>></a></p>
-       <div class="row sq_border_sc"  >
-          <div class="col-md-12">     
-          
-         <table class="table table-condensed" cellspacing="0" cellpadding="0" style="border-bottom:1px solid #CCCCCC; font-size:12px">
-          <tbody>
-            <% sucai.forEach(function(post) {  %>
-             <tr>
-                 <td width="65%"  style=" vertical-align:middle">
-                     <img src="/chao/img/sq_sucia_biao.gif">
-                     <a href="/bbs/post/<%=post.id%>"><%=post.title%></a>
-                     <% if(post.is_nice) { %>
-                     <img src="/chao/img/sq_sucai_jing.gif" width="21" height="14">
-                     <% } %>
-                 </td>
-               <td width="13%"><div class="media">
-                         <a class="pull-left" href="/users/<%=post.created_by.id%>">
-                            <img width="40" class="media-object" src="<%=post.created_by.thumbnail_url%>"
-                            alt="媒体对象">
-                         </a>
-                         <div class="media-body">
-                            <h6 class="media-heading"><a  href="/users/<%=post.created_by.id%>"><%=post.created_by.username%></a></h6>
-                             <span class="font10"><%=post.created_on%></span>
-                         </div>
-                      </div></td>
-               <td width="10%"><a href="#" >16</a><br><em span class="font10">264</em></td>
-               <td width="12%"><span class="font12">回复用户名</span><br><span class="font10">2015-04-04</span></td>
-            </tr>
-           <% }) %>
-          </tbody>
-      
-      </table>
-                
-            
-           </div>
-       </div>
-   
-   </div>
-   <div class="height15"></div>
-     <!--================== 素材 ======================= -->
-   
-   <div class="container" style="background:#FFFFFF; padding-top:10px" >
-    <p style="float:left; font-size:16px; font-weight:bold"><img src="/chao/img/sq_sucai.gif">【交流讨论】</p><p style="float:right" class="font12"><a href="/bbs/list/jiaoliu">查看更多>></a></p>
-       <div class="row sq_border_sc"  >
-          <div class="col-md-12">     
-          
-            <table class="table table-condensed" cellspacing="0" cellpadding="0" style="border-bottom:1px solid #CCCCCC; font-size:12px">
-          <tbody>
-          <% jiaoliu.forEach(function(post) {  %>
-          <tr>
-              <td width="65%"  style=" vertical-align:middle">
-                  <img src="/chao/img/sq_sucia_biao.gif">
-                  <a href="/bbs/post/<%=post.id%>"><%=post.title%></a>
-                  <% if(post.is_nice) { %>
-                  <img src="/chao/img/sq_sucai_jing.gif" width="21" height="14">
-                  <% } %>
-              </td>
-              <td width="13%"><div class="media">
-                      <a class="pull-left" href="#">
-                          <img class="media-object" src="/chao/img/home.gif"
-                               alt="媒体对象">
-                      </a>
-                      <div class="media-body">
-                          <h6 class="media-heading"><a  href="base.html">用户名</a></h6>
-                          <span class="font10">2015-04-04</span>
-                      </div>
-                  </div></td>
-              <td width="10%"><a href="#" >16</a><br><em span class="font10">264</em></td>
-              <td width="12%"><span class="font12">回复用户名</span><br><span class="font10">2015-04-04</span></td>
-          </tr>
-          <% }) %>
-           
-          </tbody>
-      
-      </table>
-                
-            
-           </div>
-       </div>
-   
-   </div>
-   <div class="height15"></div>
-    <!--================== 交流讨论 ======================= -->
-       <div class="container" style="background:#FFFFFF; padding-top:10px" >
-    <p style="float:left; font-size:16px; font-weight:bold"><img src="/chao/img/sq_sucai.gif">【求勾搭】</p><p style="float:right" class="font12"><a href="/bbs/list/gouda">查看更多>></a></p>
-       <div class="row sq_border_sc"  >
-          <div class="col-md-12">     
-          
-           <table class="table table-condensed" cellspacing="0" cellpadding="0" style="border-bottom:1px solid #CCCCCC; font-size:12px">
-          <tbody>
-          <% gouda.forEach(function(post) {  %>
-          <tr>
-              <td width="65%"  style=" vertical-align:middle">
-                  <img src="/chao/img/sq_sucia_biao.gif">
-                  <a href="/bbs/post/<%=post.id%>"><%=post.title%></a>
-                  <% if(post.is_nice) { %>
-                  <img src="/chao/img/sq_sucai_jing.gif" width="21" height="14">
-                  <% } %>
-              </td>
-              <td width="13%"><div class="media">
-                      <a class="pull-left" href="#">
-                          <img class="media-object" src="/chao/img/home.gif"
-                               alt="媒体对象">
-                      </a>
-                      <div class="media-body">
-                          <h6 class="media-heading"><a  href="base.html">用户名</a></h6>
-                          <span class="font10">2015-04-04</span>
-                      </div>
-                  </div></td>
-              <td width="10%"><a href="#" >16</a><br><em span class="font10">264</em></td>
-              <td width="12%"><span class="font12">回复用户名</span><br><span class="font10">2015-04-04</span></td>
-          </tr>
-          <% }) %>
-           
-          </tbody>
-      
-      </table>
-                
-            
-           </div>
-       </div>
-   
+<!--    时光宝石   -->
+   <div class="container">
+        <div style="height:45px; background:#FFFFFF"><img src="/chao/img/bbs_sgbs.jpg"></div>
+        <div style="height:250px; background:#FFFFFF; margin-top:2px">
+             <div class="row">
+                 <div class="height15"></div>
+                 <div class="col-md-4"  style="border-right:1px solid #eeeeee">
+                    <div  style=" padding-left:25px; padding-top:20px;">
+                        <div class="media" style="  border-bottom:1px dashed #eeeeee">
+                             <img src="/chao/img/bbs_sucai.jpg" class="media-object pull-left">
+                             <div class="media-body">
+                                <div class=" bbs_sgbs_p1">素材专区</div>
+                                <p class=" bbs_sgbs_p2">时光宝石相关的素材和成品图分享</p>
+                                <a href="list.html"><p class="bbs_sgbs_p3">[进入板块]</p></a>
+                                <div class="height15"></div>
+                             </div>
+                        </div>
+                        <% sucai.forEach(function(p) {  %>
+                        <div class="height15"></div>
+                        <h5 class=" bbs_span1"><a href=""><span class=" bbs_span1"><%= ellipsis(p.title, 20) %></span></a></h5>
+                        <p class=" bbs_span"><%= dateFormat(p.created_on) %> <%=p.created_by.username%></p>
+                        <% }) %>
+                     </div>
+                 </div>
+                 <div class="col-md-4"  style="border-right:1px solid #eeeeee">
+                    <div  style=" padding-top:20px;padding-left:10px;">
+                        <div class="media" style="  border-bottom:1px dashed #eeeeee">
+                             <img src="/chao/img/bbs_jiaoliu.jpg" class="media-object pull-left">
+                             <div class="media-body">
+                                <div class=" bbs_sgbs_p1_2">交流专区</div>
+                                <p class=" bbs_sgbs_p2">时光宝石相关的素材和成品图分享</p>
+                                <a href="list.html"><p class="bbs_sgbs_p3">[进入板块]</p></a>
+                                <div class="height15"></div>
+                             </div>
+                        </div>
+                        <% jiaoliu.forEach(function(p) {  %>
+                        <div class="height15"></div>
+                        <h5 class=" bbs_span1"><a href=""><span class=" bbs_span1"><%= ellipsis(p.title, 20) %></span></a></h5>
+                        <p class=" bbs_span"><%= dateFormat(p.created_on) %> <%=p.created_by.username%></p>
+                        <% }) %>
+                     </div>
+                 </div>
+                 <div class="col-md-4">
+                    <div  style=" padding-left:10px; padding-top:20px; padding-right:25px">
+                        <div class="media" style="  border-bottom:1px dashed #eeeeee">
+                             <img src="/chao/img/bbs_gouda.jpg" class="media-object pull-left">
+                             <div class="media-body">
+                                <div class=" bbs_sgbs_p1_3">勾搭专区</div>
+                                <p class=" bbs_sgbs_p2">时光宝石相关的素材和成品图分享</p>
+                                <a href="list.html"><p class="bbs_sgbs_p3">[进入板块]</p></a>
+                                <div class="height15"></div>
+                             </div>
+                        </div>
+                        <% gouda.forEach(function(p) {  %>
+                        <div class="height15"></div>
+                        <h5 class=" bbs_span1"><a href=""><span class=" bbs_span1"><%= ellipsis(p.title, 20) %></span></a></h5>
+                        <p class=" bbs_span"><%= dateFormat(p.created_on) %> <%=p.created_by.username%></p>
+                        <% }) %>
+                     </div>
+                 </div>
+             </div>
+        </div>
    </div>
    
-   
-    <!--================== 勾搭======================= -->
+<!--    热门达人   -->
+ <div class="height30"></div>
+   <div class="container">
+        <div class=" bbs_rmdr_top"><img src="/chao/img/bbs_rmdr.jpg"></div>
+        <div class=" bbs_rmdr_content">
+             <div class="row">
+                 <div class="height15"></div>
+                 <!--<div class="col-md-4"  >-->
+                      <!--<li class="bbs_rmdr_li">-->
+                         <!--<p class="pull-left">-->
+                           <!--<span class="bbs_rmdr_li_tb img_margin15"><em>1</em></span>-->
+                           <!--<img src="/chao/img/newxiaotu.jpg" width="50" height="50">-->
+                           <!--<span class="bbs_rmdr_li_p">纸蔷薇</span>-->
+                         <!--</p>-->
+                         <!--<p class="pull-right bbs_rmdr_li_p">积分值711</p>-->
+                         <!--<div class="clearfix"></div>-->
+                      <!--</li>-->
+                 <!--</div>-->
+                 <!--    1   -->
+                 <% var i=1; users.forEach(function(u) {  %>
+                 <div class="col-md-4"  >
+                      <li class="bbs_rmdr_li">
+                         <p class="pull-left">
+                           <span class="bbs_rmdr_li_tb img_margin15"><em><%=i %></em></span>
+                           <img src="<%=u.thumbnail_url %>"  width="50" height="50">
+                           <span class="bbs_rmdr_li_p"><%=u.username %></span>
+                         </p>
+                         <p class="pull-right bbs_rmdr_li_p">积分值<%=u.user_rate %></p>
+                         <div class="clearfix"></div>
+                      </li>
+                 </div>
+                 <% i++; }) %>
+                <!--    2   -->
 
-    <div class="height30"></div>
-
-
-
+                
+                
+             </div>
+        </div>
+   </div>
 <% include ./footer %>
