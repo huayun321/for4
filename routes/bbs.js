@@ -73,7 +73,7 @@ router.get('/', function(req, res, next) {
 
 /* GET home page. */
 router.get('/list/:category', function(req, res, next) {
-    Post.paginate({category:'sucai'}, 1, 10, function(error, pageCount, paginatedResults, itemCount) {
+    Post.paginate({category:req.params.category}, 1, 10, function(error, pageCount, paginatedResults, itemCount) {
         if (error) {
             console.log(error);
             res.render('500', {title: '500'});

@@ -1,9 +1,10 @@
 <% include ./header %>
-   <!--  top    top   top   -->
+
+<script type="text/javascript" src="/chao/ckeditor/ckeditor.js"></script>
    <div class="container">
-     <!--<p ><img src="/chao/img/hometb.gif"> <a href="index.html" class="font12"> 首页</a>-><a href="bbs.html" class="font12">社区</a>-><a href="post.html" class="font12">发帖</a></p>-->
+     <p ><img src="/chao/img/hometb.gif"> <a href="index.ejs" class="font12"> 首页</a>-><a href="bbs.html" class="font12">社区</a>-><a href="post.html" class="font12">发帖</a></p>
         <p> <img src="/chao/img/jzgs.gif"></p>
-       
+        
    
    <div class="tabbable">
   <ul class="nav nav-tabs">
@@ -13,7 +14,6 @@
   </div>
    <div class="height15"></div>
        <div style="width:920px;">
-           <script type="text/javascript" src="/chao/ckeditor/ckeditor.js"></script>
            <form id="myForm" action="/bbs/new" method="post" >
                <input name="model" type="hidden" value="Post">
                <input name="id" type="hidden" value="<%=user.id%>">
@@ -47,13 +47,23 @@
                <span style="float:right"><a href="rules.html">社区积分规则</a></span>
 
            </form>
+
+
+
+          <div class="height15"></div>
+          <div>
+
+
+          </div>
         
        </div> 
        
    </div>
+
+
 <% include ./footer %>
 
-!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
 <script src="/jqu/js/vendor/jquery.ui.widget.js"></script>
 <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
 <script src="/jqu/js/jquery.iframe-transport.js"></script>
@@ -62,9 +72,9 @@
 
 <script>
 
-    ////    Change this to the location of your server-side upload handler:
-    var url = window.location.hostname === 'localhost' ?
-            '//localhost:3000/upload/posts' : 'upload/posts/';
+////    Change this to the location of your server-side upload handler:
+        var url = window.location.hostname === 'localhost' ?
+                    '//localhost:3000/upload/posts' : 'upload/posts/';
     var sendData= true;
     $('#files').fileupload({
         url: url,
@@ -73,15 +83,15 @@
         add : function(e,data){
             $("#myForm button").on("click",function(e){
 //
-                e.preventDefault();
-                if(sendData){
-                    $("#myForm").attr('action', 'upload/posts');
-                    $("#TextArea1").val(CKEDITOR.instances.TextArea1.getData());
-                    data.formData = $("#myForm").serializeArray();
-                    sendData = false;
-                }
-                $("#myForm button").addClass('disabled');
-                data.submit();
+                    e.preventDefault();
+                    if(sendData){
+                        $("#myForm").attr('action', 'upload/posts');
+                        $("#TextArea1").val(CKEDITOR.instances.TextArea1.getData());
+                        data.formData = $("#myForm").serializeArray();
+                        sendData = false;
+                    }
+                    $("#myForm button").addClass('disabled');
+                    data.submit();
 //
             });
         },
@@ -97,7 +107,7 @@
             sendData = true;
             var category = $('#category').val();
             var url = window.location.hostname === 'localhost' ?
-            '//localhost:3000/bbs/list/'+ category : 'bbs/list/'+ category;
+                    '//localhost:3000/bbs/list/'+ category : 'bbs/list/'+ category;
             window.location.replace(url);
         }
     })

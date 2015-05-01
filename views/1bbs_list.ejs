@@ -1,0 +1,137 @@
+<% include ./header %>
+
+    <div class="container">
+        <p ><img src="/chao/img/hometb.gif"> <a href="index.ejs" class="font12"> 首页</a>-><a href="bbs.html" class="font12">社区</a>-><a href="list.html" class="font12">帖子列表</a></p>
+        <p> <img src="/chao/img/jzgs.gif"></p>
+        
+        
+        <div class="row" style="clear:both;">
+        
+              <div class="col-md-2" >
+                 <div class="dropdown" style="float:left; height:60px; margin-top:20px">
+                      <a href="/bbs/new/<%=category%>"><button class="btn btn-primary " type="button" > 发帖</button></a>
+                 </div>
+            </div>
+            <div class="col-md-10" style="text-align:right;">   
+                
+                  <ul class="pagination">
+                       <li><a href="#">&laquo;</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                  </ul>
+          </div>
+           
+        
+        </div>
+    
+    </div>
+   
+ 
+ <!---------发帖--------->
+ 
+    <div class="container" style="border-top:2px #CCCCCC solid; ">
+      <div class="height15"></div>
+      <p  class="sqlb_p"><a href="#">全部主题</a></p>
+      <p  class="sqlb_p"><a href="#">最新</a></p>
+      <p  class="sqlb_p"><a href="#">热门</a></p>
+      <p  class="sqlb_p"><a href="#">精华</a></p>
+   
+       <!---------发帖选择菜单--------->
+      <div class=" height5"></div>
+      <div class="row ">
+         <div class="col-md-12 sqlb_bg">
+               <p style="float:left; width:80%; height:40px; line-height:40px">标题</p>
+                 <p style="float:right; width:20%; text-align:right">
+                   <div class="checkbox">
+                        <label>
+                              <a href="pic.html"><input type="checkbox" >图片模式</a>
+                      </label>
+                       <label>
+                            <input type="checkbox"  checked="true" > 列表模式
+                      </label>
+                   </div>
+                </p> 
+               <table class="table table-condensed" cellspacing="0" cellpadding="0" style="border-bottom:1px solid #CCCCCC; font-size:12px; clear:both">
+          <tbody>
+          <% posts.forEach(function(post) {  %>
+          <tr>
+              <td width="65%"  style=" vertical-align:middle">
+                  <img src="/chao/img/sq_sucia_biao.gif">
+                  <a href="/bbs/post/<%=post.id%>"><%=post.title%></a>
+                  <% if(post.is_nice) { %>
+                  <img src="/chao/img/sq_sucai_jing.gif" width="21" height="14">
+                  <% } %>
+              </td>
+              <td width="13%"><div class="media">
+                      <a class="pull-left" href="/users/<%=post.created_by.id%>">
+                          <img width="40" class="media-object" src="<%=post.created_by.thumbnail_url%>"
+                               alt="媒体对象">
+                      </a>
+                      <div class="media-body">
+                          <h6 class="media-heading"><a  href="/users/<%=post.created_by.id%>"><%=post.created_by.username%></a></h6>
+                          <span class="font10"><%=post.created_on%></span>
+                      </div>
+                  </div></td>
+              <td width="10%"><a href="#" >16</a><br><em span class="font10">264</em></td>
+              <td width="12%"><span class="font12">回复用户名</span><br><span class="font10">2015-04-04</span></td>
+          </tr>
+          <% }) %>
+            
+
+            
+            
+            
+                     
+          </tbody>
+      
+      </table>
+      
+               
+            <!----   翻页  --->
+        
+               <ul class="pager">
+                    <li><a href="#">上一页</a></li>
+                    <li><a href="#">下一页</a></li>
+               </ul>
+           
+       <!----   翻页  --->
+         
+         </div>
+      
+      </div>
+
+    </div>
+
+    <!---------列表--------->  
+     <div class="container">
+       <div class="row" style="clear:both;">
+             <div class="col-md-2" >
+                 <div class="dropdown" style="float:left; height:60px; margin-top:20px">
+                      <a href="/bbs/new/<%=category%>"><button class="btn btn-primary " type="button" > 发帖</button></a>
+                 </div>
+            </div>
+            <div class="col-md-10" style="text-align:right;">   
+                
+                  <ul class="pagination">
+                       <li><a href="#">&laquo;</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                  </ul>
+          </div>
+        </div>
+    
+    </div>
+  
+ 
+ <!---------发帖--------->
+
+
+<% include ./footer %>

@@ -1,20 +1,17 @@
 <% include ./header %>
-
+   <!--  top    top   top   -->
     <div class="container">
-        <p ><img src="/chao/img/hometb.gif"> <a href="index.ejs" class="font12"> 首页</a>-><a href="bbs.html" class="font12">社区</a>-><a href="list.html" class="font12">帖子列表</a></p>
-        <p> <img src="/chao/img/jzgs.gif"></p>
-        
-        
-        <div class="row" style="clear:both;">
-        
-              <div class="col-md-2" >
-                 <div class="dropdown" style="float:left; height:60px; margin-top:20px">
-                      <a href="/bbs/new/<%=category%>"><button class="btn btn-primary " type="button" > 发帖</button></a>
+         <div class="height30"></div>
+         <img src="/chao/img/list_pic.jpg" class="img-responsive">
+          <div class="row" style="clear:both;">
+             <div class="col-md-2" >
+                 <div style="float:left; height:40px; margin-top:15px">
+                      <a href="/bbs/new/<%=category%>"><button class="btn  btn-default " type="button"  style=" color:#FF6699"> &nbsp;&nbsp;发帖&nbsp;&nbsp;</button></a>
                  </div>
             </div>
             <div class="col-md-10" style="text-align:right;">   
                 
-                  <ul class="pagination">
+                  <ul class="pagination pagination-sm">
                        <li><a href="#">&laquo;</a></li>
                         <li><a href="#">1</a></li>
                         <li><a href="#">2</a></li>
@@ -24,99 +21,96 @@
                         <li><a href="#">&raquo;</a></li>
                   </ul>
           </div>
-           
-        
-        </div>
-    
+          </div>
     </div>
-   
- 
  <!---------发帖--------->
- 
-    <div class="container" style="border-top:2px #CCCCCC solid; ">
-      <div class="height15"></div>
-      <p  class="sqlb_p"><a href="#">全部主题</a></p>
-      <p  class="sqlb_p"><a href="#">最新</a></p>
-      <p  class="sqlb_p"><a href="#">热门</a></p>
-      <p  class="sqlb_p"><a href="#">精华</a></p>
-   
-       <!---------发帖选择菜单--------->
-      <div class=" height5"></div>
-      <div class="row ">
-         <div class="col-md-12 sqlb_bg">
-               <p style="float:left; width:80%; height:40px; line-height:40px">标题</p>
-                 <p style="float:right; width:20%; text-align:right">
-                   <div class="checkbox">
-                        <label>
-                              <a href="pic.html"><input type="checkbox" >图片模式</a>
-                      </label>
-                       <label>
-                            <input type="checkbox"  checked="true" > 列表模式
-                      </label>
+
+       <div class="container" >
+       <div class="panel panel-default">
+
+             <table  class=" user_table table-hover" cellspacing="0" cellpadding="0" style="border-bottom:1px solid #CCCCCC; font-size:12px; clear:both; ">
+          
+             <thead>
+              <tr >
+               <th width="39%" >
+               <p class="pictitle"> <a href="#">全部主题</a><a href="#">最新</a><a href="#">热门</a><a href="#">热帖</a><a href="#">精华</a></p>
+              
+               </th>
+               <th width="23%">
+               <p class="pictitle"> <span style=" font-family:微软雅黑; font-weight:bold;color:#ff6699;font-size:14px; padding-right:30px">列表模式</span>  <a href="pic.html">图片模式</a></p>
+                  
+               </th>
+              <th width="14%"><p>作者</p></th>
+               <th width="10%"><p>回复/查看</p></th>
+               <th width="14%"><p>最后发表</p></th>
+           </tr>
+          </thead>
+           <tbody>
+           <% posts.forEach(function(post) {  %>
+                 <tr class="user_table_tr">
+                    <td colspan="2"  >
+                        <img src="/chao/img/sq_sucia_biao.gif"  class="img_margin"> 
+                        <a href="/bbs/post<%=post.id%>" class="user_a"><%= ellipsis(post.title, 30)%></a>
+                        <% if(post.is_nice) { %>
+                        <img src="/chao/img/sq_sucai_jing.gif" width="21" height="14">
+                        <% } %>
+                    </td>
+                    <td width="14%"><div class="media">
+                         <a class="pull-left" href="/users/<%=post.created_by.id%>"><img class="media-object user_img" src="<%=post.created_by.thumbnail_url%>"></a>
+                         <div class="media-body">
+                            <h6 class="media-heading"><a  href="/users/<%=post.created_by.id%>"><%=post.created_by.username%></a></h6>
+                             <span class="font10"><%= dateFormat(post.created_on) %></span>                         </div>
+                         </div>
+                   </td>
+                   <td width="10%"><a href="#" class="user_tieshu_a">4416</a><br>
+                   <em span class="font10">264</em></td>
+                   <td width="14%"><span class="font12">回复用户名</span><br>
+                   <span class="font10">2015-04-04</span></td>
+             </tr><!--    一行结束    -->
+                <% }) %>
+
+             <% if(posts.length==0) { %>
+           <tr class="user_table_tr">
+               <td colspan="2"  >
+                   <img src="/chao/img/sq_sucia_biao.gif"  class="img_margin">
+                   <a href="/bbs/new/<%=category%>" class="user_a">还没有帖子，成为地一个发帖的人吧。</a>
+                   <img src="/chao/img/sq_sucai_jing.gif" width="21" height="14">
+               </td>
+               <td width="14%"><div class="media">
+                       <a class="pull-left" href="base.html"><img class="media-object user_img" src="/chao/img/newxiaotu.jpg"></a>
+                       <div class="media-body">
+                           <h6 class="media-heading"><a  href="base.html">用户名</a></h6>
+                           <span class="font10">2015/04/04</span>                         </div>
                    </div>
-                </p> 
-               <table class="table table-condensed" cellspacing="0" cellpadding="0" style="border-bottom:1px solid #CCCCCC; font-size:12px; clear:both">
-          <tbody>
-          <% posts.forEach(function(post) {  %>
-          <tr>
-              <td width="65%"  style=" vertical-align:middle">
-                  <img src="/chao/img/sq_sucia_biao.gif">
-                  <a href="/bbs/post/<%=post.id%>"><%=post.title%></a>
-                  <% if(post.is_nice) { %>
-                  <img src="/chao/img/sq_sucai_jing.gif" width="21" height="14">
-                  <% } %>
-              </td>
-              <td width="13%"><div class="media">
-                      <a class="pull-left" href="/users/<%=post.created_by.id%>">
-                          <img width="40" class="media-object" src="<%=post.created_by.thumbnail_url%>"
-                               alt="媒体对象">
-                      </a>
-                      <div class="media-body">
-                          <h6 class="media-heading"><a  href="/users/<%=post.created_by.id%>"><%=post.created_by.username%></a></h6>
-                          <span class="font10"><%=post.created_on%></span>
-                      </div>
-                  </div></td>
-              <td width="10%"><a href="#" >16</a><br><em span class="font10">264</em></td>
-              <td width="12%"><span class="font12">回复用户名</span><br><span class="font10">2015-04-04</span></td>
-          </tr>
-          <% }) %>
-            
-
-            
-            
-            
-                     
-          </tbody>
-      
+               </td>
+               <td width="10%"><a href="#" class="user_tieshu_a">4416</a><br>
+                   <em span class="font10">264</em></td>
+               <td width="14%"><span class="font12">回复用户名</span><br>
+                   <span class="font10">2015-04-04</span></td>
+           </tr><!--    一行结束    -->
+                <% } %>
+              </tbody>
       </table>
-      
-               
-            <!----   翻页  --->
-        
-               <ul class="pager">
-                    <li><a href="#">上一页</a></li>
-                    <li><a href="#">下一页</a></li>
-               </ul>
-           
-       <!----   翻页  --->
-         
-         </div>
-      
-      </div>
 
-    </div>
-
+       <!--   翻页  -->
+         <p class="list_page_p"><a href="#">下一页</a></p>
+       <!--   翻页  -->
+       </div>
+       </div>
+ 
+ 
     <!---------列表--------->  
      <div class="container">
-       <div class="row" style="clear:both;">
+      
+          <div class="row" style="clear:both;">
              <div class="col-md-2" >
-                 <div class="dropdown" style="float:left; height:60px; margin-top:20px">
-                      <a href="/bbs/new/<%=category%>"><button class="btn btn-primary " type="button" > 发帖</button></a>
+                 <div style="float:left; height:40px; margin-top:15px">
+                      <a href="/bbs/new/<%=category%>"><button class="btn  btn-default " type="button"  style=" color:#FF6699"> &nbsp;&nbsp;发帖&nbsp;&nbsp;</button></a>
                  </div>
             </div>
             <div class="col-md-10" style="text-align:right;">   
                 
-                  <ul class="pagination">
+                  <ul class="pagination pagination-sm">
                        <li><a href="#">&laquo;</a></li>
                         <li><a href="#">1</a></li>
                         <li><a href="#">2</a></li>
@@ -126,12 +120,164 @@
                         <li><a href="#">&raquo;</a></li>
                   </ul>
           </div>
-        </div>
-    
+          </div>
     </div>
-  
- 
- <!---------发帖--------->
+ <!---------发帖---------> 
+     <div class="container">
+        <div class="panel panel-default">
+          <div class="panel-heading"><strong>快速发帖</strong></div>
+          <div class="panel-body">
+           <div style="width:920px;">
+               <script type="text/javascript" src="/chao/ckeditor/ckeditor.js"></script>
+               <form id="myForm" action="/bbs/new" method="post" >
+                   <input name="model" type="hidden" value="Post">
+                   <input name="id" type="hidden" value="<%=user.id%>">
+                   <input id="category" name="category" type="hidden" value="<%=category%>">
+                   <div class="form-group">
+                       <label for="exampleInputTitle">文章标题</label>
+                       <input name="title" type="text" class="form-control" id="exampleInputTitle" placeholder="请输入文章标题" required="true">
+                   </div>
+                   <div class="form-group">
+                       <label for="TextArea1">文章内容</label>
 
+                       <textarea name="content" id="TextArea1"  class="ckeditor"></textarea>
+                       <script type="text/javascript">
+                           CKEDITOR.replace('TextArea1');</script>
+                   </div>
+                   <div class="form-group">
+                       <label for="files">上传图片</label>
+                       <input  type="file" id="files">
+                       <p class="help-block">支持jpg jpeg png格式图片.</p>
+                       <div id="img-box">
 
+                       </div>
+                       <!-- The global progress bar -->
+                       <div id="progress" class="progress">
+                           <div class="progress-bar progress-bar-success"></div>
+                       </div>
+                   </div>
+
+               <span style="float:left"> <button type="submit" class="btn btn-primary " type="button" >发表</button>
+             </span>
+                   <span style="float:right"><a href="rules.html">社区积分规则</a></span>
+
+               </form>
+              
+             </div>
+            
+           </div>
+           <div >
+            
+          </div>
+          <div class="clearfix"></div>        
+       </div>
+        </div>
+    </div>
 <% include ./footer %>
+
+!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+<script src="/jqu/js/vendor/jquery.ui.widget.js"></script>
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<script src="/jqu/js/jquery.iframe-transport.js"></script>
+<!-- The basic File Upload plugin -->
+<script src="/jqu/js/jquery.fileupload.js"></script>
+
+<script>
+
+    ////    Change this to the location of your server-side upload handler:
+    var url = window.location.hostname === 'localhost' ?
+            '//localhost:3000/upload/posts' : 'upload/posts/';
+    var sendData= true;
+    $('#files').fileupload({
+        url: url,
+        dataType : 'json',
+        autoUpload : false,
+        add : function(e,data){
+            $("#myForm button").on("click",function(e){
+//
+                e.preventDefault();
+                if(sendData){
+                    $("#myForm").attr('action', 'upload/posts');
+                    $("#TextArea1").val(CKEDITOR.instances.TextArea1.getData());
+                    data.formData = $("#myForm").serializeArray();
+                    sendData = false;
+                }
+                $("#myForm button").addClass('disabled');
+                data.submit();
+//
+            });
+        },
+        progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#progress .progress-bar').css(
+                    'width',
+                    progress + '%'
+            );
+        },
+
+        done: function(e,data){
+            sendData = true;
+            var category = $('#category').val();
+            var url = window.location.hostname === 'localhost' ?
+            '//localhost:3000/bbs/list/'+ category : 'bbs/list/'+ category;
+            window.location.replace(url);
+        }
+    })
+</script>
+
+<script>
+    $( document ).ready(function() {
+        /*
+         *  browser upload img
+         * */
+        function browser_check() {
+            if (window.File && window.FileReader && window.FileList &&
+                    window.Blob) {
+                //All the File APIs are supported.
+            } else {
+                alert('当前网页浏览器版本过低，请下载新版浏览器。建议使用新版google浏览器或火狐浏览器。');
+            }
+        }
+
+        browser_check();
+
+
+        function handleFileSelect(evt) {
+
+            $('#img-box').empty();
+            var files = evt.target.files;
+
+            //loop throuth the FileList and render image files as thumbnails.
+            for (var i = 0, f; f = files[i]; i++) {
+
+                //only process image files.
+                if (!f.type.match('image.*')) {
+                    continue;
+                }
+
+
+                var reader = new FileReader();
+
+                //closure to capture the file information.
+                reader.onload = (function (theFile) {
+                    return function (e) {
+                        //Render thumbnail.
+                        var thumb = ['<img width="210" class="img-thumbnail"  src="',
+                            e.target.result,
+                            '" title="', escape(theFile.name),
+                            '"/>'].join('');
+                        $('#img-box').append(thumb);
+
+                    };
+                })(f);
+
+                //read in the image file as a data URL.
+                reader.readAsDataURL(f);
+            }
+        }
+
+        document.getElementById('files').addEventListener('change',
+                handleFileSelect, false);
+
+    });
+</script>
