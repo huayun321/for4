@@ -12,7 +12,7 @@
          <div class="col-md-4 col-xs-12" >
              <ul class="sq_yzrt_ul"  style="background:#FFFFFF; height:320px;padding-left:20px ">
                  <% news.forEach(function(n) {  %>
-                <li class=" sq_yzrt_ul_li1"><img src="/chao/img/dot.gif" class="img_margin"><a href="/bbs/post/<%=n.id%>"><%=n.created_by.username%></a><span class="bbs_span"><%= dateFormat(n.created_on) %></span><a href="hala" ><span class="bbs_span1"><%= ellipsis(n.title, 13) %></span></a></li>
+                <li class=" sq_yzrt_ul_li1"><img src="/chao/img/dot.gif" class="img_margin"><a href="/bbs/post/<%=n.id%>"><%=n.created_by.username%></a><span class="bbs_span"><%= dateFormat(n.created_on) %></span><a href="/bbs/post/<%=n.id%>" ><span class="bbs_span1"><%= ellipsis(n.title, 13) %></span></a></li>
                  <% }) %>
 
              </ul>

@@ -13,18 +13,18 @@
             <div class="col-md-10" style="text-align:right;height:40px;">   
                 
                   <ul class="pagination pagination-sm">
-                       <li><a href="list.html">返回列表</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">6</a></li>
-                        <li><a href="#">7</a></li>
-                        <li><a href="#">8</a></li>
-                        <li><a href="#">9</a></li>
-                        <li><a href="#">10</a></li>
-                        <li><a href="#">&raquo;</a></li>
+                       <!--<li><a href="list.html">返回列表</a></li>-->
+                        <!--<li><a href="#">1</a></li>-->
+                        <!--<li><a href="#">2</a></li>-->
+                        <!--<li><a href="#">3</a></li>-->
+                        <!--<li><a href="#">4</a></li>-->
+                        <!--<li><a href="#">5</a></li>-->
+                        <!--<li><a href="#">6</a></li>-->
+                        <!--<li><a href="#">7</a></li>-->
+                        <!--<li><a href="#">8</a></li>-->
+                        <!--<li><a href="#">9</a></li>-->
+                        <!--<li><a href="#">10</a></li>-->
+                        <!--<li><a href="#">&raquo;</a></li>-->
                   </ul>
           </div>
           </div>
@@ -38,6 +38,7 @@
              <p class="pull-left"><strong><%=post.title%></strong></p>
               <p class="pull-right"> <font color="#999999">查看</font>:<font color="#FF6699">1512</font> | <font color="#999999">回复</font>:<font color="#FF6699">132</font></p>
              </div>
+             <% if(page ==1) { %>
          <table width="100%" border="1" cellspacing="0" cellpadding="0" style="border:0">
                <tbody>
                 <tr>
@@ -87,7 +88,7 @@
                 </tr>
               </tbody>
             </table><!--   帖子  -->
-              
+        <% } %>
         <% var i=1;comments.forEach(function(comment) { %>
          <table width="100%" border="1" cellspacing="0" cellpadding="0" style="border:0; min-height:270px; margin-top:10px">
                <tbody>
@@ -103,7 +104,7 @@
                   <td width="85%" valign="top" class="nrk bordertop">
                     <p class="text-info tzbt">
                      <span  class="pull-left"> <img src="/chao/img/online_member.gif" width="16" height="16"> 发表于  <%=dateFormat(comment.created_on)%></span>
-                     <span class="pull-right"><%=i%>楼</span>
+                     <span class="pull-right"><%= (page-1)*10 + i%>楼</span>
                     </p>
                     <!--    内容start    -->
                          <div class="sqnr_content">
@@ -158,18 +159,18 @@
             <div class="col-md-10" style="text-align:right;height:40px;">   
                 
                   <ul class="pagination pagination-sm">
-                       <li><a href="list.html">返回列表</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">6</a></li>
-                        <li><a href="#">7</a></li>
-                        <li><a href="#">8</a></li>
-                        <li><a href="#">9</a></li>
-                        <li><a href="#">10</a></li>
-                        <li><a href="#">&raquo;</a></li>
+                       <!--<li><a href="list.html">返回列表</a></li>-->
+                        <!--<li><a href="#">1</a></li>-->
+                        <!--<li><a href="#">2</a></li>-->
+                        <!--<li><a href="#">3</a></li>-->
+                        <!--<li><a href="#">4</a></li>-->
+                        <!--<li><a href="#">5</a></li>-->
+                        <!--<li><a href="#">6</a></li>-->
+                        <!--<li><a href="#">7</a></li>-->
+                        <!--<li><a href="#">8</a></li>-->
+                        <!--<li><a href="#">9</a></li>-->
+                        <!--<li><a href="#">10</a></li>-->
+                        <!--<li><a href="#">&raquo;</a></li>-->
                   </ul>
           </div>
           </div>
@@ -228,3 +229,19 @@
 
 
 <% include ./footer %>
+
+<script>
+    $('.pagination-sm').twbsPagination({
+        totalPages: <%=page_count%>,
+//        visiblePages: 7,
+//        onPageClick: function (event, page) {
+//            alert(page);
+//        },
+        href: '?page={{number}}',
+        first: '第一页',
+        prev: '上一页',
+        next: '下一页',
+        last: '最后一页'
+    });
+</script>
+

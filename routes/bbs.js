@@ -175,7 +175,7 @@ router.get('/post/:id', function(req, res, next) {
                 if (error) {
                     callback(error);
                 } else {
-                    callback(null, paginatedResults);
+                    callback(null, paginatedResults, req.query.page, pageCount);
                 }
             }, { populate: 'created_by'});
 
@@ -187,9 +187,15 @@ router.get('/post/:id', function(req, res, next) {
             console.log(err);
             res.render('500', {title: '500'});
         } else {
+            //console.log('============');
+            //console.log(results.get_comment[1]);
             res.render('bbs_post', {title: '918diy-社区',
                 post:results.get_post,
-                comments:results.get_comment});
+                comments:results.get_comment[0],
+                page: results.get_comment[1],
+                page_count: results.get_comment[2]
+            });
+            //res.json(results.get_comment);
         }
     });
 
