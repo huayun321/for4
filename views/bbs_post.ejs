@@ -1,127 +1,230 @@
 <% include ./header %>
-
+  
+   <!--  top    top   top   -->
     <div class="container">
-        <p ><img src="img/hometb.gif"> <a href="index.ejs" class="font12"> 首页</a>-><a href="bbs.html" class="font12">社区</a>-><a href="list.html" class="font12">帖子列表</a>-><a href="shequneiye.html" class="font12">帖子详细页</a></p>
-       <div class="row" style="clear:both">
+      <p ><img src="/chao/img/hometb.gif"> <a href="index.html" class="font12"> 首页</a>-><a href="bbs.html" class="font12">社区</a>-><a href="list.html" class="font12">帖子列表</a>-><a href="shequneiye.html" class="font12">帖子详细页</a></p> 
+          <div class="row" style="clear:both;">
              <div class="col-md-2" >
-                 <div class="dropdown" style="float:left; height:60px; margin-top:20px">
-                      <a href="post.html"><button class="btn btn-primary " type="button" > 发帖</button></a>
+                 <div style="float:left; height:40px; margin-top:15px">
+                   <a href="/bbs/new/<%=post.category%>"><button class="btn  btn-default btn-sm  " type="button"  style=" color:#FF6699"> &nbsp;&nbsp;发帖&nbsp;&nbsp;</button></a>
+                   <!--<a href="#"><button class="btn  btn-default btn-sm" type="button"  style=" color:#FF6699"> &nbsp;&nbsp;回复&nbsp;&nbsp;</button></a>-->
                  </div>
             </div>
-            <div class="col-md-10" style="text-align:right;">   
+            <div class="col-md-10" style="text-align:right;height:40px;">   
                 
-                  <ul class="pagination">
-                       <li><a href="#">&laquo;</a></li>
+                  <ul class="pagination pagination-sm">
+                       <li><a href="list.html">返回列表</a></li>
                         <li><a href="#">1</a></li>
                         <li><a href="#">2</a></li>
                         <li><a href="#">3</a></li>
                         <li><a href="#">4</a></li>
                         <li><a href="#">5</a></li>
+                        <li><a href="#">6</a></li>
+                        <li><a href="#">7</a></li>
+                        <li><a href="#">8</a></li>
+                        <li><a href="#">9</a></li>
+                        <li><a href="#">10</a></li>
                         <li><a href="#">&raquo;</a></li>
                   </ul>
           </div>
-       </div>
+          </div>
     </div>
-   
- 
- <!---------发帖--------->
+ <!--   发帖   -->
+     
 
      <div class="container">
-        <table>
-            <tbody>
-               <tr>
-                   <td width="15%" valign="top"  class="cebianlan">
-                        <p class="ckhf"> <font color="#999999">查看</font>:<font color="#FF3300">1512</font> | <font color="#999999">回复</font>:<font color="#FF3300">132</font></p>
-                        <p><font color="#FF3399" size="+1"><%=post.created_by.username%></font>
-                        <br>
-                        <img src="<%=post.created_by.thumbnail_url%>" class="nyyhtx">
-                       </p>
-                       <p class="chenghao"><img src="img/14082013370c92165f409bc27d.gif"> <%=post.created_by.user_title%></p>
-                      <table cellspacing="0" cellpadding="0"><tbody><tr><th class="thjb"><p><a href="shequuser.html">27</a></p>帖子</th><th class="thjb"><p><a href="#">0</a></p>
-                      精华</th><td class="tdjb"><p><a href="#" class="xi2">55</a></p>积分</td></tr></tbody></table>
-                 </td>
-                         <td width="85%" class="nrk">
-                             <p  class="text-info tzbt"><strong> <%=post.title%></strong></p>
-                              <p ><img src="img/14091809434c62bd748a5d1b2f.gif"> 发表于  2015/04/04   10:25:25 </p>
-                             <p class="lead" style="padding:10px">论坛是比较开放的，所以被灌水或者遭到灌水机和注册机的虐待都很正常，尤其是新论坛没有完整的设置防灌水策略，积分策略和用户组策略，就已经被灌的一塌糊涂，那么今天站帮网-ARCHY就结合Discuz防水墙来说下，最新Discuz防灌水的方法和防灌水插件的推荐。<br>
-                      <br>
-                      真正的防灌水不是通过简单的设置防灌水措施，而是通过积分策略和用户组策略以及防灌水插件配合一起来防止。为什么会有那么多灌水的呢？清楚这点可以更好的防止灌水机，因为有很多人做SEO，而SEO费用又很高，所以就导致很多人来灌水，也滋生了灌水机，只要灌水发外链的成本大于成本，那么你网站灌水的应该就会很少了。<br>
-                      <br>
-                      Discuz x2.5防灌水设置涉及的地方：<br>
-                      <br>
-                      1、全局--注册与访问控制<br>
-                      2、全局--防灌水设置<br>
-                      3、用户--用户组设置<br>
-                      4、用户--用户栏目<br>
-                      5、云平台--防水墙<br>
-                      6、内容--词语过滤<br>
-                      7、应用--防灌水插件<br>
-                      <br>
-                      今天这里说的是常规设置，大家可以根据自己的情况设置严格或者宽松一些，尽量在最少的用户成本下最大限度的防止灌水。<br>
-                      <br>
-                      一、注册与访问控制的设置<br>
-                      <br>
-                      防灌水最主要的就是入口，如果没有注册肯定就不会有灌水，那么注册设置就是防灌水的核心设置了。<br>
-                      <br>
-                      1、通过邮件发送注册链接:是；2、密码最小长度:8；3、强制密码复杂度:数字大小写3个开启。<br>
-                      <br>
-                      4、同一 IP 注册间隔限制(小时):5<br>
-                    5、同一 IP 在 24 小时允许注册的最大次数:5 </p>
-                   </td>
-              </tr>
-            </tbody>
-         </table>
-      </div>  
-      
-       <!----帖子回复信息------>
-     <div class="container">
-        <table>
-            <tbody>
-               <tr>
-                   <td width="15%" valign="top"  class="cebianlan">
-                        <p  class="yhmx"><font color="#FF3399" size="+1">用户名</font></p>
-                        <img src="img/yhtxbg.jpg" class="nyyhtx">
-                       <p class="chenghao"><img src="img/14082013370c92165f409bc27d.gif"> 初级用户</p>
-                      <table cellspacing="0" cellpadding="0"><tbody><tr><th class="thjb"><p><a href="shequuser.html">27</a></p>帖子</th><th class="thjb"><p><a href="#">0</a></p>
-                      精华</th><td class="tdjb"><p><a href="#" class="xi2">55</a></p>积分</td></tr></tbody></table>
-                 </td>
-                         <td width="85%" valign="top" class="nrk">
-                             <p class="yhmx"><img src="img/14091809434c62bd748a5d1b2f.gif"> 发表于  2015/04/04   10:25:25 </p>
-                             <p class="lead" style="padding:10px">论坛是比较开放的，所以被灌水或者遭到灌水机和注册机的虐待都很正常，尤其是新论坛没有完整的设置防灌水策略，积分策略和用户组策略，就已经被灌的一塌糊涂，那么今天站帮网-ARCHY就结合Discuz防水墙来说下，最新Discuz防灌水的方法和防灌水插件的推荐。</p>
+         <div class="panel" style="background:none">
+             <div class="panel-heading" style="background:url(/chao/img/list_titlebg.jpg) repeat-x; height:52px">
+             <p class="pull-left"><strong><%=post.title%></strong></p>
+              <p class="pull-right"> <font color="#999999">查看</font>:<font color="#FF6699">1512</font> | <font color="#999999">回复</font>:<font color="#FF6699">132</font></p>
+             </div>
+         <table width="100%" border="1" cellspacing="0" cellpadding="0" style="border:0">
+               <tbody>
+                <tr>
+                  <td width="15%" class="cebianlan" valign="top">
+                      <p class="ckhf"><%=post.created_by.username%></p>
+                      <img src="<%=post.created_by.thumbnail_url%>" class="nyyhtx">
+                      <div class="height15"></div>
+                      <p class="neiye_p">全部主题：<img src="/chao/img/14082013370c92165f409bc27d.gif" class="img_margin15"><a href="shequuser.html">27</a></p>         
+                      <p class="neiye_p">精华帖：<img src="/chao/img/14091809434c62bd748a5d1b2f.gif" class="img_margin15"><a href="shequuser.html">27</a></p>  
+                      <p class="neiye_p">积分值：<img src="/chao/img/14082013375ac76b98939a9c83.gif" class="img_margin15"><a href="shequuser.html">27</a></p>        
+                  </td>
+                  <td width="85%" valign="top" class="nrk">
+                    <p class="text-info tzbt">
+                     <span  class="pull-left"> <img src="/chao/img/online_member.gif" width="16" height="16"> 发表于  <%=dateFormat(post.created_on)%></span>
+                     <span class="pull-right"><a href="#"><img src="/chao/img/thread-prev.png" alt="上一主题"  title="上一主题"></a>    <a href="#"><img src="/chao/img/thread-next.png"  alt="下一主题"  title="下一主题"></a></span>
                     
-                   </td>
-              </tr>
-            </tbody>
-         </table>
-      </div>      
-      <!---------发帖 回复按钮--------->
-     <div class="container">
-                  <div class="dropdown" style="float:left; height:60px; margin-top:20px">
-                      <a href="post.html"><button class="btn btn-primary " type="button" > 发帖</button></a>
-                      <button class="btn btn-primary" type="button">回复</button>
+                    </p>
+                         <div class="sqnr_content">
+                              <%-post.content%>
+                             <p></p>
+                                <img class="img-thumbnail" src="<%=post.url%>" />
+
+                        
+                    </div>
+                         <!--   帖子内容   -->   
+                        <p class="text-center">
+
+                        </p>
+                        
+                        <!-- ShareTo Button BEGIN -->
+                        
+                           <div class="shareto_toolbox ">
+                              <span></span>
+                              <a class="shareto_button_tsina"></a>
+                              <a class="shareto_button_kaixin001"></a>
+                              <a class="shareto_button_renren"></a>
+                              <a class="shareto_button_douban"></a>
+                              <span class="shareto_separator">|</span>
+                              <a href="http://shareto.com.cn/share.html" class="shareto_button_compact">更多</a>
+                           </div>
+                    <script type="text/javascript" src="http://s.shareto.com.cn/js/shareto_button.js" charset="utf-8"></script>
+                           
+                              <!-- ShareTo Button END -->
+                              <br><br>
+                              
+                  </td>
+                </tr>
+              </tbody>
+            </table><!--   帖子  -->
+              
+        <% var i=1;comments.forEach(function(comment) { %>
+         <table width="100%" border="1" cellspacing="0" cellpadding="0" style="border:0; min-height:270px; margin-top:10px">
+               <tbody>
+                <tr>
+                  <td width="15%" class="cebianlan bordertop" valign="top">
+                      <p class="ckhf"><%=comment.created_by.username%></p>
+                      <img src="<%=comment.created_by.thumbnail_url%>" class="nyyhtx">
+                      <div class="height15"></div>
+                      <p class="neiye_p">全部主题：<img src="/chao/img/14082013370c92165f409bc27d.gif" class="img_margin15"><a href="shequuser.html">27</a></p>
+                      <p class="neiye_p">精华帖：<img src="/chao/img/14091809434c62bd748a5d1b2f.gif" class="img_margin15"><a href="shequuser.html">27</a></p>
+                      <p class="neiye_p">积分值：<img src="/chao/img/14082013375ac76b98939a9c83.gif" class="img_margin15"><a href="shequuser.html">27</a></p>
+                  </td>
+                  <td width="85%" valign="top" class="nrk bordertop">
+                    <p class="text-info tzbt">
+                     <span  class="pull-left"> <img src="/chao/img/online_member.gif" width="16" height="16"> 发表于  <%=dateFormat(comment.created_on)%></span>
+                     <span class="pull-right"><%=i%>楼</span>
+                    </p>
+                    <!--    内容start    -->
+                         <div class="sqnr_content">
+                            <!--<img src="/chao/img/174823o8itzptoem5e2opo.gif">-->
+                             <%-comment.content%>
+                         </div>
+                          <!--    内容end     -->
+                  </td>
+                </tr>
+              </tbody>
+            </table><!--   回复列表  -->
+             <% i++; }) %>
+             
+         <!--<table width="100%" border="1" cellspacing="0" cellpadding="0" style="border:0; min-height:270px; margin-top:10px">-->
+               <!--<tbody>-->
+                <!--<tr>-->
+                  <!--<td width="15%" class="cebianlan bordertop" valign="top">-->
+                      <!--<p class="ckhf">用户名</p>-->
+                      <!--<img src="/chao/img/yhtxbg.jpg" class="nyyhtx"> -->
+                      <!--<div class="height15"></div>-->
+                      <!--<p class="neiye_p">全部主题：<img src="/chao/img/14082013370c92165f409bc27d.gif" class="img_margin15"><a href="shequuser.html">27</a></p>         -->
+                      <!--<p class="neiye_p">精华帖：<img src="/chao/img/14091809434c62bd748a5d1b2f.gif" class="img_margin15"><a href="shequuser.html">27</a></p>  -->
+                      <!--<p class="neiye_p">积分值：<img src="/chao/img/14082013375ac76b98939a9c83.gif" class="img_margin15"><a href="shequuser.html">27</a></p>        -->
+                  <!--</td>-->
+                  <!--<td width="85%" valign="top" class="nrk bordertop">-->
+                    <!--<p class="text-info tzbt">-->
+                     <!--<span  class="pull-left"> <img src="/chao/img/online_member.gif" width="16" height="16"> 发表于  2015/04/04   10:25:25</span>-->
+                     <!--<span class="pull-right">1#</span>-->
+                    <!--</p>-->
+                    <!--&lt;!&ndash;    内容start    &ndash;&gt;-->
+                         <!--<div class="sqnr_content">-->
+                             <!--不错不错-->
+                         <!--</div>  -->
+                          <!--&lt;!&ndash;    内容end     &ndash;&gt;  -->
+                  <!--</td>-->
+                <!--</tr>-->
+              <!--</tbody>-->
+            <!--</table>&lt;!&ndash;   回复列表  &ndash;&gt;-->
+          
+         </div>
+     </div> 
+     
+      <!--   发帖start   --> 
+          <div class="container">
+            <div class="row" style="clear:both;">
+             <div class="col-md-2" >
+                 <div style="float:left; height:40px; margin-top:15px">
+                   <a href="post.html"><button class="btn  btn-default btn-sm  " type="button"  style=" color:#FF6699"> &nbsp;&nbsp;发帖&nbsp;&nbsp;</button></a>
+                   <a href="#"><button class="btn  btn-default btn-sm" type="button"  style=" color:#FF6699"> &nbsp;&nbsp;回复&nbsp;&nbsp;</button></a>
                  </div>
+            </div>
+            <div class="col-md-10" style="text-align:right;height:40px;">   
                 
-      <!----发表回复框----->
-         <table width="100%">
-            <tbody>
-               <tr>
-                  <td width="15%" valign="top"  class="cebianlan hf">
-                       <p>
-                           <img src="img/yhtxbg.jpg" class="nyyhtx">
+                  <ul class="pagination pagination-sm">
+                       <li><a href="list.html">返回列表</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">6</a></li>
+                        <li><a href="#">7</a></li>
+                        <li><a href="#">8</a></li>
+                        <li><a href="#">9</a></li>
+                        <li><a href="#">10</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                  </ul>
+          </div>
+          </div>
+          
+             <!--   发帖   --> 
+        <table width="100%" border="1" cellspacing="0" cellpadding="0" style="border:0; min-height:270px; margin-top:10px">
+               <tbody>
+                <tr>
+                  <td width="15%" class="cebianlan bordertop" valign="top">
+                      <p class="ckhf">用户名</p>
+                      <img src="/chao/img/yhtxbg.jpg" class="nyyhtx"> 
+                      <div class="height15"></div>
+                      <p class="neiye_p">全部主题：<img src="/chao/img/14082013370c92165f409bc27d.gif" class="img_margin15"><a href="shequuser.html">27</a></p>         
+                      <p class="neiye_p">精华帖：<img src="/chao/img/14091809434c62bd748a5d1b2f.gif" class="img_margin15"><a href="shequuser.html">27</a></p>  
+                      <p class="neiye_p">积分值：<img src="/chao/img/14082013375ac76b98939a9c83.gif" class="img_margin15"><a href="shequuser.html">27</a></p>        
+                  </td>
+                  <td width="85%" valign="top" class="nrk bordertop">
+                     <p class="text-info tzbt">
+                        <strong>发表回复</strong>                    
                        </p>
-                        <p class="chenghao"><img src="img/14082013370c92165f409bc27d.gif"> 初级用户</p>
-                                 
-                   </td>
-                   <td width="85%" class="nrk hf">
-                     
-                            <textarea id="TextArea1" cols="20" rows="2" class="ckeditor"></textarea>
-                          <script type="text/javascript">
-                                 CKEDITOR.replace('TextArea1');</script>
-                             <div class="height15"></div>
-                            <button class="btn btn-primary " type="button" >发表回复</button>    
-                 </td>
-              </tr>
-            </tbody>
-         </table> 
-     </div>
+                      <script type="text/javascript" src="/chao/ckeditor/ckeditor.js"></script>
+                      <form id="myForm" action="/bbs/comment" method="post" >
+                          <input name="model" type="hidden" value="Comment">
+                          <input name="user_id" type="hidden" value="<%=user.id%>">
+                          <input id="post_id" name="post_id" type="hidden" value="<%=post.id%>">
+
+                          <div class="form-group">
+
+                              <textarea name="content" id="TextArea1"  class="ckeditor"></textarea>
+                              <script type="text/javascript">
+                                  CKEDITOR.replace('TextArea1');</script>
+                          </div>
+                          <!--<div class="form-group">-->
+                              <!--<label for="files">上传图片</label>-->
+                              <!--<input  type="file" id="files">-->
+                              <!--<p class="help-block">支持jpg jpeg png格式图片.</p>-->
+                              <!--<div id="img-box">-->
+
+                              <!--</div>-->
+                              <!--&lt;!&ndash; The global progress bar &ndash;&gt;-->
+                              <!--<div id="progress" class="progress">-->
+                                  <!--<div class="progress-bar progress-bar-success"></div>-->
+                              <!--</div>-->
+                          <!--</div>-->
+
+                          <button class="btn btn-danger btn-sm" type="submmit"  style="background:#ff6699">写好了，发表</button> <br>  <br>
+
+                      </form>
+
+                  </td>
+                </tr>
+              </tbody>
+            </table><!--   回复编辑框  -->
+    </div>
+
+
+
 <% include ./footer %>

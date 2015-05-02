@@ -12,17 +12,9 @@
          <div class="col-md-4 col-xs-12" >
              <ul class="sq_yzrt_ul"  style="background:#FFFFFF; height:320px;padding-left:20px ">
                  <% news.forEach(function(n) {  %>
-                <li class=" sq_yzrt_ul_li1"><img src="/chao/img/dot.gif" class="img_margin"><a href="shequneiye.html"><%=n.created_by.username%></a><span class="bbs_span"><%= dateFormat(n.created_on) %></span><a href="hala" ><span class="bbs_span1"><%= ellipsis(n.title, 13) %></span></a></li>
+                <li class=" sq_yzrt_ul_li1"><img src="/chao/img/dot.gif" class="img_margin"><a href="/bbs/post/<%=n.id%>"><%=n.created_by.username%></a><span class="bbs_span"><%= dateFormat(n.created_on) %></span><a href="hala" ><span class="bbs_span1"><%= ellipsis(n.title, 13) %></span></a></li>
                  <% }) %>
-                <!--<li class=" sq_yzrt_ul_li1"><img src="/chao/img/dot.gif" class="img_margin"><a href="shequneiye.html">布靠谱生活</a><span class="bbs_span">40分钟前</span><span class="bbs_span1">《幼儿简易枕套》</span></li>-->
-                <!--<li class=" sq_yzrt_ul_li1"><img src="/chao/img/dot.gif" class="img_margin"><a href="shequneiye.html">暖阳</a><span class="bbs_span">40分钟前</span><span class="bbs_span1">《幼儿简易枕套》</span></li>-->
-                <!--<li class=" sq_yzrt_ul_li1"><img src="/chao/img/dot.gif" class="img_margin"><a href="shequneiye.html">王家小布</a><span class="bbs_span">40分钟前</span><span class="bbs_span1">《幼儿简易枕套》</span></li>-->
-                <!--<li class=" sq_yzrt_ul_li1"><img src="/chao/img/dot.gif" class="img_margin"><a href="shequneiye.html">王家小布</a><span class="bbs_span">40分钟前上传了图片</span><span class="bbs_span1">《幼儿简易枕套》</span></li>-->
-                <!--<li class=" sq_yzrt_ul_li1"><img src="/chao/img/dot.gif" class="img_margin"><a href="shequneiye.html">王家小布</a><span class="bbs_span">40分钟前</span><span class="bbs_span1">《幼儿简易枕套》</span></li>-->
-                <!--<li class=" sq_yzrt_ul_li1"><img src="/chao/img/dot.gif" class="img_margin"><a href="shequneiye.html">王家小布</a><span class="bbs_span">40分钟前</span><span class="bbs_span1">《幼儿简易枕套》</span></li>-->
-                <!--<li class=" sq_yzrt_ul_li1"><img src="/chao/img/dot.gif" class="img_margin"><a href="shequneiye.html">布靠谱生活</a><span class="bbs_span">40分钟前上传</span><span class="bbs_span1">《幼儿简易枕套》</span></li>-->
-                <!--<li class=" sq_yzrt_ul_li1"><img src="/chao/img/dot.gif" class="img_margin"><a href="shequneiye.html">暖阳</a><span class="bbs_span">40分钟前</span><span class="bbs_span1">《幼儿简易枕套》</span></li>-->
-                <!--<li class=" sq_yzrt_ul_li1"><img src="/chao/img/dot.gif" class="img_margin"><a href="shequneiye.html">王家小布</a><span class="bbs_span">40分钟前</span><span class="bbs_span1">《幼儿简易枕套》</span></li>-->
+
              </ul>
         </div>
                 
@@ -53,7 +45,7 @@
                         </div>
                         <% sucai.forEach(function(p) {  %>
                         <div class="height15"></div>
-                        <h5 class=" bbs_span1"><a href=""><span class=" bbs_span1"><%= ellipsis(p.title, 20) %></span></a></h5>
+                        <h5 class=" bbs_span1"><a href="/bbs/post/<%=p.id%>"><span class=" bbs_span1"><%= ellipsis(p.title, 20) %></span></a></h5>
                         <p class=" bbs_span"><%= dateFormat(p.created_on) %> <%=p.created_by.username%></p>
                         <% }) %>
                      </div>
@@ -71,7 +63,7 @@
                         </div>
                         <% jiaoliu.forEach(function(p) {  %>
                         <div class="height15"></div>
-                        <h5 class=" bbs_span1"><a href=""><span class=" bbs_span1"><%= ellipsis(p.title, 20) %></span></a></h5>
+                        <h5 class=" bbs_span1"><a href="/bbs/post/<%=p.id%>"><span class=" bbs_span1"><%= ellipsis(p.title, 20) %></span></a></h5>
                         <p class=" bbs_span"><%= dateFormat(p.created_on) %> <%=p.created_by.username%></p>
                         <% }) %>
                      </div>

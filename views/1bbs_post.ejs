@@ -1,0 +1,127 @@
+<% include ./header %>
+
+    <div class="container">
+        <p ><img src="img/hometb.gif"> <a href="index.ejs" class="font12"> 首页</a>-><a href="bbs.html" class="font12">社区</a>-><a href="list.html" class="font12">帖子列表</a>-><a href="shequneiye.html" class="font12">帖子详细页</a></p>
+       <div class="row" style="clear:both">
+             <div class="col-md-2" >
+                 <div class="dropdown" style="float:left; height:60px; margin-top:20px">
+                      <a href="post.html"><button class="btn btn-primary " type="button" > 发帖</button></a>
+                 </div>
+            </div>
+            <div class="col-md-10" style="text-align:right;">   
+                
+                  <ul class="pagination">
+                       <li><a href="#">&laquo;</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                  </ul>
+          </div>
+       </div>
+    </div>
+   
+ 
+ <!---------发帖--------->
+
+     <div class="container">
+        <table>
+            <tbody>
+               <tr>
+                   <td width="15%" valign="top"  class="cebianlan">
+                        <p class="ckhf"> <font color="#999999">查看</font>:<font color="#FF3300">1512</font> | <font color="#999999">回复</font>:<font color="#FF3300">132</font></p>
+                        <p><font color="#FF3399" size="+1"><%=post.created_by.username%></font>
+                        <br>
+                        <img src="<%=post.created_by.thumbnail_url%>" class="nyyhtx">
+                       </p>
+                       <p class="chenghao"><img src="img/14082013370c92165f409bc27d.gif"> <%=post.created_by.user_title%></p>
+                      <table cellspacing="0" cellpadding="0"><tbody><tr><th class="thjb"><p><a href="shequuser.html">27</a></p>帖子</th><th class="thjb"><p><a href="#">0</a></p>
+                      精华</th><td class="tdjb"><p><a href="#" class="xi2">55</a></p>积分</td></tr></tbody></table>
+                 </td>
+                         <td width="85%" class="nrk">
+                             <p  class="text-info tzbt"><strong> <%=post.title%></strong></p>
+                              <p ><img src="img/14091809434c62bd748a5d1b2f.gif"> 发表于  2015/04/04   10:25:25 </p>
+                             <p class="lead" style="padding:10px">论坛是比较开放的，所以被灌水或者遭到灌水机和注册机的虐待都很正常，尤其是新论坛没有完整的设置防灌水策略，积分策略和用户组策略，就已经被灌的一塌糊涂，那么今天站帮网-ARCHY就结合Discuz防水墙来说下，最新Discuz防灌水的方法和防灌水插件的推荐。<br>
+                      <br>
+                      真正的防灌水不是通过简单的设置防灌水措施，而是通过积分策略和用户组策略以及防灌水插件配合一起来防止。为什么会有那么多灌水的呢？清楚这点可以更好的防止灌水机，因为有很多人做SEO，而SEO费用又很高，所以就导致很多人来灌水，也滋生了灌水机，只要灌水发外链的成本大于成本，那么你网站灌水的应该就会很少了。<br>
+                      <br>
+                      Discuz x2.5防灌水设置涉及的地方：<br>
+                      <br>
+                      1、全局--注册与访问控制<br>
+                      2、全局--防灌水设置<br>
+                      3、用户--用户组设置<br>
+                      4、用户--用户栏目<br>
+                      5、云平台--防水墙<br>
+                      6、内容--词语过滤<br>
+                      7、应用--防灌水插件<br>
+                      <br>
+                      今天这里说的是常规设置，大家可以根据自己的情况设置严格或者宽松一些，尽量在最少的用户成本下最大限度的防止灌水。<br>
+                      <br>
+                      一、注册与访问控制的设置<br>
+                      <br>
+                      防灌水最主要的就是入口，如果没有注册肯定就不会有灌水，那么注册设置就是防灌水的核心设置了。<br>
+                      <br>
+                      1、通过邮件发送注册链接:是；2、密码最小长度:8；3、强制密码复杂度:数字大小写3个开启。<br>
+                      <br>
+                      4、同一 IP 注册间隔限制(小时):5<br>
+                    5、同一 IP 在 24 小时允许注册的最大次数:5 </p>
+                   </td>
+              </tr>
+            </tbody>
+         </table>
+      </div>  
+      
+       <!----帖子回复信息------>
+     <div class="container">
+        <table>
+            <tbody>
+               <tr>
+                   <td width="15%" valign="top"  class="cebianlan">
+                        <p  class="yhmx"><font color="#FF3399" size="+1">用户名</font></p>
+                        <img src="img/yhtxbg.jpg" class="nyyhtx">
+                       <p class="chenghao"><img src="img/14082013370c92165f409bc27d.gif"> 初级用户</p>
+                      <table cellspacing="0" cellpadding="0"><tbody><tr><th class="thjb"><p><a href="shequuser.html">27</a></p>帖子</th><th class="thjb"><p><a href="#">0</a></p>
+                      精华</th><td class="tdjb"><p><a href="#" class="xi2">55</a></p>积分</td></tr></tbody></table>
+                 </td>
+                         <td width="85%" valign="top" class="nrk">
+                             <p class="yhmx"><img src="img/14091809434c62bd748a5d1b2f.gif"> 发表于  2015/04/04   10:25:25 </p>
+                             <p class="lead" style="padding:10px">论坛是比较开放的，所以被灌水或者遭到灌水机和注册机的虐待都很正常，尤其是新论坛没有完整的设置防灌水策略，积分策略和用户组策略，就已经被灌的一塌糊涂，那么今天站帮网-ARCHY就结合Discuz防水墙来说下，最新Discuz防灌水的方法和防灌水插件的推荐。</p>
+                    
+                   </td>
+              </tr>
+            </tbody>
+         </table>
+      </div>      
+      <!---------发帖 回复按钮--------->
+     <div class="container">
+                  <div class="dropdown" style="float:left; height:60px; margin-top:20px">
+                      <a href="post.html"><button class="btn btn-primary " type="button" > 发帖</button></a>
+                      <button class="btn btn-primary" type="button">回复</button>
+                 </div>
+                
+      <!----发表回复框----->
+         <table width="100%">
+            <tbody>
+               <tr>
+                  <td width="15%" valign="top"  class="cebianlan hf">
+                       <p>
+                           <img src="img/yhtxbg.jpg" class="nyyhtx">
+                       </p>
+                        <p class="chenghao"><img src="img/14082013370c92165f409bc27d.gif"> 初级用户</p>
+                                 
+                   </td>
+                   <td width="85%" class="nrk hf">
+                     
+                            <textarea id="TextArea1" cols="20" rows="2" class="ckeditor"></textarea>
+                          <script type="text/javascript">
+                                 CKEDITOR.replace('TextArea1');</script>
+                             <div class="height15"></div>
+                            <button class="btn btn-primary " type="button" >发表回复</button>    
+                 </td>
+              </tr>
+            </tbody>
+         </table> 
+     </div>
+<% include ./footer %>
