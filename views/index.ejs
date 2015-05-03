@@ -90,12 +90,13 @@
                   <!--  瀑布流图片展示开始  -->
                   <div id="scroll" class="thumbnail pull-left" >
                       <div class="imgs">
-                          <a href="<%=ruby.thumbnail_url%>" data-lightbox="lightbox_" ><img  src="<%=ruby.thumbnail_url%>" class="img-responsive"  /></a>
+                          <a href="<%=ruby.url%>" data-lightbox="lightbox_" ><img  src="<%=ruby.thumbnail_url%>" class="img-responsive"  /></a>
                       </div>
                       <div class="caption">
                           <div class="author">
                               <button type="button"  class="btn "  style="background:#FFFFFF; border:#FFFFFF;  height:31px; width:62px; margin-top:0px"><img src="/chao/img/xin.jpg"><span style="color:#000000; font-size:12px">收藏</span></button>
-                              <button type="button"  class="btn" data-toggle="modal" data-target="#myModal" style="background:#FFFFFF; border:#FFFFFF;  height:31px; width:65px; margin-top:0px"><img src="/chao/img/weixin.jpg"><span style="color:#000000; font-size:12px">讨论</span></button>
+
+                              <button onclick="rcomment('<%=ruby.id%>','<%=ruby.thumbnail_url%>')" type="button"  class="btn"  style="background:#FFFFFF; border:#FFFFFF;  height:31px; width:65px; margin-top:0px"><img src="/chao/img/weixin.jpg"><span style="color:#000000; font-size:12px">讨论</span></button>
                           </div>
                       </div>
                   </div>
@@ -167,13 +168,13 @@
                                        <tbody>
                                           <tr>
                                              <td rowspan="2" width="215" valign="top">
-                                                 <a href="#"><img src="/chao/img/5c1d8f8eed1208472570d3dad8cda699.jpg"  style="width:210px; height:auto"></a>
+                                                 <a href="#"><img id="rthumbnail" src="/chao/img/5c1d8f8eed1208472570d3dad8cda699.jpg"  style="width:210px; height:auto"></a>
                                                  <p style="text-align:left; padding-top:15px; font-family:微软雅黑; font-size:12px; color:#666666"> <font color="#FF6699">幼儿简易枕套</font> 于40分钟前上传</p>
                                                 
                                                
                                              </td>
                                             
-                                             <td valign="top" align="left" >
+                                             <td id="rcomment_box" valign="top" align="left" >
                                                  
                                                  <div style="padding-left:15px">
                                                    <div class="media">
@@ -194,14 +195,20 @@
                                            <tr>
                                                <script type="text/javascript" src="/chao/ckeditor/ckeditor.js"></script>
                                              <td valign="top" align="left" style="padding-left:15px">
+                                                 <% if(locals.user) { %>
+                                                 <input type="hidden" id="rid" value="">
+                                                 <input type="hidden" id="uid" value="<%=locals.user.id%>">
                                                    <textarea id="TextArea1" cols="20" rows="2" class="ckeditor"></textarea>
                                                         <script type="text/javascript">
                                                            CKEDITOR.replace('TextArea1');</script>
                                                         <div class="height15"></div>
                                                         <div>
-                                                           <span style="float:left"> <button class="btn btn-danger " type="button" style="background:#FF6699" >发表帖子 </button> </span>
+                                                           <span style="float:left"> <button onclick="reply('<%=locals.user.thumbnail_url%>')" class="btn btn-danger " type="button" style="background:#FF6699" >发表帖子 </button> </span>
                                                            <span style="float:right"><a href="rules.html">社区积分规则</a></span>    
                                                         </div>
+                                                 <% } else { %>
+                                                 <a href="/users/login">登录后才能回复</a>
+                                                 <% } %>
                                              </td>
                                           </tr>
                                        </tbody>
@@ -228,4 +235,66 @@
         itemSelector : "#masonry div#scroll"
         // selector for all items you'll retrieve
     });
+
+    function rcomment(id, url) {
+        $("#rthumbnail").attr("src", url);
+        $("#rid").val(id);
+
+        //get comment
+        $.getJSON( "/rcomment/"+ id, function( data ) {
+//            console.log(ruby._id);
+            $('#rcomment_box').html('');
+            $.each( data.rcomments, function( i, item ) {
+                var html = ['<div style="padding-left:15px">',
+                '<div class="media">',
+                '<a class="pull-left" href="/bbs/users/',item.created_by._id,'">',
+                '<img class="media-object" src="', item.created_by.thumbnail_url,'" width="35" height="35" style="border:1px solid #dedede; padding:2px;"></a>',
+                '<div class="media-body">',
+                '<h6 class="media-heading"><a  href="/bbs/users/',item.created_by._id,'">',item.created_by.username,'</a></h6>',
+                '<span class="font10">',item.created_on,'</span>',
+                '</div>',
+                '</div>',
+                '<p style=" color:#666666; font-size:12px; font-family:微软雅黑; border-top:1px dashed #ccc; padding-top:5px ">',
+                item.content,
+                '</p>',
+                '</div>'].join('');
+
+                $('#rcomment_box').append(html);
+            });
+
+
+        });
+//        var value = $("#rid").val();
+//            console.log(ruby._id);
+        $('#myModal').modal('show');
+    }
+
+    function reply(url) {
+        var ruby_id = $("#rid").val();
+        var user_id = $("#uid").val();
+        var content = CKEDITOR.instances.TextArea1.getData();
+//        console.log(value);
+        $.post( "/rcoment", {user_id: user_id, ruby_id: ruby_id, content: content })
+                .fail(function() {
+                    alert( "ajax error" );
+                })
+                .done(function(item) {
+                    CKEDITOR.instances.TextArea1.setData('');
+                    var html = ['<div style="padding-left:15px">',
+                        '<div class="media">',
+                        '<a class="pull-left" href="/bbs/users/',item.created_by._id,'">',
+                        '<img class="media-object" src="', url,'" width="35" height="35" style="border:1px solid #dedede; padding:2px;"></a>',
+                        '<div class="media-body">',
+                        '<h6 class="media-heading"><a  href="/bbs/users/',item.created_by._id,'">',item.created_by.username,'</a></h6>',
+                        '<span class="font10">',item.created_on,'</span>',
+                        '</div>',
+                        '</div>',
+                        '<p style=" color:#666666; font-size:12px; font-family:微软雅黑; border-top:1px dashed #ccc; padding-top:5px ">',
+                        item.content,
+                        '</p>',
+                        '</div>'].join('');
+
+                    $('#rcomment_box').prepend(html);
+                });
+    }
 </script>

@@ -13,6 +13,7 @@
   </div>
    <div class="height15"></div>
        <div style="width:920px;">
+           <% if(locals.user) { %>
            <script type="text/javascript" src="/chao/ckeditor/ckeditor.js"></script>
            <form id="myForm" action="/bbs/new" method="post" >
                <input name="model" type="hidden" value="Post">
@@ -47,7 +48,9 @@
                <span style="float:right"><a href="rules.html">社区积分规则</a></span>
 
            </form>
-        
+           <% } else { %>
+           <a href="/users/login">登录后才能发帖</a>
+           <% } %>
        </div> 
        
    </div>

@@ -191,10 +191,11 @@
                      <p class="text-info tzbt">
                         <strong>发表回复</strong>                    
                        </p>
+                      <% if(locals.user) { %>
                       <script type="text/javascript" src="/chao/ckeditor/ckeditor.js"></script>
                       <form id="myForm" action="/bbs/comment" method="post" >
                           <input name="model" type="hidden" value="Comment">
-                          <input name="user_id" type="hidden" value="<%=user.id%>">
+                          <input name="user_id" type="hidden" value="<%=locals.user.id%>">
                           <input id="post_id" name="post_id" type="hidden" value="<%=post.id%>">
 
                           <div class="form-group">
@@ -219,7 +220,9 @@
                           <button class="btn btn-danger btn-sm" type="submmit"  style="background:#ff6699">写好了，发表</button> <br>  <br>
 
                       </form>
-
+                      <% } else { %>
+                      <a href="/users/login">登录后才能回复</a>
+                      <% } %>
                   </td>
                 </tr>
               </tbody>
