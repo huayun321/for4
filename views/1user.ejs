@@ -1,0 +1,87 @@
+<% include ./header %>
+
+   <div class="container">
+     <p >
+         <img src="/chao/img/hometb.gif">
+         <a href="/" class="font12"> 首页</a>->
+         <a href="/bbs" class="font12">社区</a>->
+         <a href="/users/<%=muser.id%>" class="font12">用户资料</a>
+
+
+     </p>
+
+     <div  style="border:1px solid #CCCCCC">
+
+         <div  class="user_yhm" >
+                <table cellspacing="0" cellpadding="0">
+                   <tbody>
+                      <tr>
+                        <td width="57"><img src="<%=muser.thumbnail_url%>" class="user_yhm_img"></td>
+                        <td width="85" class="user_yhm_text"><strong><%=muser.username%></strong><br>
+                        <font color="#666666">等级:初级用户</font></td>
+                     </tr>
+                   </tbody>
+                 </table>
+               <div class="height15"></div>
+               <div class="tabbable">
+                   <ul class="nav nav-tabs">
+                         <li class="active"><a href="/users/<%=muser.id%>/posts">主题</a></li>
+                         <li ><a href="/users/<%=muser.id%>/profile" >个人资料</a></li>
+                         <li><a href="/users/<%=muser.id%>/rubies" >我的宝石</a></li>
+                         <li><a href="/users/<%=muser.id%>/likes" >我的收藏</a></li>
+                   </ul>
+             </div>
+
+             <div class="user_nr">
+              <table class="table table-condensed" cellspacing="0" cellpadding="0" >
+                <thead>
+                    <tr>
+                       <th>标题</th>
+                       <th>发帖时间</th>
+                    </tr>
+                </thead>
+               <tbody>
+                    <tr>
+                         <td width="85%" style=" vertical-align:middle" ><img src="/chao/img/sq_sucia_biao.gif"> <a href="shequneiye.html">杀光所有报晓的公鸡，天，还是会亮</a> <img src="/chao/img/sq_sucai_jing.gif" width="21" height="14"></td>
+
+                        <td width="15%"><span class="font12">用户名</span><br><span class="font10">2015-04-04</span></td>
+                  </tr>
+                   <tr>
+                         <td width="85%" style=" vertical-align:middle" ><img src="/chao/img/sq_sucia_biao.gif"> <a href="shequneiye.html">杀光所有报晓的公鸡，天，还是会亮</a> <img src="/chao/img/sq_sucai_jing.gif" width="21" height="14"></td>
+
+                        <td width="15%"><span class="font12">用户名</span><br><span class="font10">2015-04-04</span></td>
+                  </tr>
+                   <tr>
+                         <td width="85%" style=" vertical-align:middle" ><img src="/chao/img/sq_sucia_biao.gif"> <a href="shequneiye.html">杀光所有报晓的公鸡，天，还是会亮</a> <img src="/chao/img/sq_sucai_jing.gif" width="21" height="14"></td>
+
+                        <td width="15%"><span class="font12">用户名</span><br><span class="font10">2015-04-04</span></td>
+                  </tr>
+                   <tr>
+                         <td width="85%" style=" vertical-align:middle" ><img src="/chao/img/sq_sucia_biao.gif"> <a href="shequneiye.html">杀光所有报晓的公鸡，天，还是会亮</a> <img src="/chao/img/sq_sucai_jing.gif" width="21" height="14"></td>
+
+                        <td width="15%"><span class="font12">用户名</span><br><span class="font10">2015-04-04</span></td>
+                  </tr>
+
+               </tbody>
+
+      </table>
+                 <div  style=" border-top:1px dashed #dddddd; text-align:center">
+                  <ul class="pagination">
+                       <li><a href="#">&laquo;</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                  </ul>
+                </div>
+             </div>
+         </div>
+
+
+
+     </div>
+   </div>
+
+<% include ./footer %>

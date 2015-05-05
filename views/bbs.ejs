@@ -12,7 +12,7 @@
          <div class="col-md-4 col-xs-12" >
              <ul class="sq_yzrt_ul"  style="background:#FFFFFF; height:320px;padding-left:20px ">
                  <% news.forEach(function(n) {  %>
-                <li class=" sq_yzrt_ul_li1"><img src="/chao/img/dot.gif" class="img_margin"><a href="/bbs/post/<%=n.id%>"><%=n.created_by.username%></a><span class="bbs_span"><%= dateFormat(n.created_on) %></span><a href="/bbs/post/<%=n.id%>" ><span class="bbs_span1"><%= ellipsis(n.title, 13) %></span></a></li>
+                <li class=" sq_yzrt_ul_li1"><img src="/chao/img/dot.gif" class="img_margin"><a href="/users/<%=n.created_by.id%>"><%=n.created_by.username%></a><span class="bbs_span"><%= dateFormat(n.created_on) %></span><a href="/bbs/post/<%=n.id%>" ><span class="bbs_span1"><%= ellipsis(n.title, 13) %></span></a></li>
                  <% }) %>
 
              </ul>
@@ -114,8 +114,8 @@
                       <li class="bbs_rmdr_li">
                          <p class="pull-left">
                            <span class="bbs_rmdr_li_tb img_margin15"><em><%=i %></em></span>
-                           <img src="<%=u.thumbnail_url %>"  width="50" height="50">
-                           <span class="bbs_rmdr_li_p"><%=u.username %></span>
+                           <a href="/users/<%=u.id%>"><img src="<%=u.thumbnail_url %>"  width="50" height="50"></a>
+                             <a href="/users/<%=u.id%>"><span class="bbs_rmdr_li_p"><%=u.username %></span></a>
                          </p>
                          <p class="pull-right bbs_rmdr_li_p">积分值<%=u.user_rate %></p>
                          <div class="clearfix"></div>

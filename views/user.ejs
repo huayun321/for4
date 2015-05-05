@@ -1,87 +1,104 @@
 <% include ./header %>
+<!--  top    top   top   -->
 
-   <div class="container">
-     <p >
-         <img src="/chao/img/hometb.gif">
-         <a href="/" class="font12"> 首页</a>->
-         <a href="/bbs" class="font12">社区</a>->
-         <a href="/users/<%=muser.id%>" class="font12">用户资料</a>
+<!--   body  -->
+
+<div class="container">
+    <div class="row">
+        <div class="height40"></div>
+        <div class="col-md-9">
+            <a href="/users/<%=muser.id%>" style=" height:150px; width:150px;position:relative; float:left">
+                <img src="<%=muser.thumbnail_url%>" width="150" height="150px"></a>
+            <% if(locals.user && muser.id == locals.user.id) { %>
+            <a href="modify.html"><p class="user_about">个人资料修改</p></a>
+            <% } %>
+            <div class="height15"></div>
+            <a href="rules.html"><p class="user_p_rules">查看积分规则</p></a>
+        </div> <!--  col-md-9  -->
+        <div class="col-md-3">
+            <ul class="user_ul">
+                <li class="user_li user_li1">
+                    <p class="user_ul_li_p">100</p>
+                    <p class="user_ul_li_p1">全部主题</p>
+                </li>
+                <li class="user_li user_li1">
+                    <p class="user_ul_li_p">100</p>
+                    <p class="user_ul_li_p1">我的宝石</p>
+                </li>
+                <li class="user_li">
+                    <p class="user_ul_li_p">100</p>
+                    <p class="user_ul_li_p1">我的收藏</p>
+                </li>
+            </ul>
+        </div>  <!--  col-md-3  -->
+    </div> <!--  row  -->
+    <div class="row">
+        <div class="height15"></div>
+        <div class="tabbable">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="/users/<%=muser.id%>" class="user_a">主题</a></li>
+                <li ><a href="/users/<%=muser.id%>/profile"  class="user_a">资料</a></li>
+                <li><a href="/users/<%=muser.id%>/rubies"  class="user_a">宝石</a></li>
+                <li><a href="/users/<%=muser.id%>/likes" class="user_a" >收藏</a></li>
+            </ul>
+        </div><!--   nav-tabs  -->
+
+        <div class="user_nr">
+            <table class=" user_table" cellspacing="0" cellpadding="0">
+                <div class="height15"></div>
+                <tbody>
+                <%posts.forEach(function(post) { %>
+                <tr class="user_table_tr">
+                    <td colspan="2"  >
+                        <img src="/chao/img/sq_sucia_biao.gif"  class="img_margin">
+                        <a href="/bbs/post/<%=post.id%>" class="user_a"><%= ellipsis(post.title, 30)%></a>
+                        <% if(post.is_nice) { %>
+                        <img src="/chao/img/sq_sucai_jing.gif" width="21" height="14">
+                        <% } %>
+                    </td>
+                    <td width="12%"><div class="media">
+                            <a class="pull-left" href="/users/<%=post.created_by.id%>"><img class="media-object user_img" src="<%=post.created_by.thumbnail_url%>"></a>
+                            <div class="media-body">
+                                <h6 class="media-heading"><a  href="/users/<%=post.created_by.id%>"><%=post.created_by.username%></a></h6>
+                                <span class="font10"><%= dateFormat(post.created_on) %></span>                         </div>
+                        </div>
+                    </td>
+                    <td width="9%"><a href="#" class="user_tieshu_a">4416</a><br><em span class="font10">264</em></td>
+                    <td width="15%"><span class="font12">回复用户名</span><br><span class="font10">2015-04-04</span></td>
+                </tr><!--    一行结束    -->
+                <% }) %>
+
+                </tbody>
+            </table>
+
+            <div  style=" border-top:1px dashed #dddddd; text-align:center; margin-top:1px">
+                <ul class="pagination pagination-sm">
+
+                </ul>
+            </div><!--    翻页   -->
+        </div><!--   class:user_nr    -->
 
 
-     </p>
-     
-     <div  style="border:1px solid #CCCCCC">
-     
-         <div  class="user_yhm" >
-                <table cellspacing="0" cellpadding="0">
-                   <tbody>
-                      <tr>
-                        <td width="57"><img src="<%=muser.thumbnail_url%>" class="user_yhm_img"></td>
-                        <td width="85" class="user_yhm_text"><strong><%=muser.username%></strong><br>
-                        <font color="#666666">等级:初级用户</font></td>
-                     </tr>
-                   </tbody>
-                 </table>
-               <div class="height15"></div>
-               <div class="tabbable">
-                   <ul class="nav nav-tabs">
-                         <li class="active"><a href="/users/<%=muser.id%>/posts">主题</a></li>
-                         <li ><a href="/users/<%=muser.id%>/profile" >个人资料</a></li>
-                         <li><a href="/users/<%=muser.id%>/rubies" >我的宝石</a></li>
-                         <li><a href="/users/<%=muser.id%>/likes" >我的收藏</a></li>
-                   </ul>
-             </div>
-             
-             <div class="user_nr">
-              <table class="table table-condensed" cellspacing="0" cellpadding="0" >
-                <thead>
-                    <tr>
-                       <th>标题</th>
-                       <th>发帖时间</th>
-                    </tr>
-                </thead>
-               <tbody>
-                    <tr>
-                         <td width="85%" style=" vertical-align:middle" ><img src="/chao/img/sq_sucia_biao.gif"> <a href="shequneiye.html">杀光所有报晓的公鸡，天，还是会亮</a> <img src="/chao/img/sq_sucai_jing.gif" width="21" height="14"></td>
-               
-                        <td width="15%"><span class="font12">用户名</span><br><span class="font10">2015-04-04</span></td>
-                  </tr>
-                   <tr>
-                         <td width="85%" style=" vertical-align:middle" ><img src="/chao/img/sq_sucia_biao.gif"> <a href="shequneiye.html">杀光所有报晓的公鸡，天，还是会亮</a> <img src="/chao/img/sq_sucai_jing.gif" width="21" height="14"></td>
-               
-                        <td width="15%"><span class="font12">用户名</span><br><span class="font10">2015-04-04</span></td>
-                  </tr>
-                   <tr>
-                         <td width="85%" style=" vertical-align:middle" ><img src="/chao/img/sq_sucia_biao.gif"> <a href="shequneiye.html">杀光所有报晓的公鸡，天，还是会亮</a> <img src="/chao/img/sq_sucai_jing.gif" width="21" height="14"></td>
-               
-                        <td width="15%"><span class="font12">用户名</span><br><span class="font10">2015-04-04</span></td>
-                  </tr>
-                   <tr>
-                         <td width="85%" style=" vertical-align:middle" ><img src="/chao/img/sq_sucia_biao.gif"> <a href="shequneiye.html">杀光所有报晓的公鸡，天，还是会亮</a> <img src="/chao/img/sq_sucai_jing.gif" width="21" height="14"></td>
-               
-                        <td width="15%"><span class="font12">用户名</span><br><span class="font10">2015-04-04</span></td>
-                  </tr>
-            
-               </tbody>
-      
-      </table>
-                 <div  style=" border-top:1px dashed #dddddd; text-align:center">
-                  <ul class="pagination">
-                       <li><a href="#">&laquo;</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">&raquo;</a></li>
-                  </ul>
-                </div>
-             </div>
-         </div>
-     
-         
-     
-     </div>  
-   </div>
+
+
+    </div><!--  row  -->
+
+</div>
+
 
 <% include ./footer %>
+
+<script>
+    $('.pagination-sm').twbsPagination({
+        totalPages: <%=page_count%>,
+//        visiblePages: 7,
+//        onPageClick: function (event, page) {
+//            alert(page);
+//        },
+        href: '?page={{number}}',
+        first: '第一页',
+        prev: '上一页',
+        next: '下一页',
+        last: '最后一页'
+    });
+</script>

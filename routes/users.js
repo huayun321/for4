@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/User');
+var Post = require('../models/Post');
 var passport = require('passport');
 var mailer = require('../mailer');
+var async = require('async');
 
 
 /* GET signup page. */
@@ -118,19 +120,52 @@ router.post('/forgot', function(req, res, next) {
 
 /* GET profile index page. */
 router.get('/:id', function(req, res, next) {
-    //res.json(req.params.id);
-    User.findById(req.params.id, function(err, user) {
+
+
+    async.auto({
+        get_user: function(callback){
+
+            User.findById(req.params.id, function(err, user) {
+                if(err) {
+                    callback(err);
+                }
+                if(!user) {
+                    callback("用户不存在。");
+
+                } else {
+                    callback(null, user);
+                }
+            });
+        },
+        get_post: function(callback){
+            Post.paginate({created_by:req.params.id}, req.query.page, 10, function(error, pageCount, paginatedResults, itemCount) {
+                if (error) {
+                    callback(error);
+                } else {
+                    callback(null, paginatedResults, req.query.page, pageCount);
+                }
+            }, { populate: 'created_by', sortBy : { created_on : -1 }});
+
+        }
+
+
+    }, function(err, results) {
         if(err) {
             console.log(err);
-            res.render('500', {title:'500'});
-        }
-        if(!user) {
-            req.flash('error', "用户不存在。");
-            res.redirect('/users/login');
+            res.render('500', {title: '500'});
         } else {
-            res.render('user', {title: "918-diy 用户资料", muser:user});
+            //console.log('============');
+            //console.log(results.get_comment[1]);
+            res.render('user', {title: '918diy-社区',
+                muser:results.get_user,
+                posts:results.get_post[0],
+                page: results.get_post[1],
+                page_count: results.get_post[2]
+            });
+            //res.json(results.get_comment);
         }
     });
+
 });
 
 /* GET profile  page. */
