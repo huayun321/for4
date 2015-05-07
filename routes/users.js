@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/User');
 var Post = require('../models/Post');
+var Ruby = require('../models/Ruby');
 var passport = require('passport');
 var mailer = require('../mailer');
 var async = require('async');
@@ -187,8 +188,50 @@ router.get('/:id/profile', function(req, res, next) {
 
 /* GET rubies  page. */
 router.get('/:id/rubies', function(req, res, next) {
-    console.log(req.user);
-    res.render('user_rubies', {title: "918-diy 用户宝石"});
+
+    async.auto({
+        get_user: function(callback){
+
+            User.findById(req.params.id, function(err, user) {
+                if(err) {
+                    callback(err);
+                }
+                if(!user) {
+                    callback("用户不存在。");
+
+                } else {
+                    callback(null, user);
+                }
+            });
+        },
+        get_ruby: function(callback){
+            Ruby.paginate({created_by:req.params.id}, req.query.page, 10, function(error, pageCount, paginatedResults, itemCount) {
+                if (error) {
+                    callback(error);
+                } else {
+                    callback(null, paginatedResults, req.query.page, pageCount);
+                }
+            }, { populate: 'created_by', sortBy : { created_on : -1 }});
+
+        }
+
+
+    }, function(err, results) {
+        if(err) {
+            console.log(err);
+            res.render('500', {title: '500'});
+        } else {
+            //console.log('============');
+            //console.log(results.get_comment[1]);
+            res.render('user_rubies', {title: '918diy-社区',
+                muser:results.get_user,
+                rubies:results.get_ruby[0],
+                page: results.get_ruby[1],
+                page_count: results.get_ruby[2]
+            });
+            //res.json(results.get_comment);
+        }
+    });
 });
 
 /* GET likes  page. */

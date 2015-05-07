@@ -1,0 +1,54 @@
+<% include ./header %>
+   <!--  top    top   top   -->
+   <link href="/chao/css/bag.css" rel="stylesheet">
+   
+   
+       <div class=" container">
+         <img src="/chao/img/12933835199473.jpg" class="img-responsive">
+         <div class="height15"></div> 
+          <div class="panel panel-default">
+            <div class=" panel-heading" style="background:url(img/list_titlebg.jpg) repeat-x ;"><h4 class="panel-title"><strong>时光宝石袋</strong></h4></div>
+            <div class=" panel-body">
+               <div class="tabbable tabs-right">
+               <ul class="nav nav-pills">
+                  <li class="active"><a href="#tab1"  class="btn btn-danger btn-sm nav_li_a" data-toggle="tab" type="button">圆形模具</a></li>
+                  <li><a href="#tab2" class="btn btn-info btn-sm nav_li_a" data-toggle="tab" type="button">方形模具</a></li>
+                  <li><a href="#tab3" class="btn btn-warning btn-sm nav_li_a" data-toggle="tab" type="button">椭圆模具</a></li>
+
+                  <li><a href="#tab4" class="btn btn-default btn-sm  nav_li_a" data-toggle="tab" type="button">心形模具</a></li>
+               </ul>
+               <div class="tab-content">
+                
+                <div class="height15"></div>
+                   <div role="tabpanel" class="tab-pane  fade in active " id="tab1">
+                       <% circle.forEach(function(tpl) {  %>
+                     <a href="/ruby/template/<%=tpl.id%>" class="btn btn-default btn-sm  button1" type="button"><span class="text-danger"><%=tpl.size%></span></a>
+                       <% })  %>
+
+                   </div>
+                   <div role="tabpanel" class="tab-pane fade " id="tab2">
+                       <% ellipse.forEach(function(tpl) {  %>
+                       <a href="/ruby/template/<%=tpl.id%>" class="btn btn-default btn-sm  button1" type="button"><span class="text-danger"><%=tpl.size%></span></a>
+                       <% })  %>
+
+                   </div>
+                   <div role="tabpanel" class="tab-pane fade " id="tab3">
+
+                       <% rect.forEach(function(tpl) {  %>
+                       <a href="/ruby/template/<%=tpl.id%>" class="btn btn-default btn-sm  button1" type="button"><span class="text-danger"><%=tpl.size%></span></a>
+                       <% })  %>
+                   </div>
+                  <div role="tabpanel" class="tab-pane fade " id="tab4">
+                      <% heart.forEach(function(tpl) {  %>
+                      <a href="/ruby/template/<%=tpl.id%>" class="btn btn-default btn-sm  button1" type="button"><span class="text-danger"><%=tpl.size%></span></a>
+                      <% })  %>
+               </div>
+               </div>
+          </div>
+            
+            </div><!-- /panel-body    -->
+              
+         </div> <!-- /panel     -->
+       </div>
+
+<% include ./footer %>

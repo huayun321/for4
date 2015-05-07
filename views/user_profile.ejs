@@ -1,104 +1,64 @@
 <% include ./header %>
    <!--  top    top   top   -->
 
- <!--   body  -->  
-   
-   <div class="container">
-       <div class="row">
-           <div class="height40"></div>
-           <div class="col-md-9">
-                <a href="" style=" height:150px; width:150px;position:relative; float:left">
-                <img src="img/huodongtu2.gif" width="150" height="150px"></a>
-             <a href="modify.html"><p class="user_about">个人资料修改</p></a>
-             <div class="height15"></div>
-            <a href="rules.html"><p class="user_p_rules">查看积分规则</p></a>
-           </div> <!--  col-md-9  -->  
-           <div class="col-md-3">
-                <ul class="user_ul">
-                   <li class="user_li user_li1">
-                      <p class="user_ul_li_p">100</p>
-                      <p class="user_ul_li_p1">全部主题</p>
-                   </li>
-                   <li class="user_li user_li1">
-                      <p class="user_ul_li_p">100</p>
-                      <p class="user_ul_li_p1">我的宝石</p>
-                   </li>
-                   <li class="user_li">
-                      <p class="user_ul_li_p">100</p>
-                      <p class="user_ul_li_p1">我的收藏</p>
-                   </li>
-                </ul>
-           </div>  <!--  col-md-3  -->
-       </div> <!--  row  -->
-       <div class="row">
+ <!--   body  -->
+
+<div class="container">
+    <div class="row">
+        <div class="height40"></div>
+        <div class="col-md-9">
+            <a href="/users/<%=muser.id%>" style=" height:150px; width:150px;position:relative; float:left">
+                <img src="<%=muser.thumbnail_url%>" width="150" height="150px"></a>
+            <% if(locals.user && muser.id == locals.user.id) { %>
+            <a href="modify.html"><p class="user_about">个人资料修改</p></a>
+            <% } %>
             <div class="height15"></div>
-               <div class="tabbable">
-                   <ul class="nav nav-tabs">
-                         <li><a href="user.html" class="user_a">全部主题</a></li>
-                         <li class="active"><a href="base.html"  class="user_a">个人资料</a></li>
-                         <li><a href="gem.html"  class="user_a">我的宝石</a></li>
-                         <li><a href="collection.html" class="user_a" >我的收藏</a></li>
-                   </ul>
-             </div><!--   nav-tabs  -->
+            <a href="rules.html"><p class="user_p_rules">查看积分规则</p></a>
+        </div> <!--  col-md-9  -->
+        <div class="col-md-3">
+            <ul class="user_ul">
+                <li class="user_li user_li1">
+                    <p class="user_ul_li_p">100</p>
+                    <p class="user_ul_li_p1">全部主题</p>
+                </li>
+                <li class="user_li user_li1">
+                    <p class="user_ul_li_p">100</p>
+                    <p class="user_ul_li_p1">我的宝石</p>
+                </li>
+                <li class="user_li">
+                    <p class="user_ul_li_p">100</p>
+                    <p class="user_ul_li_p1">我的收藏</p>
+                </li>
+            </ul>
+        </div>  <!--  col-md-3  -->
+    </div> <!--  row  -->
+    <div class="row">
+        <div class="height15"></div>
+        <div class="tabbable">
+            <ul class="nav nav-tabs">
+                <li ><a href="/users/<%=muser.id%>" class="user_a">主题</a></li>
+                <li class="active"><a href="/users/<%=muser.id%>/profile"  class="user_a">资料</a></li>
+                <li><a href="/users/<%=muser.id%>/rubies"  class="user_a">宝石</a></li>
+                <li><a href="/users/<%=muser.id%>/likes" class="user_a" >收藏</a></li>
+            </ul>
+        </div><!--   nav-tabs  -->
              
              <div class="user_nr">
                         
                         <ul style=" line-height:2; padding:20px">
-                          <li>用户名：</li>
-                          <li>手机：</li>
-                          <li>QQ：</li>
-                          <li>邮箱：</li>
-                          <li>性别：</li>
-                          <li>生日：</li>
+                          <li>用户名：<%=muser.username%></li>
+                          <li>手机：<%=muser.phone%></li>
+                          <li>QQ：<%=muser.qq%></li>
+                          <li>性别：<%=muser.sex%></li>
+                          <li>生日：<%=muser.birthday_y%>-<%=muser.birthday_m%>-<%=muser.birthday_d%></li>
                           <hr>
-                          <li>社区称号：</li>
-                          <li>积分：</li>
+                          <li>社区称号：<%=muser.user_title%></li>
+                          <li>积分：<%=muser.user_rate%></li>
                        </ul>             
                
             </div><!--   class:user_nr    -->
        </div><!--  row  -->
     </div>
-   
- 
-  <!-------   foot   -------->
-     <div class="container foot">
-       <p class="foot_p"> Copyright © 2015-2016      918diy.com </p>               
-           <p class="foot_p" style="text-align:right"><a href="index.html">首页 </a>|<a href="bbs.html"> 社区 </a>|<a href="bag.html"> 宝石袋 </a>|<a href="about.html"> 关于我们 </a>|<a href="contact.html"> 联系我们</a></p>
-           <div class="bshare-custom"><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
-  </div>
-    
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-     <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
-    
-    <!--   pubuliu   -->
-        <script src="pubuliu/jquery-1.8.2.min.js"></script>
 
-    <script src="pubuliu/main.js"></script>
-	
-	<script src="pubuliu/masonry.pkgd.min.js"></script>
-	<script src="pubuliu/imagesloaded.pkgd.min.js"></script>
-	<script src="pubuliu/lightbox-2.6.min.js"></script>
-  
-
-	<script>
-		$(function() {
-		
-			var masonryNode = $('#masonry');
-			masonryNode.imagesLoaded(function(){
-				masonryNode.masonry({
-					itemSelector: '.thumbnail',
-					isFitWidth: true
-				});
-			});
-			
-			
-		});
-	</script>
-    
-  
-  </body>
-</html>
+<% include ./footer %>

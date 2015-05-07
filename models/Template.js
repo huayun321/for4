@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 
 var templateSchema = mongoose.Schema({
     size: String,
+    shape: {type: String, index:true},
     obj: String,
     createdOn: { type: Date, default: Date.now }
 });

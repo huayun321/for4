@@ -29,7 +29,7 @@ $( document ).ready(function() {
     //stamp
     $("input[name='shape']").change(function (e) {
         var shape = $(e.target).val();
-        console.log(shape);
+        //console.log(shape);
         switch (shape) {
             case 'circle':
 
@@ -126,16 +126,18 @@ $( document ).ready(function() {
     $('#crop').click(function() {
         $('#myModal').modal('hide');
         var name = $("#templateName").val();
+        var shape = $("#templateShape").val();
         //var desc = $("#templateDesc").val();
         var json = JSON.stringify(canvas)
         //alert(json);
         //window.location.replace(png);
         var url = "/admin/templates/add";
-        var posting = $.post( url, { size: name, obj: json } );
+        var posting = $.post( url, { size: name, shape:shape, obj: json } );
         //Put the results in a div
-        posting.done(function( data ) {
+        posting.done(function( ) {
             window.location.replace("/admin/templates/list");
         });
+        //console.log(shape);
 
     });
 

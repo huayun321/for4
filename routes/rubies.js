@@ -3,14 +3,62 @@ var router = express.Router();
 var Template = require('../models/Template');
 var async = require('async');
 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    Template.findOne(function(err, template) {
-       if(err) {
-           console.log(err);
-       } else {
-           res.render('board', {title: '918diy-社区', template:template});
-       }
+
+    async.auto({
+        get_circle: function(callback){
+
+            Template.find({shape:'circle'}, function(err, results) {
+                if(err) {
+                    callback(err);
+                } else {
+                    callback(null, results);
+                }
+            });
+
+        },
+        get_ellipse: function(callback){
+            Template.find({shape:'ellipse'}, function(err, results) {
+                if(err) {
+                    callback(err);
+                } else {
+                    callback(null, results);
+                }
+            });
+
+        },
+        get_rect: function(callback){
+            Template.find({shape:'rect'}, function(err, results) {
+                if(err) {
+                    callback(err);
+                } else {
+                    callback(null, results);
+                }
+            });
+        },
+        get_heart: function(callback){
+            Template.find({shape:'heart'}, function(err, results) {
+                if(err) {
+                    callback(err);
+                } else {
+                    callback(null, results);
+                }
+            });
+        }
+
+    }, function(err, results) {
+        if(err) {
+            console.log(err);
+            res.render('500', {title: '500'});
+        } else {
+            res.render('ruby', {title: '918diy-社区',
+                circle:results.get_circle,
+                ellipse:results.get_ellipse,
+                rect: results.get_rect,
+                heart:results.get_heart});
+        }
     });
 
 });

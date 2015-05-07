@@ -22,6 +22,8 @@ router.get('/add', function(req, res, next) {
 
 /* GET templates add page. */
 router.post('/add', function(req, res, next) {
+    //console.log(req.body);
+    //res.json(req.body);
     Template.create(req.body, function(err, template) {
         if (err) {
             console.log("db error in template /posts: " + err);

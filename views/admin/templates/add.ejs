@@ -193,8 +193,23 @@
                         <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                     </div>
                     <div id="canvas-box" class="modal-body">
-                        模板名称：<input id="templateName" type="text" name="name"><br>
-                        模板描述：<textarea id="templateDesc" ></textarea>
+                        <form>
+                            <div class="form-group">
+                                <label for="templateShape">模板名称</label>
+                                <select id="templateShape" class="form-control">
+                                    <option value="circle">圆形</option>
+                                    <option value="ellipse">椭圆</option>
+                                    <option value="rect">方形</option>
+                                    <option value="heart">心形</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="templateName">模板名称</label>
+                                <input id="templateName" type="text" name="name" class="form-control" placeholder="20mm方">
+                            </div>
+
+                        </form>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
