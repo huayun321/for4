@@ -64,17 +64,17 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET home page. */
-router.get('/list/:category', function(req, res, next) {
-    Post.paginate({category:'sucai'}, 1, 10, function(error, pageCount, paginatedResults, itemCount) {
-        if (error) {
-            console.log(error);
-            res.render('500', {title: '500'});
-        } else {
-            //callback(null, paginatedResults);
-            res.render('bbs_list', {title: '918diy-社区', category:req.params.category, posts: paginatedResults});
-        }
-    }, { populate: 'created_by', sortBy : { created_on : -1 }});
-    //console.log(req.params.category);
+router.get('/template/:id', function(req, res, next) {
+    Template.findById(req.params.id)
+        .exec(function(err, tpl) {
+            if(err) {
+                console.log(err);
+                res.render('500', {title:'500'});
+
+            } else {
+                res.render('ruby_board', {title:'918diy-社区', tpl:tpl});
+            }
+        });
 
 });
 

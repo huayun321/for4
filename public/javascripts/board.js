@@ -1,9 +1,5 @@
 $( document ).ready(function() {
     var user_id = '';
-    //sidebar setting
-    $('.sidebar').first().sidebar({
-
-    }).sidebar('attach events', '#btn_sidebar');
 
     //initial canvas and crop canvas and some global var
     var canvas = new fabric.Canvas('canvas');
@@ -22,65 +18,65 @@ $( document ).ready(function() {
 
 
     //socket.io thing
-    $(function() {
-        var socket = io.connect('http://localhost:3000/user');
-
-        socket.on("connect",function() {
-            console.log("on connect");
-        });
-
-        socket.on('progress', function(data) {
-            $('.bar').css('width', data+'%');
-            if(data == 100) {
-                $('#upload_over').removeClass('disabled');
-                $('#upload_cancel').removeClass('disabled');
-            }
-        });
-
-        function dataURItoBlob(dataURI) {
-            // convert base64/URLEncoded data component to raw binary data held in a string
-            var byteString;
-            if (dataURI.split(',')[0].indexOf('base64') >= 0)
-                byteString = atob(dataURI.split(',')[1]);
-            else
-                byteString = unescape(dataURI.split(',')[1]);
-
-            // separate out the mime component
-            var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-
-            // write the bytes of the string to a typed array
-            var ia = new Uint8Array(byteString.length);
-            for (var i = 0; i < byteString.length; i++) {
-                ia[i] = byteString.charCodeAt(i);
-            }
-
-            return new Blob([ia], {type:mimeString});
-        }
-
-        $('#upload').click(function() {
-            $('#upload_cancel').addClass('disabled');
-            var png = canvas.toDataURL();
-            var blob = dataURItoBlob(png);
-            console.log('uploading...',blob);
-
-
-            var stream = ss.createStream();
-            var blobStream = ss.createBlobReadStream(blob);
-
-            blobStream.on('data', function(chunk) {
-
-                console.log('data chunk.length:',chunk.length);
-            });
-
-            blobStream.on('end', function() {
-                console.log('end');
-            });
-
-            ss(socket).emit('profile-image', stream, {size:blob.size, user_id:user_id, tags: $('#input_tags').val()});
-            blobStream.pipe(stream);
-        });
-
-    });
+    //$(function() {
+    //    var socket = io.connect('http://localhost:3000/user');
+    //
+    //    socket.on("connect",function() {
+    //        console.log("on connect");
+    //    });
+    //
+    //    socket.on('progress', function(data) {
+    //        $('.bar').css('width', data+'%');
+    //        if(data == 100) {
+    //            $('#upload_over').removeClass('disabled');
+    //            $('#upload_cancel').removeClass('disabled');
+    //        }
+    //    });
+    //
+    //    function dataURItoBlob(dataURI) {
+    //        // convert base64/URLEncoded data component to raw binary data held in a string
+    //        var byteString;
+    //        if (dataURI.split(',')[0].indexOf('base64') >= 0)
+    //            byteString = atob(dataURI.split(',')[1]);
+    //        else
+    //            byteString = unescape(dataURI.split(',')[1]);
+    //
+    //        // separate out the mime component
+    //        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    //
+    //        // write the bytes of the string to a typed array
+    //        var ia = new Uint8Array(byteString.length);
+    //        for (var i = 0; i < byteString.length; i++) {
+    //            ia[i] = byteString.charCodeAt(i);
+    //        }
+    //
+    //        return new Blob([ia], {type:mimeString});
+    //    }
+    //
+    //    $('#upload').click(function() {
+    //        $('#upload_cancel').addClass('disabled');
+    //        var png = canvas.toDataURL();
+    //        var blob = dataURItoBlob(png);
+    //        console.log('uploading...',blob);
+    //
+    //
+    //        var stream = ss.createStream();
+    //        var blobStream = ss.createBlobReadStream(blob);
+    //
+    //        blobStream.on('data', function(chunk) {
+    //
+    //            console.log('data chunk.length:',chunk.length);
+    //        });
+    //
+    //        blobStream.on('end', function() {
+    //            console.log('end');
+    //        });
+    //
+    //        ss(socket).emit('profile-image', stream, {size:blob.size, user_id:user_id, tags: $('#input_tags').val()});
+    //        blobStream.pipe(stream);
+    //    });
+    //
+    //});
 
     //on click save
     $('#save').click(function() {
@@ -126,7 +122,7 @@ $( document ).ready(function() {
             });
         });
 
-        $('#myModal').modal('hide');
+        $('#my_modal').modal('hide');
         m_canvas.clear();
     });
 
@@ -143,7 +139,7 @@ $( document ).ready(function() {
         };
         stamp = fabric.util.object.clone(canvas.getActiveObject());
         stamp.hasControls = false;
-        stamp.opacity = 0.5;
+        stamp.opacity = 1;
         stamp.lockMovementY = false;
         stamp.lockMovementX = false;
 
@@ -202,11 +198,11 @@ $( document ).ready(function() {
             reader.onload = (function(theFile) {
                 return function (e) {
                     //Render thumbnail.
-                    var thumb = ['<a class="item"><img  src="',
+                    var thumb = ['<a ><img width="150" class="img-thumbnail"  src="',
                         e.target.result,
                         '" title="', escape(theFile.name),
                         '"/></a>'].join('');
-                    $('.sidebar').append($(thumb).click(function(e){handle_img_click(e)}));
+                    $('#img_box').append($(thumb).click(function(e){handle_img_click(e)}));
                 };
             })(f);
 
