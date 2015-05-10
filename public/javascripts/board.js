@@ -33,58 +33,105 @@ $( document ).ready(function() {
     //        }
     //    });
     //
-    //    function dataURItoBlob(dataURI) {
-    //        // convert base64/URLEncoded data component to raw binary data held in a string
-    //        var byteString;
-    //        if (dataURI.split(',')[0].indexOf('base64') >= 0)
-    //            byteString = atob(dataURI.split(',')[1]);
-    //        else
-    //            byteString = unescape(dataURI.split(',')[1]);
+        function dataURItoBlob(dataURI) {
+            // convert base64/URLEncoded data component to raw binary data held in a string
+            var byteString;
+            if (dataURI.split(',')[0].indexOf('base64') >= 0)
+                byteString = atob(dataURI.split(',')[1]);
+            else
+                byteString = unescape(dataURI.split(',')[1]);
+
+            // separate out the mime component
+            var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+            // write the bytes of the string to a typed array
+            var ia = new Uint8Array(byteString.length);
+            for (var i = 0; i < byteString.length; i++) {
+                ia[i] = byteString.charCodeAt(i);
+            }
+
+            return new Blob([ia], {type:mimeString});
+        }
     //
-    //        // separate out the mime component
-    //        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-    //
-    //        // write the bytes of the string to a typed array
-    //        var ia = new Uint8Array(byteString.length);
-    //        for (var i = 0; i < byteString.length; i++) {
-    //            ia[i] = byteString.charCodeAt(i);
-    //        }
-    //
-    //        return new Blob([ia], {type:mimeString});
-    //    }
-    //
-    //    $('#upload').click(function() {
-    //        $('#upload_cancel').addClass('disabled');
-    //        var png = canvas.toDataURL();
-    //        var blob = dataURItoBlob(png);
-    //        console.log('uploading...',blob);
-    //
-    //
-    //        var stream = ss.createStream();
-    //        var blobStream = ss.createBlobReadStream(blob);
-    //
-    //        blobStream.on('data', function(chunk) {
-    //
-    //            console.log('data chunk.length:',chunk.length);
-    //        });
-    //
-    //        blobStream.on('end', function() {
-    //            console.log('end');
-    //        });
-    //
-    //        ss(socket).emit('profile-image', stream, {size:blob.size, user_id:user_id, tags: $('#input_tags').val()});
-    //        blobStream.pipe(stream);
-    //    });
+        $('#upload').click(function() {
+            var png = canvas.toDataURL();
+            var blob = dataURItoBlob(png);
+            blob.type = 'image/png';
+            blob.name = 'hello.png';
+            //console.log('upload');
+            //var canvas_el = $('canvas');
+            //var canvas1 = document.createElement('canvas');
+            //if (canvas1.toBlob) {
+            //    canvas1.toBlob(
+            //        function (blob) {
+            //            // Do something with the blob object,
+            //            // e.g. creating a multipart form for file uploads:
+            //            //var formData = new FormData();
+            //            //formData.append('file', blob, fileName);
+            //            /* ... */
+            //            console.log('appended');
+            //var activeUploads = $('#fileupload').fileupload('active');
+            //console.log(activeUploads);
+            $('#fileupload').fileupload('add', {files: blob});
+            //        },
+            //        'image/jpeg'
+            //    );
+            //}
+        });
     //
     //});
+    ////    Change this to the location of your server-side upload handler:
+    var url = window.location.hostname === 'localhost' ?
+        '//localhost:3000/upload/rubies' : 'upload/rubies/';
+    var sendData= true;
+    $('#fileupload').fileupload({
+        url: url,
+        dataType : 'json',
+        //autoUpload : false,
+        add : function(e,data){
+            console.log('====add');
+            console.log(data.files[0].name);
+//            $("#myForm button").on("click",function(e){
+////
+//                e.preventDefault();
+//                if(sendData){
+//                    $("fileupload").attr('action', 'upload/posts');
+                    data.formData = $("#fileupload").serializeArray();
+//                    sendData = false;
+            console.log(data.formData);
+//                }
+//                $("#myForm button").addClass('disabled');
+                data.submit();
+//
+//            });
+        },
+        progressall: function (e, data) {
+            console.log(data.loaded);
+            //var progress = parseInt(data.loaded / data.total * 100, 10);
+            //$('#progress .progress-bar').css(
+            //    'width',
+            //    progress + '%'
+            //);
+        },
+
+        done: function(e,data){
+            console.log('done');
+            //sendData = true;
+            //var category = $('#category').val();
+            //var url = window.location.hostname === 'localhost' ?
+            //'//localhost:3000/bbs/list/'+ category : 'bbs/list/'+ category;
+            //window.location.replace(url);
+        }
+    })
 
     //on click save
     $('#save').click(function() {
-        user_id = $('#user_id').val();
-        $('#upload_form').modal('setting', 'closable', false)
-                         .modal('show');
-        $('#upload_over').addClass('disabled');
-        $('.bar').css('width', 0+'%');
+        //user_id = $('#user_id').val();
+        //$('#upload_form').modal('setting', 'closable', false)
+        //                 .modal('show');
+        //$('#upload_over').addClass('disabled');
+        //$('.bar').css('width', 0+'%');
+        $('#save_modal').modal('show');
     });
 
     //on click crop

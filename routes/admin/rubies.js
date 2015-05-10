@@ -17,6 +17,7 @@ router.get('/list', function(req, res, next) {
 
 /* GET rubies add page. */
 router.get('/add', function(req, res, next) {
+    //console.log(req.user);
     res.render('admin/rubies/add', { title: '918-宝石添加' });
 });
 

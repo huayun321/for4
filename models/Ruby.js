@@ -13,7 +13,8 @@ var rubySchema = mongoose.Schema({
     thumbnail_url: String,
     delete_path: String,
     thumbnail_delete_path: String,
-    createdOn: { type: Date, default: Date.now }
+    createdOn: { type: Date, default: Date.now },
+    created_by: {type:mongoose.Schema.Types.ObjectId, ref: 'User'}
 });
 
 rubySchema.plugin(mongoosePaginate);

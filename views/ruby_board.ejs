@@ -12,7 +12,7 @@
          <div class="bag_left">          
            <p  class="bag_left_p"><img src="/chao/img/bsd.jpg" width="123" height="34"></p>
             <p class="bag_anniu">
-                <button type="button">保存宝石</button>
+                <button id="save" type="button">保存宝石</button>
                 <button id="img-add"  type="button" >添加图片</button>
                 <input style="display: none" type="file" id="files" name="files[]" multiple />
             </p>
@@ -45,6 +45,36 @@
         </div>
     </div>
 </div>
+
+<div id="save_modal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <form id="fileupload" class="sform" action="/upload/rubies" method="post">
+                    <input name="model" type="hidden" value="Ruby">
+                    <input name="user_id" id="user_id" type="hidden" value="<%=locals.user.id%>">
+                    <div class="form-group">
+                        <label for="tags">标签</label>
+                        <input name="tags" type="text" class="form-control" id="tags" placeholder="风景 美颜">
+                    </div>
+                    <div class="form-group">
+                        <label for="size">尺寸</label>
+                        <input name="tname" type="text" class="form-control" id="size" value="<%=tpl.size%>" contenteditable="false">
+                    </div>
+                    <!--<input  type="file" id="files">-->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button id="upload" type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <!--<div  class="modal fade bs-example-modal-lg" id="my_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
     <!--<div class="modal-dialog">-->
@@ -111,7 +141,13 @@
 
 <% include ./footer %>
 <script src="/templates/js/fabric.min.js"></script>
-
+<script src="/javascripts/canvas-to-blob.min.js"></script>
+<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+<script src="/jqu/js/vendor/jquery.ui.widget.js"></script>
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<script src="/jqu/js/jquery.iframe-transport.js"></script>
+<!-- The basic File Upload plugin -->
+<script src="/jqu/js/jquery.fileupload.js"></script>
 <script>
     var json =<%- JSON.stringify(tpl.obj) %>;
 </script>

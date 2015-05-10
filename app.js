@@ -149,6 +149,8 @@ upload.on('end', function (fileInfo, req, res) {
             });
             break;
         case 'Ruby':
+            //console.log('===============ruby upload');
+            //console.log(req.fields);
             //check tags
             if(String(req.fields.tags).trim() == '') {
                 req.fields.tags = null;
@@ -170,6 +172,7 @@ upload.on('end', function (fileInfo, req, res) {
             }
 
             var rb = new Ruby();
+            rb.created_by = req.fields.user_id;
             rb.tags = req.fields.tags;
             rb.tname = req.fields.tname;
             rb.url = fileInfo.url;
